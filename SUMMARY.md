@@ -9,6 +9,10 @@
     * 기본 뉴럴 네트워크
         * [MNIST 초급](g3doc/tutorials/mnist/beginners/index.md)
         * [MNIST 고급](g3doc/tutorials/mnist/pros/index.md)
+* [튜토리얼](g3doc/tutorials/index.md)
+    * 기본 뉴럴 네트워크
+        * [MNIST 초급](g3doc/tutorials/mnist/beginners/index.md)
+        * [MNIST 고급](g3doc/tutorials/mnist/pros/index.md)
 * [Accessibility](g3doc/tutorials/index.md)
     * 기본 뉴럴 네트워크
         * [MNIST 초급](g3doc/tutorials/mnist/beginners/index.md)
