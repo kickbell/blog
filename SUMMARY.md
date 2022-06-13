@@ -15,8 +15,9 @@
         * [MNIST 고급](g3doc/tutorials/mnist/pros/index.md)         
 * [Accessibility](g3doc/tutorials/index.md)        
     * 기본 뉴럴 네트워크           
-        * [MNIST 초급](g3doc/tutorials/mnist/beginners/index.md)          
-        * [MNIST 고급](g3doc/tutorials/mnist/pros/index.md)            
+        * [그래프 생성](g3doc/api_docs/python/framework.md)
+        * [상수, 시퀀스, 난수 생성](g3doc/api_docs/python/constant_op.md)
+        * [변수](g3doc/api_docs/python/state_ops.md)            
 * [Design patterns](g3doc/tutorials/index.md)         
     * 기본 뉴럴 네트워크           
         * [MNIST 초급](g3doc/tutorials/mnist/beginners/index.md)          
