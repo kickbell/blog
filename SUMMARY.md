@@ -1,10 +1,5 @@
 # Summary
 
-* [머리말](README.md)
-* [소개](g3doc/index.md)
-* [시작하기](g3doc/get_started/index.md)
-    * [다운로드 및 설치](g3doc/get_started/os_setup.md)
-    * [기본적인 사용법](g3doc/get_started/basic_usage.md)
 * [Accessibility](g3doc/tutorials/indexd.md)        
     * 기본 뉴럴 네트워크        
         * [MNIST 초급](g3doc/tutorials/mnisft/beginners/index.md)          
