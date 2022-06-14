@@ -1,10 +1,3 @@
----
-layout: post
-title: "[ReactorKit/EN] ReactorKit - Pulse"
-tags: [ReactorKit, Pulse, RxSwift]
-comments: true
----
-
 Today we're going to talk about a Pulse in ReactorKit.
 
 Added to version 3.1.0 and partially modified from version 3.2.0, the most recent version of the current (2022.04.08).
