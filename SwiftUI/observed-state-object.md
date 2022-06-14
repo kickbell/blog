@@ -13,7 +13,7 @@ iOS 13.0+
 A property wrapper type that instantiates an observable object.             
 iOS 14.0+               
 
-일단 ObservedObject부터 보면, iOS 13에 나왔고, 프로퍼티 래퍼 타입이네요. 관찰 가능한 객체를 구독하고 해당 객체가 변경될때마다 View를 invalidates(무효화) 한다고 해요. ObservedObject에 대해서는 [저번 글](https://io3s.github.io/ObservableObject/)에서도 공부를 했으니 혹시 모르신다면 보고 오시는 것을 추천드립니다. 그래서, 저는 사실 저 부분이 처음엔 잘 이해되지 않았어요. View를 invalidates(무효화)한다라... 기존의 저희에게 익숙한 Rx에서는 이벤트를 `방출`한다고 하잖아요? 그럼 그냥 이벤트를 `방출`하면 되는거지 왜 `무효화` 한다는 걸까? 하고 말이죠. 저번 글에서는 그냥저냥 넘어갔었는데, 이번에 공부하면서 확실히 알게 되었습니다. 
+일단 ObservedObject부터 보면, iOS 13에 나왔고, 프로퍼티 래퍼 타입이네요. 관찰 가능한 객체를 구독하고 해당 객체가 변경될때마다 View를 invalidates(무효화) 한다고 해요. ObservedObject에 대해서는 [저번 글](https://kickbell.gitbook.io/blog/swiftui/observableobject-observedobject-published)에서도 공부를 했으니 혹시 모르신다면 보고 오시는 것을 추천드립니다. 그래서, 저는 사실 저 부분이 처음엔 잘 이해되지 않았어요. View를 invalidates(무효화)한다라... 기존의 저희에게 익숙한 Rx에서는 이벤트를 `방출`한다고 하잖아요? 그럼 그냥 이벤트를 `방출`하면 되는거지 왜 `무효화` 한다는 걸까? 하고 말이죠. 저번 글에서는 그냥저냥 넘어갔었는데, 이번에 공부하면서 확실히 알게 되었습니다. 
 
 View를 `무효화`한다는 말은 그런 거에요. SwiftUI의 View들은 struct이죠 ? 즉 값타입 입니다. 그리고 하나의 함수와도 같아요. input값이 있으면 그에 따라서 뷰를 매번 새로 그리죠. 물론 매번 새롭게 뷰를 그리는 것은 꽤나 큰 리소스가 드는 일이기 때문에, SwiftUI에서는 뷰를 매번 그리는 것을 피하기 위해서 최적화가 되어 있다고 합니다. 
 
@@ -77,7 +77,7 @@ struct ContentView_Previews: PreviewProvider {
 ``` 
 ![](https://velog.velcdn.com/images/dev_kickbell/post/ff53ee54-bf7d-4a86-b583-55bef75305f9/image.gif)       
         
-일단, ObservedObject와 StateObject 둘 다 [저번 글](https://io3s.github.io/ObservableObject/)에서 배웠던 ObservableObject과 같이 사용해야 하는 것 똑같습니다. CounterViewModel이 있고, ObservableObject 프로토콜을 준수해서 CounterViewModel을 관찰가능한 객체로 지정합니다. 그리고 count라는 변수가 있으며, incrementCounter() 할 때마다 count가 1씩 증가하고 objectWillChange.send()를 해서 CounterViewModel을 관찰하는 객체에게 값이 변했다고 알려주지요. 
+일단, ObservedObject와 StateObject 둘 다 [저번 글](https://kickbell.gitbook.io/blog/swiftui/observableobject-observedobject-published)에서 배웠던 ObservableObject과 같이 사용해야 하는 것 똑같습니다. CounterViewModel이 있고, ObservableObject 프로토콜을 준수해서 CounterViewModel을 관찰가능한 객체로 지정합니다. 그리고 count라는 변수가 있으며, incrementCounter() 할 때마다 count가 1씩 증가하고 objectWillChange.send()를 해서 CounterViewModel을 관찰하는 객체에게 값이 변했다고 알려주지요. 
 
 관찰하는 쪽인 CounterView에서는 CounterViewModel을 관찰하기 위해 @ObservedObject 속성을 지정하고, CounterViewModel의 count를 참조해서 뷰로 그려주고 있으며, 버튼을 누를 때마다 count값을 증가시켜줍니다. 
 
