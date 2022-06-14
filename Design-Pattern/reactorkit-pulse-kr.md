@@ -1,10 +1,3 @@
----
-layout: post
-title: "[ReactorKit/KR] ReactorKit - Pulse"
-tags: [ReactorKit, Pulse, RxSwift]
-comments: true
----
-
 오늘은 ReactorKit의 Pulse라는 기능에 대해서 알아볼겁니다. 
 
 3.1.0 버전에서 추가되었고, 현재(2022.04.08)기준 제일 최신 버전인 3.2.0 버전에서 일부 수정되었습니다. 
@@ -43,10 +36,9 @@ Make public valueUpdatedCount on Pulse by @tokijh in #196
 음... 뭐지? "[distinctUntilChanged](https://reactivex.io/documentation/operators/distinct.html) 같은 녀석인가?" 싶었죠. 
 
 "음, 그러면 일단 코드를 복붙에서 실행해보자!" 라는 생각이 들어서 그대로 코드를 가져와서 실행해보았습니다. 
-
-<img width="1088" alt="image" src="https://user-images.githubusercontent.com/85085822/162379923-b3ae5b31-be7c-4bda-8ed8-91b643448ea6.png">
-
-
+        
+![](https://user-images.githubusercontent.com/85085822/162379923-b3ae5b31-be7c-4bda-8ed8-91b643448ea6.png)      
+      
 음 에러가 나는군요...( 에러가 나지않는 수정된 코드는 마지막에 있습니다. )
 
 그렇다면 별 수 없이 다음 문서 내용을 보겠습니다.  
