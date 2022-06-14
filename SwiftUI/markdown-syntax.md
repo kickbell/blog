@@ -115,8 +115,9 @@ List {
 }
 ```
 
-그럼 뷰는 어떻게 그려질까요 ? 아래와 같이 그려집니다.			 
-![](https://velog.velcdn.com/images/dev_kickbell/post/bc99e39d-2437-42fb-8fc2-572502650c76/image.png)
+그럼 뷰는 어떻게 그려질까요 ? 아래와 같이 그려집니다.	
+			
+![](https://velog.velcdn.com/images/dev_kickbell/post/bc99e39d-2437-42fb-8fc2-572502650c76/image.png)		
 
 이유는 위에서 설명한 것과 같아요. Text("Today")는 `LocalizedStringKey`값을 생성해서 로컬라이징키에 따른 아웃풋이 있는지 암시적으로 조회하지만, ForEach 문을 통해 생성되는 Text(message.title)은 변수 이므로 뷰는 문자열 값을 그대로 사용하기 때문입니다. 이 내용도 [공식문서](https://developer.apple.com/documentation/swiftui/localizedstringkey)에 있는 내용이니 읽어보셔도 좋겠네요.
 
