@@ -1,10 +1,3 @@
----
-layout: post
-title: "[SwiftUI] @ObservedObject vs @StateObject"
-tags: [SwiftUI, ObservedObject, StateObject] 
-comments: true
----
-
 오늘 글에서는 [`@ObservedObject`](https://developer.apple.com/documentation/swiftui/observedobject) 와 [`@StateObject`](https://developer.apple.com/documentation/swiftui/stateobject)에 대해 알아보려고 합니다.
 
 사실, 처음엔 좀 헷갈렸어요. 그래서 공식문서도 보고 이것저것 찾아보다가 어느 한 블로그에서 좋은 글을 보게 되서 겸사겸사 정리하려고 합니다. 
@@ -82,7 +75,8 @@ struct ContentView_Previews: PreviewProvider {
   }
 }
 ``` 
-![](https://velog.velcdn.com/images/dev_kickbell/post/ff53ee54-bf7d-4a86-b583-55bef75305f9/image.gif)
+![](https://velog.velcdn.com/images/dev_kickbell/post/ff53ee54-bf7d-4a86-b583-55bef75305f9/image.gif)       
+        
 일단, ObservedObject와 StateObject 둘 다 [저번 글](https://io3s.github.io/ObservableObject/)에서 배웠던 ObservableObject과 같이 사용해야 하는 것 똑같습니다. CounterViewModel이 있고, ObservableObject 프로토콜을 준수해서 CounterViewModel을 관찰가능한 객체로 지정합니다. 그리고 count라는 변수가 있으며, incrementCounter() 할 때마다 count가 1씩 증가하고 objectWillChange.send()를 해서 CounterViewModel을 관찰하는 객체에게 값이 변했다고 알려주지요. 
 
 관찰하는 쪽인 CounterView에서는 CounterViewModel을 관찰하기 위해 @ObservedObject 속성을 지정하고, CounterViewModel의 count를 참조해서 뷰로 그려주고 있으며, 버튼을 누를 때마다 count값을 증가시켜줍니다. 
@@ -151,12 +145,14 @@ struct ContentView_Previews: PreviewProvider {
 
 나머지는 변경된 것이 없어요. 자, 그럼 이렇게 한 상태에서 viewModel을 @ObservedObject로 하는 것과 @StateObject로 하는 것의 차이를 볼까요 ? 각각 Random 버튼을 3번 누르고 Count 버튼을 3번 눌러볼게요. 
 
+- @ObservedObject var viewModel = CounterViewModel()        
+        		
+![](https://velog.velcdn.com/images/dev_kickbell/post/56c518e8-f1fa-4723-b95f-1a9df98b6ce0/image.gif)       
 
-> @ObservedObject var viewModel = CounterViewModel()		
-![](https://velog.velcdn.com/images/dev_kickbell/post/56c518e8-f1fa-4723-b95f-1a9df98b6ce0/image.gif)
 
-> @StateObject var viewModel = CounterViewModel()		
-![](https://velog.velcdn.com/images/dev_kickbell/post/9d8af14c-4e69-4fd0-a312-48a639144841/image.gif)
+- @StateObject var viewModel = CounterViewModel()       	        	
+ 
+![](https://velog.velcdn.com/images/dev_kickbell/post/9d8af14c-4e69-4fd0-a312-48a639144841/image.gif)               
 
 
 어때요 ? 차이점을 찾으셨나요 ? 😀 
@@ -191,7 +187,7 @@ struct ContentView_Previews: PreviewProvider {
 
 ![](https://velog.velcdn.com/images/dev_kickbell/post/e3a7a7a3-2584-4a1f-a978-43668f067517/image.png)
 
-즉, @ObservedObject는 관찰 중인 객체에서 변경 사항이 감지되면 뷰를 업데이트 한다는 목적으로 사용한다. 물론 @StateObject도 같은 용도이지만, 둘의 차이는 위에서 말한 것처럼 @StateObject는 포함되는 View의 구조체가 scope에 포함되더라도 파괴되고 다시 인스턴스화 되지 않는다는 것이죠. 이 말을 다르게 표현하면 @ObservedObject는 포함되는 View의 cycle에 의존적이지만, @StateObject는 그렇지 않다는 겁니다. 
+즉, @ObservedObject는 관찰 중인 객체에서 변경 사항이 감지되면 뷰를 업데이트 한다는 목적으로 사용한다. 물론 @StateObject도 같은 용도이지만, 둘의 차이는 위에서 말한 것처럼 @StateObject는 포함되는 View의 구조체가 scope에 포함되더라도 파괴되고 다시 인스턴스화 되지 않는다는 것이죠. 정리하면 View는 struct이기 때문에 값이 변경되면 새로 생성된다(@ObservedObject), 하지만 @StateObject는 View에 변경이 있을 때마다 생성되지 않고 View의 onAppear, onDisapper와 같은 lift cycle에 따라 생성과 소멸이 이루어진다. 
 
 그래서, 이런저런 자료들을 보면 일관적으로 하는 말이 `SwiftUI는 언제든지 뷰를 생성하거나 다시 생성할 수 있기 때문에 뷰 내부에 @ObservedObject를 생성하는 것은 안전하지 않습니다. @ObservedObject를 종속성으로 삽입하지 않는 한 @StateObject 래퍼를 사용하여 뷰를 다시 그린 후 일관된 결과를 보장하는 것이 좋다.` 라고 합니다. 
 
@@ -202,15 +198,27 @@ struct ContentView_Previews: PreviewProvider {
 - @ObservedObject, @StateObject는 모두 관찰 중인 객체에서 변경 사항이 감지되면 뷰를 업데이트 한다는 목적으로 사용한다.
 - @ObservedObject는 변경사항이 감지되면, View를 무효화(삭제)하고 변경을 알린다. 그러면 SwiftUI 프레임워크는 변경된 값으로 View를 새로 그린다. 
 - 반면에, @StateObject는 관찰객체를 처음에 이미 인스턴스화 했기 때문에 포함되는 View의 구조체가 변경되더라도 무효화되고 다시 인스턴스화 되지 않는다. 
-- 결론적으로, @ObservedObject는 포함되는 View의 cycle에 의존적이지만, @StateObject는 그렇지 않다. 따라서 SwiftUI는 언제든지 뷰를 생성하거나 다시 생성할 수 있기 때문에 뷰 내부에 @ObservedObject를 생성하는 것은 안전하지 않습니다. @ObservedObject를 종속성으로 삽입하지 않는 한 @StateObject 래퍼를 사용하여 뷰를 다시 그린 후 일관된 결과를 보장하는 것이 좋다. 그래서 왠간하면 일관된 결과가 보장된 @StateObject을 쓰되 해당 View에서 종속성으로 값을 삽입하는 경우에만 @ObservedObject를 사용해라. ( @StateObject는 iOS 14 부터 사용이 가능합니다. )
+- View는 struct이기 때문에 값이 변경되면 새로 생성된다(@ObservedObject), 하지만 @StateObject는 View에 변경이 있을 때마다 생성되지 않고 View의 onAppear, onDisapper와 같은 lift cycle에 따라 생성과 소멸이 이루어진다. 
+- 결론적으로, SwiftUI는 언제든지 뷰를 생성하거나 다시 생성할 수 있기 때문에 뷰 내부에 @ObservedObject를 생성하는 것은 안전하지 않습니다. @ObservedObject를 종속성으로 삽입하지 않는 한 @StateObject 래퍼를 사용하여 뷰를 다시 그린 후 일관된 결과를 보장하는 것이 좋다. 그래서 왠간하면 일관된 결과가 보장된 @StateObject을 쓰되 해당 View에서 종속성으로 값을 삽입하는 경우에만 @ObservedObject를 사용해라. ( @StateObject는 iOS 14 부터 사용이 가능합니다. )
 
     
 ## Reference 
-https://developer.apple.com/documentation/swiftui/observedobject    
-https://developer.apple.com/documentation/swiftui/stateobject     
-https://developer.apple.com/forums/thread/650776        
-https://developer.apple.com/documentation/swiftui/managing-model-data-in-your-app       
-https://www.avanderlee.com/swiftui/stateobject-observedobject-differences/      
-https://nsios.tistory.com/120       
+[https://developer.apple.com/documentation/swiftui/observedobject](https://developer.apple.com/documentation/swiftui/observedobject)        
+
+[https://developer.apple.com/documentation/swiftui/stateobject](https://developer.apple.com/documentation/swiftui/stateobject)      
+
+[https://developer.apple.com/forums/thread/650776](https://developer.apple.com/forums/thread/650776)        
+
+[https://developer.apple.com/documentation/swiftui/managing-model-data-in-your-app](https://developer.apple.com/documentation/swiftui/managing-model-data-in-your-app)      
+
+[https://www.avanderlee.com/swiftui/stateobject-observedobject-differences/](https://www.avanderlee.com/swiftui/stateobject-observedobject-differences/)        
+
+[https://nsios.tistory.com/120](https://nsios.tistory.com/120)      
+    
+     
+        
+       
+      
+       
 
 
