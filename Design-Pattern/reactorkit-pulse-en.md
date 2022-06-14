@@ -42,10 +42,10 @@ Well... I see.I didn't get it.
 Well... what is it?
 This looks similar to [distinctUntilChanged](https://reactivex.io/documentation/operators/distinct.html) operator in RxSwift in my think.
 
-and I took the code and ran it in xcode.
-
-<img width="1088" alt="image" src="https://user-images.githubusercontent.com/85085822/162379923-b3ae5b31-be7c-4bda-8ed8-91b643448ea6.png">
-
+and I took the code and ran it in xcode.      
+      
+![](https://user-images.githubusercontent.com/85085822/162379923-b3ae5b31-be7c-4bda-8ed8-91b643448ea6.png)     
+      
 Well, there's an error...( An error-free modified code is at the end.)
 
 If so, we'll have no choice but to look at the following documents:
