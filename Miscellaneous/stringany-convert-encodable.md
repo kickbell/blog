@@ -58,7 +58,7 @@ userData.toDictionary()
 
 그래서 대안을 찾아보기로 했지요. 
 
-#### 1. 하드코딩 
+## 1. 하드코딩 
 
 ```swift
 struct User: Encodable {
@@ -76,7 +76,7 @@ struct User: Encodable {
 
 음, 근데 이건 정상적으로 동작하나 확장성 또는 내부 프로퍼티의 변경에 취약하다는 문제가 있어요. 
 
-#### 2. Mirror 
+## 2. Mirror 
 
 두번째 대안은 [Mirror](https://developer.apple.com/documentation/swift/mirror) 입니다. 저같은 경우는 iOS를 하면서 한번도 사용해보지 않은 구조체였어요. 
 
@@ -178,7 +178,7 @@ print(user.asDictionary)
 동작은 같습니다. 꽤? 괜찮은 방법인 것 같아요.🥹
 
 
-#### 3. NSCoding, NSKeyedArchiver
+## 3. NSCoding, NSKeyedArchiver
 
 고전이 나왔습니다. 
 일단 이 녀석들을 보기 전에 글 처음의 Encodable을 다시 보죠. 
@@ -240,7 +240,7 @@ print(user.toDictionary())
 아 그리고, 이미 워낙에 자주 쓰여서 아시겠지만 [JSONSerialization](https://developer.apple.com/documentation/foundation/jsonserialization)는 Codable로 치면 디코더의 역할을 하는 녀석입니다. iOS 5.0 부터 사용되었고 8.0에 Codable이 나오기 전까지 잘 사용되었죠. 지금도 간간히 사용되고 있구요. 
 
 
-#### 4. Encodable
+## 4. Encodable
 
 돌고 돌아 다시 Encodable로 와버렸습니다. 튜닝의 끝은 순정이랬던가요. 결국에 전 다시 이쪽으로 돌아와버렸어요. 
 
@@ -253,6 +253,8 @@ extension Encodable {
   }
 }
 ```
+
+## Conclusion
 
 결론적으로 이 방법은 나쁘지 않은 방법인 것 같습니다. 
 
@@ -274,8 +276,11 @@ extension Encodable {
 그걸로 오늘의 위안을 삼아봅니다. 20000.
 
 
-#### 5. 참고
-- https://ios-development.tistory.com/720 
-- https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types
-- https://developer.apple.com/documentation/swift/mirror
-- https://medium.com/@OutOfBedlam/%EC%8A%A4%EC%9C%84%ED%94%84%ED%8A%B8-json-encoder%EC%99%80-encodable-e61e55f9e535
+## Reference
+[https://ios-development.tistory.com/720 ](https://ios-development.tistory.com/720 )      
+
+[https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types](https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types)      
+
+[https://developer.apple.com/documentation/swift/mirror](https://developer.apple.com/documentation/swift/mirror)      
+
+[https://medium.com/@OutOfBedlam/%EC%8A%A4%EC%9C%84%ED%94%84%ED%8A%B8-json-encoder%EC%99%80-encodable-e61e55f9e535](https://medium.com/@OutOfBedlam/%EC%8A%A4%EC%9C%84%ED%94%84%ED%8A%B8-json-encoder%EC%99%80-encodable-e61e55f9e535)      
