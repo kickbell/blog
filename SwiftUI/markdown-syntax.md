@@ -1,17 +1,10 @@
----
-layout: post
-title: "[SwiftUI] Markdown syntax"
-tags: [SwiftUI, Markdown syntax]
-comments: true
----
-
 음, 그거 아십니까? SwiftUI에서 마크다운 문법을 지원합니다. 전 몰랐어요:) 어쩌다가 우연히 알게 됐는데, 꽤나 신기해서 글로 남겨봅니다. 
 
 사용할 수 있는 것은 iOS15부터 인데요. [iOS15 릴리즈 노트](https://developer.apple.com/documentation/ios-ipados-release-notes/ios-ipados-15-release-notes)에 아래와 같이 추가되어 있습니다. 
 
-> ### SwiftUI
-#### New Features
-LocalizedStringKey can now contain Markdown syntax. The system parses Markdown strings when you create a Text view from a LocalizedStringKey, including Text views created with a string literal. The system styles Text according to Markdown constructs. (74515884) 
+> ### SwiftUI 
+> #### New Features
+> LocalizedStringKey can now contain Markdown syntax. The system parses Markdown strings when you create a Text view from a LocalizedStringKey, including Text views created with a string literal. The system styles Text according to Markdown constructs. (74515884) 
 
 하나씩 차근차근 설명해볼게요. 일단 해석해보면, `LocalizedStringKey`가 마크다운 문법을 포함할 수 있다고 되어있죠? 여기서 `LocalizedStringKey` 부터 알아볼게요. 
 
@@ -131,9 +124,16 @@ List {
 
 
 #### 참고자료 
-https://developer.apple.com/documentation/swiftui/localizedstringkey/init(_:)
-https://developer.apple.com/documentation/SwiftUI/LocalizedStringKey
-https://developer.apple.com/documentation/ios-ipados-release-notes/ios-ipados-15-release-notes
-https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
-https://developer.apple.com/forums/thread/682711
-https://developer.apple.com/documentation/swiftui/text/init(verbatim:)
+[https://developer.apple.com/documentation/swiftui/localizedstringkey/init(_:)](https://developer.apple.com/documentation/swiftui/localizedstringkey/init(_:))
+[https://developer.apple.com/documentation/SwiftUI/LocalizedStringKey](https://developer.apple.com/documentation/SwiftUI/LocalizedStringKey)
+[https://developer.apple.com/documentation/ios-ipados-release-notes/ios-ipados-15-release-notes](https://developer.apple.com/documentation/ios-ipados-release-notes/ios-ipados-15-release-notes)
+[https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+[https://developer.apple.com/forums/thread/682711](https://developer.apple.com/forums/thread/682711)
+[https://developer.apple.com/documentation/swiftui/text/init(verbatim:)](https://developer.apple.com/documentation/swiftui/text/init(verbatim:))
+
+
+
+
+
+
+
