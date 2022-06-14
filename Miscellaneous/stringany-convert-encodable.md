@@ -277,9 +277,11 @@ extension Encodable {
 
 
 ## Reference
-[https://ios-development.tistory.com/720](https://ios-development.tistory.com/720)          
-[https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types](https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types)      
 
-[https://developer.apple.com/documentation/swift/mirror](https://developer.apple.com/documentation/swift/mirror)      
-
-[https://medium.com/@OutOfBedlam/%EC%8A%A4%EC%9C%84%ED%94%84%ED%8A%B8-json-encoder%EC%99%80-encodable-e61e55f9e535](https://medium.com/@OutOfBedlam/%EC%8A%A4%EC%9C%84%ED%94%84%ED%8A%B8-json-encoder%EC%99%80-encodable-e61e55f9e535)      
+[https://ios-development.tistory.com/720](https://ios-development.tistory.com/720)       
+    
+[https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types](https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types)            
+      
+[https://developer.apple.com/documentation/swift/mirror](https://developer.apple.com/documentation/swift/mirror)           
+      
+[https://medium.com/@OutOfBedlam/%EC%8A%A4%EC%9C%84%ED%94%84%ED%8A%B8-json-encoder%EC%99%80-encodable-e61e55f9e535](https://medium.com/@OutOfBedlam/%EC%8A%A4%EC%9C%84%ED%94%84%ED%8A%B8-json-encoder%EC%99%80-encodable-e61e55f9e535)              
