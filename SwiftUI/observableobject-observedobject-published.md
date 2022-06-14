@@ -1,12 +1,4 @@
----
-layout: post
-title: "[SwiftUI] ObservableObject, @ObservedObject, @Published "
-tags: [SwiftUI, ObservableObject, ObservedObject, Published] 
-comments: true
----
-
-
-[저번 글](https://io3s.github.io/State-and-Binding/)에서는 @State와 @Binding에 대해서 알아봤는데요.  
+[저번 글](https://kickbell.gitbook.io/blog/swiftui/state-binding)에서는 @State와 @Binding에 대해서 알아봤는데요.  
 오늘은 ObservableObject, @ObservedObject, @Published에 대해서 알아볼까 합니다. 
 
 @State가 어떤 뷰의 내부의 상태값을 저장하고 다루기 위한 용도였다면, 조금 더 복잡한 상황에서 뷰 외부의 모델이 가진 데이터를 다루기 위한 도구도 존재합니다. 그리고 그 중에서도 값 타입(Value type)이 아닌 참조 타입(Reference type)을 사용하는 경우에 ObservableObject 프로토콜을 사용할 수 있습니다.
@@ -207,11 +199,20 @@ class ViewModel: ObservableObject {
 - `ObservableObject`에는 `objectWillChange`라는 퍼블리셔를 하나 가지고 있는데, 내가 관찰하고 싶은 클래스 내의 인스턴스가 변경될 때 `objectWillChange.send()` 메소드를 호출해줘도 되지만 Swift에서 `@Published`라는 속성을 지원해주고 있기 때문에 이것을 사용하면 된다.
     
 ## Reference 
-https://developer.apple.com/documentation/combine/observableobject          
-https://developer.apple.com/documentation/swiftui/observedobject            
-https://eunjin3786.tistory.com/410              
-https://developer.apple.com/documentation/swiftui/managing-model-data-in-your-app               
-https://nsios.tistory.com/145               
+[https://developer.apple.com/documentation/combine/observableobject](https://developer.apple.com/documentation/combine/observableobject)        
+
+[https://developer.apple.com/documentation/swiftui/observedobject](https://developer.apple.com/documentation/swiftui/observedobject)        
+
+[https://eunjin3786.tistory.com/410](https://eunjin3786.tistory.com/410)        
+
+[https://developer.apple.com/documentation/swiftui/managing-model-data-in-your-app](https://developer.apple.com/documentation/swiftui/managing-model-data-in-your-app)      
+
+[https://nsios.tistory.com/145](https://nsios.tistory.com/145)      
+          
+            
+              
+               
+               
 
 
 
