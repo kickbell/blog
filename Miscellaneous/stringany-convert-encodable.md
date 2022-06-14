@@ -1,11 +1,3 @@
----
-layout: post
-title: "[Swift] Struct을 [String: Any]로 변환할 때, Encodable의 Extension을 사용 해야 하나요? "
-tags: [Swift, Encodable, Mirror]
-comments: true
----
-
-
 때는 바야흐로 얼마전, `SwiftUI + Firebase` 관련한 사내스터디를 진행하던 중 회원가입한 User의 데이터값을 Firebase로 보내야 하는 상황이었어요.
 
 Firebase에서 요구되는 메소드의 파라미터 타입은 아래와 같은`[String: Any]` 였죠. 
