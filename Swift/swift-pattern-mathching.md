@@ -1,11 +1,3 @@
----
-layout: post
-title: "[Swift] Swift Pattern Mathching"
-tags: [sample post, readability, test, intro]
-comments: true
----
-
-
 업무 중에 자주 헷갈려서 적어 놓습니다 :).. 
 
 `swift의 pattern` 중에 하나인데요. [공식 문서](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_expression-pattern)는 여기에 있습니다. 
