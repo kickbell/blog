@@ -1,16 +1,9 @@
----
-layout: post
-title: "[SwiftUI] @State, @Binding "
-tags: [SwiftUI, Combine]
-comments: true
----
-
 요즘 틈틈히 SwiftUI를 공부하고 있어서 겸사겸사 잊어버리기 전에 @State와 @Binding에 대해서 좀 정리해둘까 합니다.  
 
 사실 공식문서도 봐보고 이런 저런 글을 봤습니다만, 이봉원 님의 [스윗한 SwiftUI](http://www.yes24.com/Product/Goods/89912849)의 글만큼 간략하고 이해하기 쉽게 설명된 요약이 없는 것 같아요. 
 
 > #### _@State와 @Binding_
-@State는 뷰 자체에서 가져야 할 상태 프로퍼티이자 원천 자료로, 어떤 데이터에 대한 영속적인 상태를 저장하고 관찰하는 역할을 수행합니다. 반면 상위 뷰가 가진 상태를 하위 뷰에서 사용하고 수정할 수 있게 해 주는 파생 자료에는 @Binding을 사용합니다. 이때 바인딩 프로퍼티는 연산 프로퍼티의 형태로 사용되어 그 자신이 직접 값을 보유하는 대신, 값을 읽고 수정하여 다른 뷰에 갱신된 데이터를 전달하는 역할을 합니다. 
+> @State는 뷰 자체에서 가져야 할 상태 프로퍼티이자 원천 자료로, 어떤 데이터에 대한 영속적인 상태를 저장하고 관찰하는 역할을 수행합니다. 반면 상위 뷰가 가진 상태를 하위 뷰에서 사용하고 수정할 수 있게 해 주는 파생 자료에는 @Binding을 사용합니다. 이때 바인딩 프로퍼티는 연산 프로퍼티의 형태로 사용되어 그 자신이 직접 값을 보유하는 대신, 값을 읽고 수정하여 다른 뷰에 갱신된 데이터를 전달하는 역할을 합니다. 
 
 이 요약을 좀 더 쉽게 표현하면, State는 SwiftUI 프레임워크 내의 뷰에서 상태값을 나타낼 때 사용하고, Binding은 상위뷰의 어떤 상태값을 하위뷰에서 사용하고 수정할 수 있게 할 때 사용한다고 볼 수 있을 것 같습니다. 이제부터는 공식문서와 함께 설명해볼게요. 
 
@@ -172,8 +165,19 @@ Toggle을 보면 매개변수로 `Toggle(isOn: Binding<Bool>, label: () -> _)` i
     
 
 ## Reference  
-https://nsios.tistory.com/120         
-https://developer.apple.com/documentation/swiftui/state       
-https://developer.apple.com/documentation/swiftui/binding       
-http://www.yes24.com/Product/Goods/89912849       
-https://seons-dev.tistory.com/entry/SwiftUI%EB%A5%BC-%EC%9C%84%ED%95%9C-Clean-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98
+[https://nsios.tistory.com/120](https://nsios.tistory.com/120)      
+    
+[https://developer.apple.com/documentation/swiftui/state](https://developer.apple.com/documentation/swiftui/state)      
+    
+[https://developer.apple.com/documentation/swiftui/binding](https://developer.apple.com/documentation/swiftui/binding)      
+    
+[http://www.yes24.com/Product/Goods/89912849](http://www.yes24.com/Product/Goods/89912849)      
+    
+[https://seons-dev.tistory.com/entry/SwiftUI%EB%A5%BC-%EC%9C%84%ED%95%9C-Clean-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98](https://seons-dev.tistory.com/entry/SwiftUI%EB%A5%BC-%EC%9C%84%ED%95%9C-Clean-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98)        
+    
+    
+         
+       
+       
+       
+
