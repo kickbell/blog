@@ -1,9 +1,9 @@
 # Summary
 * [README](README.md)
-* [Accessibility](g3doc/tutorials/indexd.md)        
+* Accessibility
      * [VoiceOver](g3doc/tutorials/mnisft/beginners/index.md)          
      * [Dynamic Type](g3doc/tutorials/mnisft/pros/index.md)                         
-* [Design patterns](g3doc/tutorials/index.md)         
+* Design Pattern
      * [Dependency Injection](g3doc/tutorials/mnist/beginners/index.md)          
      * [Protocol-Oriented Programming](g3doc/tutorials/mnist/pros/index.md)            
      * [Functional Programming](g3doc/tutorials/mnist/pros/index.md)                         
