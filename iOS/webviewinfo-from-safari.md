@@ -3,8 +3,7 @@
 저같은 경우는 주로 하이브리드 앱을 개발할 때, 브릿지가 연결되어있는데 내가 보내주는 토큰 값이나 설정 값들이 정확히 전달되고 있는지 확인하기 위해 주로 디버깅 용도로 사용하고 있어요. 물론 코드로도 당연히 확인은 가능합니다. 보통 아래처럼 확인하죠. 
 
 ```swift
-	WKWebsiteDataStore.default().httpCookieStore.getAllCookies({
-    	(cookies) in
+    WKWebsiteDataStore.default().httpCookieStore.getAllCookies({ (cookies) in
         for cookie in cookies{
         	print("WKWebsiteDataStore cookie : \(cookie.name) // \(cookie.value)")
         }
