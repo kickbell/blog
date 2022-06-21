@@ -27,7 +27,7 @@
 
 이제 Device 설정을 해야해요. 
 
-`설정` -> `Safari` -> `고급`으로 들어갑니다. 그러면 아래 사진처럼 JavaScript스위치가 있는데, 이것을 활성화 시켜줍니다. 
+`설정` -> `Safari` -> `고급`으로 들어갑니다. 그러면 아래 사진처럼 `JavaScript` 스위치가 있는데, 이것을 활성화 시켜줍니다. 
 
 ![](https://velog.velcdn.com/images/dev_kickbell/post/a4dcd112-2e32-493f-9451-5205a2361069/image.png)
 
