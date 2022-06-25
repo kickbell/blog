@@ -7,7 +7,7 @@
 [공식 문서](https://developer.apple.com/documentation/uikit/uiapplication/2806818-setalternateiconname)에는 3개 정도의 글이 있는데요. `Managing the app's icon` 전체에는 총 4개의 API가 있지만, `applicationIconBadgeNumber` 같은 경우는 오늘의 주제와는 관련이 없으니 제외하고 알아보도록 하겠습니다. 
 
 > ### supportsAlternateIcons
-A Boolean value that indicates whether the app is allowed to change its icon.
+> A Boolean value that indicates whether the app is allowed to change its icon.
 
 첫 번째는 `supportsAlternateIcons` 입니다. 문서 그대로 앱에서 아이콘을 변경할 수 있는지 여부를 나타내는 Bool 값이에요. 앱 아이콘을 변경하는 비즈니스 로직에서 guard 문으로 체크해주는 용도로 사용하면 될 것 같습니다. 
 
@@ -16,7 +16,7 @@ A Boolean value that indicates whether the app is allowed to change its icon.
 그리고 `Alternate App Icon` 의 반대말은 `Primary App Icon` 인데요. 대체할 아이콘들이 있으면 당연히 기본값? 아이콘도 있어야겠죠. 그것을 뜻하는 말입니다. 이 정도만 일단 알아두셔도 괜찮아요. 
 
 > ### alternateIconName
-The name of the icon the system displays for the app.
+> The name of the icon the system displays for the app.
 
 두 번째는 API는 `alternateIconName`입니다. Name 이라는 이름답게 타입은 String 이에요. 이 타입으로 앱 아이콘을 식별해서 다음에 나올 API를 통해 앱의 아이콘을 바꿔주지요. 저는 여기서 "아 그런가보다~" 하고 넘어갔는데, 그렇지 않더라구요. (이것 때문에 삽질을 좀 했습니다...) 
 
@@ -27,7 +27,7 @@ The name of the icon the system displays for the app.
 방금 제가 위에서 기본 아이콘을 `Primary App Icon` 이라고 말했죠? 즉, 제가 Asset에서 `Primary App Icon` 의 이름을 `홍길동`이라고 하더라도 기본 아이콘의 속성 값이 `nil`이기 때문에 동작을 안해요. 자세한 설명은 이따가 코드로 보여드리도록 하겠습니다. 
 
 > ### setAlternateIconName(_:completionHandler:)
-Changes the icon the system displays for the app.
+> Changes the icon the system displays for the app.
 ```swift 
 func setAlternateIconName(
     _ alternateIconName: String?,
@@ -58,7 +58,7 @@ func setAlternateIconName(
 
 오피셜 방법의 구현은 3단계로 나뉘어 집니다. 
 
-### 1. App Icon Assets에 넣기 
+### App Icon Assets에 넣기 
 
 먼저 Assets에 [이 링크](https://appicon.co/)로 생성한 App Icon을 넣어주시거나, 가지고 계신 App Icon들을 넣어 줍니다. 첫 번째 방법과는 다르게 앱의 Assets에 여러 App Icon들이 들어가있는 것을 볼 수 있죠. 
 
