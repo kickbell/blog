@@ -58,7 +58,7 @@ func setAlternateIconName(
 
 오피셜 방법의 구현은 3단계로 나뉘어 집니다. 
 
-### App Icon Assets에 넣기 
+### 1. App Icon Assets에 넣기 
 
 먼저 Assets에 [이 링크](https://appicon.co/)로 생성한 App Icon을 넣어주시거나, 가지고 계신 App Icon들을 넣어 줍니다. 첫 번째 방법과는 다르게 앱의 Assets에 여러 App Icon들이 들어가있는 것을 볼 수 있죠. 
 
