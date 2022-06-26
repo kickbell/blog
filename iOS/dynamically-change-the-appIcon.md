@@ -134,14 +134,14 @@ enum 으로 Icon을 지정했고, 랜덤 값을 넣어주려고 `CaseIterable` �
 
     
 ## Reference 
-[https://www.flaticon.com/](https://www.flaticon.com/)
-[https://appicon.co/](https://appicon.co/)
-[https://www.youtube.com/watch?v=Wp2XJwXCnXI](https://www.youtube.com/watch?v=Wp2XJwXCnXI)
-[https://medium.com/ios-os-x-development/dynamically-change-the-app-icon-7d4bece820d2](https://medium.com/ios-os-x-development/dynamically-change-the-app-icon-7d4bece820d2)
-[https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html)
-[https://developer.apple.com/documentation/uikit/uiapplication/2806818-setalternateiconname](https://developer.apple.com/documentation/uikit/uiapplication/2806818-setalternateiconname)
-[https://developer.apple.com/documentation/xcode/asset_management/configuring_your_app_to_use_alternate_app_icons](https://developer.apple.com/documentation/xcode/asset_management/configuring_your_app_to_use_alternate_app_icons)
-[https://www.hackingwithswift.com/example-code/uikit/how-to-change-your-app-icon-dynamically-with-setalternateiconname](https://www.hackingwithswift.com/example-code/uikit/how-to-change-your-app-icon-dynamically-with-setalternateiconname)
+[https://www.flaticon.com/](https://www.flaticon.com/)          
+[https://appicon.co/](https://appicon.co/)          
+[https://www.youtube.com/watch?v=Wp2XJwXCnXI](https://www.youtube.com/watch?v=Wp2XJwXCnXI)          
+[https://medium.com/ios-os-x-development/dynamically-change-the-app-icon-7d4bece820d2](https://medium.com/ios-os-x-development/dynamically-change-the-app-icon-7d4bece820d2)                
+[https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html)            
+[https://developer.apple.com/documentation/uikit/uiapplication/2806818-setalternateiconname](https://developer.apple.com/documentation/uikit/uiapplication/2806818-setalternateiconname)            
+[https://developer.apple.com/documentation/xcode/asset_management/configuring_your_app_to_use_alternate_app_icons](https://developer.apple.com/documentation/xcode/asset_management/configuring_your_app_to_use_alternate_app_icons)            
+[https://www.hackingwithswift.com/example-code/uikit/how-to-change-your-app-icon-dynamically-with-setalternateiconname](https://www.hackingwithswift.com/example-code/uikit/how-to-change-your-app-icon-dynamically-with-setalternateiconname)              
 
 
 
