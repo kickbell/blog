@@ -126,7 +126,7 @@ enum 으로 Icon을 지정했고, 랜덤 값을 넣어주려고 `CaseIterable` �
 ![](https://velog.velcdn.com/images/dev_kickbell/post/9ed09c5f-a3c8-4135-a26f-ebd369658e6d/image.gif)
 
 ## Conclusion
-- 앱의 아이콘을 동적으로 바꿀 수 있습니다. 주로 `구독형 유료회원 결제`, `30일/100일/300일 연속출석회원`, `특정 아이템 구매회원` 과 같은 마케팅에 활용할 수 있다.  
+- 앱의 아이콘을 동적으로 바꿀 수 있습니다. 주로 `구독형 유료회원 결제`, `30일/100일/300일 연속출석회원`, `특정 아이템 구매회원`, `앱의 구버전/최신버전 구분`과 같은 마케팅에 활용할 수 있다.  
 - 앱에서는 기본 아이콘 값인 `Primary App Icon` 값과 대체할 수 있는 아이콘들의 값인 `Alternate App Icon` 이 있다.
 - 2x, 3x을 규칙을 따르는 첫 번째 방법도 있지만, 공식 문서에 나오는 두 번째 방법을 사용하도록 하자. 
 - `UIApplication.shared.setAlternateIconName`에 사용되는`Primary App Icon`을 가져올 수 있는 기본 값은 `nil`이다. 
