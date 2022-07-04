@@ -33,4 +33,5 @@
 * UIKit
 * Miscellaneous         
     * [Struct을 [String: Any]로 변환할 때, Encodable의 Extension을 사용 해야 하나요?](Miscellaneous/stringany-convert-encodable.md)
+    * [Podfile, Dependency Rule(SPM)](Miscellaneous/podfile-dependency-rule.md)
 
