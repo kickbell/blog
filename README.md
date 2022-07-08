@@ -20,7 +20,8 @@
         * [RxFlow](Design-Pattern/coordinator-pattern-rxflow.md)
 * iOS                
     * [웹뷰 세션/쿠키 정보 확인하기](iOS/webviewinfo-from-safari.md)
-    * [Dynamically Change the App Icon](iOS/dynamically-change-the-appIcon.md)        
+    * [Dynamically Change the App Icon](iOS/dynamically-change-the-appIcon.md)     
+    * [WKDataDetectorTypes](iOS/wkdatadetectortypes.md)   
 * Swift    
     * [Pattern Mathching](Swift/swift-pattern-mathching.md)        
 * SwiftUI                         
