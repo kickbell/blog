@@ -88,6 +88,5 @@ class ViewController: UIViewController {
 - `dataDetectorTypes`을 어떻게 지정했느냐에 따라 기획의도에서 벗어나는 이슈가 있을 수 있기 때문에 주의하면 될 것 같습니다. 
 
 ## Reference
-[https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1641937-datadetectortypes](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1641937-datadetectortypes)					
-[https://developer.apple.com/documentation/webkit/wkdatadetectortypes
-](https://developer.apple.com/documentation/webkit/wkdatadetectortypes)		[https://developer.apple.com/documentation/uikit/uidatadetectortypes](https://developer.apple.com/documentation/uikit/uidatadetectortypes)
+[https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1641937-datadetectortypes](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1641937-datadetectortypes)                          					
+[https://developer.apple.com/documentation/webkit/wkdatadetectortypes](https://developer.apple.com/documentation/webkit/wkdatadetectortypes)                		[https://developer.apple.com/documentation/uikit/uidatadetectortypes](https://developer.apple.com/documentation/uikit/uidatadetectortypes)
