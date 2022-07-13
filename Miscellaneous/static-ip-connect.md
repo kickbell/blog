@@ -4,7 +4,8 @@
 ![](https://velog.velcdn.com/images/dev_kickbell/post/2147aeaa-3108-4be9-a18d-20c27869f2dc/image.png)
 
 ## _3. Wi-FI 끔 - USB 10/100LAN - [ 고급 ]_
-아래 사진은 이미 설정이 되어있는 상태라 수동으로 설정되어 있지만, 연결 전이면 저렇게 나오지 않습니다. 
+아래 사진은 이미 설정이 되어있는 상태라 수동으로 설정되어 있지만, 연결 전이면 저렇게 나오지 않습니다.              
+          
 ![](https://velog.velcdn.com/images/dev_kickbell/post/96e6db32-2604-43f3-a8d2-7be80fab2449/image.png)
 
 ## _4. [ IPv4 구성 ] - [ 수동 ] - [ TCP/IP ]_
