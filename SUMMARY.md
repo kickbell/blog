@@ -26,8 +26,8 @@
     * [Markdown Syntax](SwiftUI/markdown-syntax.md)           
     * [@State, @Binding](SwiftUI/state-binding.md)           
     * [ObservableObject, @ObservedObject, @Published](SwiftUI/observableobject-observedobject-published.md)     
-    * [@ObservedObject vs @StateObject](SwiftUI/observed-state-object.md)                                 
-    * [@Environmentobject](SwiftUI/environmentobject.md)                            
+    * [@ObservedObject vs @StateObject](SwiftUI/observed-state-object.md)                               
+    * [@Environmentobject](SwiftUI/environmentobject.md)                              
 * Combine                   
 * RxSwift 
     * [Just, From, Of](RxSwift/just-from-of.md)
