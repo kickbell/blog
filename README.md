@@ -36,6 +36,7 @@ iOS, Swift 관련 글을 작성합니다 😁.
     * [Just, From, Of](RxSwift/just-from-of.md)
     * [Empty, Never, Throw](RxSwift/empty-never-throw.md)
     * [CombineLatest, WithLatestFrom, Zip](RxSwift/combinelatest-withlatestfrom-zip.md)
+    * [TakeUntil](RxSwift/takeuntil.md)            
     * [Reactive Wrapper](RxSwift/reactive-wrapper.md)
     * [Reactive Extension](RxSwift/reactive-extension.md)
     * [Rxswift Handbook](RxSwift/rxswift-handbook.md)
