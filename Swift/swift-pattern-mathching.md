@@ -103,3 +103,40 @@ case .tennis: //아예 연관값을 생략할 수도 있습니다.
   print("no name..")
 }
 ```
+
+Rx에서도 하나의 예시를 들어볼 수 있을 것 같은데요. 장점은 enum에 있는 error를 한번에 가져올 수 있습니다.              
+예를 들면, 아래와 같습니다.      
+```swift
+//RxCocoa-URLSession+Rx.swift
+/// RxCocoa URL errors.
+public enum RxCocoaURLError
+    : Swift.Error {
+    /// Unknown error occurred.
+    case unknown
+    /// Response is not NSHTTPURLResponse
+    case nonHTTPResponse(response: URLResponse)
+    /// Response is not successful. (not in `200 ..< 300` range)
+    case httpRequestFailed(response: HTTPURLResponse, data: Data?)
+    /// Deserialization error.
+    case deserializationError(error: Swift.Error)
+}
+
+
+//API 
+return URLSession.shared.rx.json(url: url)
+  .map { json -> ([String], Int?) in
+    guard let dict = json as? [String: Any] else { return emptyResult }
+    guard let items = dict["items"] as? [[String: Any]] else { return emptyResult }
+    let repos = items.compactMap { $0["full_name"] as? String }
+    let nextPage = repos.isEmpty ? nil : page + 1
+    return (repos, nextPage)
+  }
+  .do(onError: { error in
+    //이렇게 한번에 RxCocoaURLError내의 case인 httpRequestFailed에 접근해서 바인딩 후, 가져올 수 있어요. 
+    if case let .some(.httpRequestFailed(response, _)) = error as? RxCocoaURLError, response.statusCode == 403 {
+      print("⚠️ GitHub API rate limit exceeded. Wait for 60 seconds and try again.")
+    }
+  })
+  .catchErrorJustReturn(emptyResult)
+
+```
