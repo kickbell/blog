@@ -21,7 +21,8 @@
     * [Dynamically Change the App Icon](iOS/dynamically-change-the-appIcon.md)       
     * [WKDataDetectorTypes](iOS/wkdatadetectortypes.md) 
 * Swift    
-    * [Pattern Mathching](Swift/swift-pattern-mathching.md)        
+    * [Pattern Mathching](Swift/swift-pattern-mathching.md)               
+    * [allSatisfy(_:)](Swift/allsatisfy.md)                   
 * SwiftUI                         
     * [Markdown Syntax](SwiftUI/markdown-syntax.md)           
     * [@State, @Binding](SwiftUI/state-binding.md)           
