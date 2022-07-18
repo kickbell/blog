@@ -9,10 +9,10 @@ Swift 에서는 이런 경우에 사용할 수 있는 [allSatisfy](https://devel
 
 > allSatisfy(_:)        
 Returns a Boolean value indicating whether every element of a sequence satisfies a given predicate. 			
-`iOS 8.0+` `iPadOS 8.0+` `macOS 10.10+` `Mac Catalyst 13.0+` `tvOS 9.0+` `watchOS 2.0+`
 > ```swift
 > func allSatisfy(_ predicate: (Self.Element) throws -> Bool) rethrows -> Bool
 > ```
+> `iOS 8.0+` `iPadOS 8.0+` `macOS 10.10+` `Mac Catalyst 13.0+` `tvOS 9.0+` `watchOS 2.0+`
 
 문서에서는 위와 같이 설명하고 있는데요. 시퀀스의 모든 요소가 주어진 조건을 만족하는지의 여부에 따라 Bool 타입을 리턴해주고 있어요. 모두 만족하면 true, 그렇지 않다면 false 를 말하는 거겠죠? 코드를 볼게요. 
 
