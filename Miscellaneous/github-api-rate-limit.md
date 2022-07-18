@@ -129,7 +129,6 @@ private func searchRepositories(_ q: String, completion: @escaping ([Repository]
 ```
 
 
-
 ## Reference
 [https://docs.github.com/en/rest/search#rate-limit](https://docs.github.com/en/rest/search#rate-limit)			    
         
