@@ -25,7 +25,7 @@ PAT를 발급받았다면 이제 인증받았을 때와 인증받지 않았을 �
 
 ![](https://velog.velcdn.com/images/dev_kickbell/post/aca67971-25eb-4bb8-b624-2063796e2f21/image.png)		
 
-이번엔 같은 결과의 헤더값이 뭐가 들어갔는지와 응답 헤더값도 봐볼까요 ? 
+이번엔 같은 결과의 헤더필드에 뭐가 들어갔는지와 응답 헤더값도 봐볼까요 ? 
 
 ![](https://velog.velcdn.com/images/dev_kickbell/post/b1abe4d8-93fd-4712-8afe-efc834c9165e/image.png)	
 
@@ -50,7 +50,7 @@ Authorization = token "발급받은 PAT"
 
 ![](https://velog.velcdn.com/images/dev_kickbell/post/b644b771-236d-452a-88cc-9786da76c691/image.png)				
 
-헤더필드에 Authorization 값이 들어갔고, 값으로 token "발급받은 PAT"이 들어갔죠?( 제 개인 토큰 값이라 따로 입력하진 않았어요. ) 그리고 중요한 건 아래 응답된 헤더값이겠죠. 
+헤더필드에 `Authorization` 값이 들어갔고, 값으로 `token "발급받은 PAT"`이 들어갔죠?( 제 개인 토큰 값이라 따로 입력하진 않았어요. ) 그리고 중요한 건 아래 응답된 헤더값이겠죠. 
 
 ```swift
 X-RateLimit-Limit : 30
