@@ -22,7 +22,7 @@
     * [WKDataDetectorTypes](iOS/wkdatadetectortypes.md) 
 * Swift    
     * [Pattern Mathching](Swift/swift-pattern-mathching.md)               
-    * [allSatisfy(_:)](Swift/allsatisfy.md)                   
+    * [Array.allSatisfy(_:)](Swift/allsatisfy.md)                   
 * SwiftUI                         
     * [Markdown Syntax](SwiftUI/markdown-syntax.md)           
     * [@State, @Binding](SwiftUI/state-binding.md)           
