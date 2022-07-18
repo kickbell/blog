@@ -8,7 +8,7 @@
 Swift 에서는 이런 경우에 사용할 수 있는 [allSatisfy](https://developer.apple.com/documentation/swift/array/allsatisfy(_:)) 메소드를 지원합니다. [SE-0207](https://github.com/apple/swift-evolution/blob/master/proposals/0207-containsOnly.md) 에서 제안되었고, `Swift 4.2` 버전부터 지원하고 있어요. 생각보다 간단하고 저희가 기존과 썼던 방법과 크게 다르지 않으니 바로 살펴보겠습니다. 
 
 > allSatisfy(_:)        
-Returns a Boolean value indicating whether every element of a sequence satisfies a given predicate.			
+Returns a Boolean value indicating whether every element of a sequence satisfies a given predicate. 			
 `iOS 8.0+` `iPadOS 8.0+` `macOS 10.10+` `Mac Catalyst 13.0+` `tvOS 9.0+` `watchOS 2.0+`
 > ```swift
 > func allSatisfy(_ predicate: (Self.Element) throws -> Bool) rethrows -> Bool
