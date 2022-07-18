@@ -43,14 +43,14 @@ X-RateLimit-Used : 4
 이번에는 인증을 받은 경우입니다. 인증을 받은 경우에는 발급받은 PAT를 헤더 값에 아래와 같이 넣어주면 됩니다. token과 PAT 사이에는 공백이 하나 필요해요. 이런 방법이 저도 정확히는 모르겠는데 Github에서 [RFC2617에 정의된 기본 인증 방법](https://www.ietf.org/rfc/rfc2617.txt)을 따르고 있기 때문인 것 같아요. 
 
 ```swift
-Authorization = token "발급받은 PAT"
+Authorization = token 발급받은 PAT
 ```
 
 어쨋건, 다른 값들은 그대로 두고 헤더 값만 변경해서 다시 요청하면 결과는 아래와 같습니다. 쿼리 파라미터와 바디 값은 동일할테니 바로 헤더필드와 응답된 헤더값을 볼게요. 
 
 ![](https://velog.velcdn.com/images/dev_kickbell/post/b644b771-236d-452a-88cc-9786da76c691/image.png)				
 
-헤더필드에 `Authorization` 값이 들어갔고, 값으로 `token "발급받은 PAT"`이 들어갔죠?( 제 개인 토큰 값이라 따로 입력하진 않았어요. ) 그리고 중요한 건 아래 응답된 헤더값이겠죠. 
+헤더필드에 `Authorization` 값이 들어갔고, 값으로 `token 발급받은 PAT`이 들어갔죠?( 제 개인 토큰 값이라 따로 입력하진 않았어요. ) 그리고 중요한 건 아래 응답된 헤더값이겠죠. 
 
 ```swift
 X-RateLimit-Limit : 30
@@ -65,7 +65,7 @@ X-RateLimit-Used : 1
 
 ## 인증받은 사용자의 경우(Code)
 
-코드도 간단합니다. 리퀘스트를 만들고 아까 말씀드린 것처럼 헤더필드에 Authorization 값으로 token 발급받은PAT를 넣어주면 되지요. 그리고 여기서는 응답 헤더값을 확인하기 위해 `httpResponse.allHeaderFields`를 출력해주고 있어요. 
+코드도 간단합니다. 리퀘스트를 만들고 아까 말씀드린 것처럼 헤더필드에 `Authorization` 값으로 `token 발급받은PAT`를 넣어주면 되지요. 그리고 여기서는 응답 헤더값을 확인하기 위해 `httpResponse.allHeaderFields`를 출력해주고 있어요. 
 
 ```swift
 private func searchRepositories(_ q: String, completion: @escaping ([Repository]) -> ()) {
