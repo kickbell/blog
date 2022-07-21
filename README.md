@@ -26,7 +26,8 @@ _❨ 오른쪽 최상단에 있는 `🔎 Search...`에 찾으시는 `Keyword`를
     * [WKDataDetectorTypes](iOS/wkdatadetectortypes.md)   
 * Swift    
     * [Pattern Mathching](Swift/swift-pattern-mathching.md)       
-    * [Array.allSatisfy(_:)](Swift/allsatisfy.md)                              
+    * [Array.allSatisfy(_:)](Swift/allsatisfy.md)                      
+    * [Initialization](Swift/initialization.md)                      
 * SwiftUI                         
     * [Markdown Syntax](SwiftUI/markdown-syntax.md)           
     * [@State, @Binding](SwiftUI/state-binding.md)           
