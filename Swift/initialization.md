@@ -689,6 +689,9 @@ struct Chessboard {
 ## Reference
 			
 [https://docs.swift.org/swift-book/LanguageGuide/Initialization.html](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html)
+			
+[https://docs.swift.org/swift-book/LanguageGuide/Protocols.html](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html)
+	
 
 
 
