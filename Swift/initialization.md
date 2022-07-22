@@ -570,6 +570,66 @@ class SomeSubclass: SomeClass {
     }
 }
 ```
+또한 필수 이니셜라이저의 모든 하위 클래스 구현 전에 필수 수정자를 작성하여 이니셜라이저 요구 사항이 체인의 하위 클래스에 적용됨을 나타내야 합니다. 필수 지정 이니셜라이저를 재정의할 때 `override` 키워드는 없어도 괜찮습니다. 그리고 만약 상속된 이니셜라이저로 요구 사항을 충족할 수 있다면 하위 클래스에서 필수 이니셜라이저를 작성하지 않아도 됩니다.  
+
+## Required Initializers For Protocols
+		
+`프로토콜을 위한 필수 초기자`	
+			
+프로토콜은 준수하는 유형으로 구현되는 특정 이니셜라이저를 요구할 수 있습니다. 이 이니셜라이저는 중괄호나 이니셜라이저 본문은 사용하지 않습니다. 지정 이니셜라이저 또는 편의 이니셜라이저로 이니셜라이저 요구 사항을 구현할 수 있습니다. 참조 타입의 경우 이니셜라이저 앞에 `required` 키워드가 필요하지만, 값 타입의 경우 상속이 없기 때문에 `required` 가 필요하지 않습니다. 
+
+```swift
+protocol SomeProtocol {
+    init(someParameter: Int)
+}
+
+class SomeClass: SomeProtocol {
+    required init(someParameter: Int) {
+        
+    }
+}
+
+struct SomeStruct: SomeProtocol {
+    init(someParameter: Int) {
+        
+    }
+}
+```
+
+상속을 필요하지 않은 최종 클래스라면 보통 `final` 키워드를 사용합니다. 이런 최종클래스는 서브클래싱 할 수 없기 때문에 `final` 키워드로 표시된 클래스에 `required` 키워드로 프로토콜 이니셜라이저 구현을 표시할 필요가 없습니다. 
+
+```swift
+protocol SomeProtocol {
+    init(someParameter: Int)
+}
+
+final class ViewContorller: SomeProtocol {
+    init(someParameter: Int) { // required 키워드 없음. 상속을 안할거니까.
+        
+    }
+}
+```
+
+서브클래스가 슈퍼클래스의 지정 이니셜라이저를 재정의하고 프로토콜에서 일치하는 이니셜라이저 요구사항도 구현하는 경우 `required` 및 `override` 키워드로 이니셜라이저 구현을 표시합니다.					
+
+```swift
+protocol SomeProtocol {
+    init()
+}
+
+class SomeSuperClass {
+    init() {
+        // initializer implementation goes here
+    }
+}
+
+class SomeSubClass: SomeSuperClass, SomeProtocol {
+    // "required" from SomeProtocol conformance; "override" from SomeSuperClass
+    required override init() {
+        // initializer implementation goes here
+    }
+}
+```
 
 ## Setting a Default Property Value with a Closure or Function
 				
