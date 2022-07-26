@@ -9,7 +9,7 @@ _❨ 오른쪽 최상단에 있는 `🔎 Search...`에 찾으시는 `Keyword`를
     * [Dynamic Type](g3doc/tutorials/mnisft/pros/index.md)                         
 * Design Pattern
     * [Dependency Injection](g3doc/tutorials/mnist/beginners/index.md)          
-    * [Protocol-Oriented Programming](g3doc/tutorials/mnist/pros/index.md)                 
+    * [만들면서 느껴보는 POP](Design-Pattern/protocol-oriented-programming.md)                 
     * [Functional Programming](g3doc/tutorials/mnist/pros/index.md)                         
     * [KVO](g3doc/tutorials/mnist/pros/index.md)                                
     * [Singletons](g3doc/tutorials/mnist/pros/index.md)  
