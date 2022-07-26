@@ -40,7 +40,7 @@
     * [Rxswift Handbook](RxSwift/rxswift-handbook.md)       
     * [Rxswift vs Combine](RxSwift/rxswift-vs-combine.md)      
 * Git
-    * [Gitignore](gitignore.md)
+    * [Git gitignore](gitignore.md)
     * [Git SSH key](git-sshkey.md)
 * Miscellaneous         
     * [Struct을 [String: Any]로 변환할 때, Encodable의 Extension을 사용 해야 하나요?](Miscellaneous/stringany-convert-encodable.md)
