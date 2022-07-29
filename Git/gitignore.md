@@ -1,6 +1,6 @@
-`gitignore`는 `git`의 기능 중에 하나로 _**`의도적으로 untracked한 파일을 무시`**_하도록 지정합니다. Swift Project 에서는 굳이 git에 업로드 하지 않아도 될 파일들을 무시하도록  하는데 사용되지요. _**의존성 매니저에서 다운받은 파일인 `Pods`, 배포 자동화와 관련된 `fastlane`, ios의 앱파일인 `ipa`, crash report와 관련된 `dSYM` 파일과 같은 것들**_ 말이죠. 
+`gitignore`는 `git`의 기능 중에 하나로 _**의도적으로 untracked한 파일을 무시**_ 하도록 지정합니다. Swift Project 에서는 굳이 git에 업로드 하지 않아도 될 파일들을 무시하도록  하는데 사용되지요. _**의존성 매니저에서 다운받은 파일인 `Pods`, 배포 자동화와 관련된 `fastlane`, ios의 앱파일인 `ipa`, crash report와 관련된 `dSYM` 파일과 같은 것들**_ 말이죠. 
 
-아래와 같은 방식으로 특정 파일을 `untracked` 할 수 있습니다. 더 자세한 설명은 [여기](https://git-scm.com/docs/gitignore)를 참고해주세요. 
+`gitignore` 파일에서는 아래와 같은 패턴으로 특정 파일을 `untracked` 할 수 있습니다. 더 자세한 설명은 [여기](https://git-scm.com/docs/gitignore)를 참고해주세요. 
 - `hello.*` 은 이름이 `hello`로 시작하는 모든 파일 또는 디렉토리를 `untracked` 합니다. 이것을 하위 디렉토리가 아닌 디렉토리로만 제한하려면 패턴 앞에 슬래시를 추가해서 이렇게 `/hello.*` 할 수 있습니다. 이렇게 `hello.txt, hello.c`와 추적할 수 있지만 `a/hello.java`는 추적되지 않습니다.
 - `foo/`는 디렉토리 foo 및 그 아래의 경로는 추적되지만 일반 파일 또는 기호 링크 foo는 추적되지 않습니다.
 - `doc/frotz` 및 `/doc/frotz`는 모든 `.gitignore` 파일에서 동일한 효과를 갖습니다. 즉, 패턴에 이미 중간 슬래시가 있는 경우 선행 슬래시는 관련이 없습니다.
@@ -79,7 +79,7 @@ xcuserdata
 
 그러나, Pods 디렉토리가 추적해제 되지 않습니다. 결과는 똑같죠. 저장을 다시 해보고, `git pull` 을 해보고 Xcode를 종료 후 재실행해도 결과는 똑같습니다. 왜 그럴까요 ? 이유는 2가지가 있습니다. 
 
-1. Pods의 디렉토리의 경로가 잘못되었습니다. 
+1. Pods 디렉토리의 경로가 잘못되었습니다. 
 2. git cache를 삭제해주어야 합니다. 
 
 1번 부터 해볼까요 ? 아까 글의 도입부에서 패턴 중에 이런 부분이 있었죠. 그리고 지금 test 레포지토리의 폴더 구조는 아래와 같습니다.
