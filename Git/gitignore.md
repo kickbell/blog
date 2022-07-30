@@ -120,9 +120,10 @@ test
 [https://github.com/github/gitignore/blob/main/Swift.gitignore
 ](https://github.com/github/gitignore/blob/main/Swift.gitignore)		
 
-[https://git-scm.com/docs/gitignore](https://git-scm.com/docs/gitignore)		
-[https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control](https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control)			
-
+[https://git-scm.com/docs/gitignore](https://git-scm.com/docs/gitignore)			
+					
+[https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control](https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control)						
+				
 [https://medium.com/codex/create-git-ignore-file-for-swift-and-xcode-development-d7faaf58893c
 ](https://medium.com/codex/create-git-ignore-file-for-swift-and-xcode-development-d7faaf58893c)
 
