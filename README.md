@@ -4,7 +4,6 @@ _iOS, Swift 관련 글을 작성합니다.😁_
 _❨ 오른쪽 최상단에 있는 `🔎 Search...`에 찾으시는 `Keyword`를 입력하시면 더 편하게 글을 보실 수 있습니다. ❩_         
 ####             
 
-# Summary
 * [README](README.md)
 * Accessibility
     * [VoiceOver](README.md)          
@@ -58,9 +57,10 @@ _❨ 오른쪽 최상단에 있는 `🔎 Search...`에 찾으시는 `Keyword`를
 * Git
     * [Git gitignore](Git/gitignore.md)
     * [Git SSH key](Git/git-sshkey.md)
+    * [Github API Rate limit](Git/github-api-rate-limit.md)                 
 * Miscellaneous         
     * [Struct을 [String: Any]로 변환할 때, Encodable의 Extension을 사용 해야 하나요?](Miscellaneous/stringany-convert-encodable.md)
     * [Podfile, Dependency Rule(SPM)](Miscellaneous/podfile-dependency-rule.md)               
     * [Static IP Connect for Mac](Miscellaneous/static-ip-connect.md)            
-    * [Github API Rate limit](Miscellaneous/github-api-rate-limit.md)                 
+
 
