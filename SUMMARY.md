@@ -1,21 +1,31 @@
 # Summary
 * [README](README.md)
 * Accessibility
-    * [VoiceOver](g3doc/tutorials/mnisft/beginners/index.md)          
-    * [Dynamic Type](g3doc/tutorials/mnisft/pros/index.md)                         
-* Design Pattern
-    * [Dependency Injection](g3doc/tutorials/mnist/beginners/index.md)          
-    * [만들면서 느껴보는 POP](Design-Pattern/protocol-oriented-programming.md)                 
-    * [Functional Programming](g3doc/tutorials/mnist/pros/index.md)                         
-    * [KVO](g3doc/tutorials/mnist/pros/index.md)                                
-    * [Singletons](g3doc/tutorials/mnist/pros/index.md)  
+    * [VoiceOver](README.md)          
+    * [Dynamic Type](README.md)      
+* Paradigm 
+    * Object Oriented Programming
+        * [Single Responsibility Principle](Paradigm/srp.md)
+        * [Open-Closed Principle](Paradigm/ocp.md)
+        * [Liskov Substitution Principle](Paradigm/lsp.md)
+        * [Interface Segregation Principle](Paradigm/isp.md)
+        * [Dependency Inversion Principle](Paradigm/dip.md)   
+    * Protocol Oriented Programming     
+        * [만들면서 느껴보는 POP](Paradigm/protocol-oriented-programming.md)                
+    * Functional Programming                
+        * [Swift로 함수형 프로그래밍 시작하기](Paradigm/functional-programming.md)
+* Architecture Pattern 
     * ReactorKit           
-        * [Pulse(EN)](Design-Pattern/reactorkit-pulse-en.md)
-        * [Pulse(KR)](Design-Pattern/reactorkit-pulse-kr.md)       
+        * [Pulse(EN)](Architecture-Pattern/reactorkit-pulse-en.md)
+        * [Pulse(KR)](Architecture-Pattern/reactorkit-pulse-kr.md)       
     * Coordinator Pattern          
-        * [Basic](Design-Pattern/coordinator-pattern-basic.md)
-        * [Advance](Design-Pattern/coordinator-pattern-advance.md)
-        * [RxFlow](Design-Pattern/coordinator-pattern-rxflow.md)
+        * [Basic](Architecture-Pattern/coordinator-pattern-basic.md)
+        * [Advance](Architecture-Pattern/coordinator-pattern-advance.md)
+        * [RxFlow](Architecture-Pattern/coordinator-pattern-rxflow.md)
+* Design Pattern
+    * [Dependency Injection](README.md)           
+    * [KVO](README.md)                                
+    * [Singletons](README.md)  
 * iOS                
     * [WKWebView Debuging](iOS/webviewinfo-from-safari.md)
     * [Dynamically Change the App Icon](iOS/dynamically-change-the-appIcon.md)       
