@@ -41,12 +41,11 @@ struct ToDo: Identifiable, Codable {
     let createdAt: Date
 }
 ```
-        
-![](https://velog.velcdn.com/images/dev_kickbell/post/23e77a33-3eac-4c87-a46f-90b92ed1dedc/image.png)           
-
+![](https://velog.velcdn.com/images/dev_kickbell/post/a51ff6ce-81a6-43dc-9b66-7624d376d8d5/image.png)			
+		
 `ToDo` 라는 모델이 있고 iOS 개발을 하면서 흔히 마주할 수 있는 대표적인 `Identifiable`, `Codable` 프로토콜을 채택하고 있죠. 하지만 `UML 다이어그램` 상으로는 상속으로 표현이 되고 있습니다. 이런 부분을 위에서 말했던 `Edit` 모드를 통해 수정할 수 있어요. 
 
-명령어를 입력해서 나온 페이지에 다시 돌아가 볼게요. 그러면 아까 말씀드렸듯이 디렉토리 내의 클래스와 함수가 정의된 부분 맨 밑에 실제 정의된 클래스의 관계가 정의되어 있는 코드가 있죠. 이것을 상속에서 프로토콜 채택으로 수정해줍니다. 
+명령어를 입력해서 나온 페이지에 다시 돌아가 볼게요. 그러면 아까 말씀드렸듯이 디렉토리 내의 클래스와 함수가 정의된 부분 맨 밑에 실제 정의된 클래스의 관계가 정의되어 있는 코드가 있죠. 이것을 상속에서 프로토콜 채택으로 수정해줍니다. 기존에 `Identifiable`, `Codable` 을 클래스로 인식하는 부분도 프로토콜로 따로 정의해서 바꿔주었어요. 
 
 ```swift
 //Previous
@@ -54,13 +53,18 @@ Identifiable <|-- ToDo : inherits
 Codable <|-- ToDo : inherits
 
 //Next 
+class "Codable" as Codable << (P, GoldenRod) protocol >> { 
+}
+class "Identifiable" as Identifiable << (P, GoldenRod) protocol >> { 
+}
 Identifiable <|.. ToDo : confirms to
 Codable <|.. ToDo : confirms to
+
 ```
 
 그리고 위로 올라가서 `Refresh` 버튼을 탭하거나 `Alt`+`Enter` 키를 누르면 브라우저에서 `UML 다이어그램`을 다시 그려주고 고친 부분이 수정되어 나오는 것을 볼 수 있습니다. 
 
-![](https://velog.velcdn.com/images/dev_kickbell/post/36da8111-7cc5-4d1e-985b-d04787d0f84a/image.png)    
+![](https://velog.velcdn.com/images/dev_kickbell/post/0eba415a-0af9-4c9b-af0a-43247ef26c75/image.png)			
 
 `SwiftPlantUML`, 어디에 사용할 수 있을까요 ? 
 
