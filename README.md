@@ -63,8 +63,8 @@ _❨ 오른쪽 최상단에 있는 `🔎 Search...`에 찾으시는 `Keyword`를
     * [Podfile, Dependency Rule(SPM)](Miscellaneous/podfile-dependency-rule.md)               
     * [Static IP Connect for Mac](Miscellaneous/static-ip-connect.md)            
     * [SwiftPlantUML으로 UML 다이어그램 쉽게 그리기](Miscellaneous/swiftplantuml.md)        
-* Python
-    * [Python vs Swift](Python/python.md)        
+* Python          
+    * [Python vs Swift](Python/python.md)             
 
 
 
