@@ -57,6 +57,8 @@
     * [Struct을 [String: Any]로 변환할 때, Encodable의 Extension을 사용 해야 하나요?](Miscellaneous/stringany-convert-encodable.md)
     * [Podfile, Dependency Rule(SPM)](Miscellaneous/podfile-dependency-rule.md)               
     * [Static IP Connect for Mac](Miscellaneous/static-ip-connect.md)           
-    * [SwiftPlantUML으로 UML 다이어그램 쉽게 그리기](Miscellaneous/swiftplantuml.md) 
+    * [SwiftPlantUML으로 UML 다이어그램 쉽게 그리기](Miscellaneous/swiftplantuml.md)            
+* Python          
+    * [Python vs Swift](Python/python.md)             
 
 
