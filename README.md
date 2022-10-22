@@ -1,10 +1,15 @@
-_공부한 것을 잊지 않기 위해 적어놓는 개인 블로그입니다._                             
-_iOS, Swift 관련 글을 작성합니다.😁_    
+_"기록되지 않은 것은 기억되지 않는다."_  
+      
+_공부한 것을 기록해서 정기적으로 다시 복습하기 위해 적어놓는 개인 블로그입니다._                             
+_iOS, Swift 외 기술 관련 글을 작성합니다.😁_    
                                     
 _❨ 오른쪽 최상단에 있는 `🔎 Search...`에 찾으시는 `Keyword`를 입력하시면 더 편하게 글을 보실 수 있습니다. ❩_             
 ####               
 
 * [README](README.md)
+* DataStructure & Algorithm
+    * [DataStructure](DataStructure/datastructure.md)
+    * [Algorithm](Algorithm/algorithm.md)
 * Accessibility
     * [VoiceOver](README.md)          
     * [Dynamic Type](README.md)      
