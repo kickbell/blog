@@ -11,10 +11,8 @@
 
 ## Queue(큐)
 
-가장 먼저 넣은 데이터를 가장 먼저 꺼낼 수 있는 자료구조(FIFO) 
-
 <details>
-  <summary>Code(Swift)</summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
   <p>
 
 ```swift
@@ -51,6 +49,7 @@ print(queue.dequeue() ?? "")
   </p>
 </details>
 
+- 가장 먼저 넣은 데이터를 가장 먼저 꺼낼 수 있는 자료구조(FIFO)
 - 은행의 번호표, 버스 줄서서 타기 등을 예로 들 수 있다. 
 - 데이터를 넣을때는 Enqueue, 꺼낼때는 Dequeue라고 한다. 
 ![](https://velog.velcdn.com/images/dev_kickbell/post/db888b71-6569-4038-9971-c57c99991c76/image.png)
