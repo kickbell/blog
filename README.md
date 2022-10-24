@@ -6,14 +6,14 @@ _iOS, Swift 외 기술 관련 글을 작성합니다.😁_
 _❨ 오른쪽 최상단에 있는 `🔎 Search...`에 찾으시는 `Keyword`를 입력하시면 더 편하게 글을 보실 수 있습니다. ❩_             
 ####               
 
-* [README](README.md)
-* DataStructure & Algorithm
-    * [DataStructure](DataStructure/datastructure.md)                         
-    * [Algorithm](Algorithm/algorithm.md)                               
-* Accessibility
+* [README](README.md)                                                            
+* DataStructure & Algorithm                  
+    * [DataStructure](DataStructure/datastructure.md)                                              
+    * [Algorithm](Algorithm/algorithm.md)                         
+* Accessibility                                 
     * [VoiceOver](README.md)          
     * [Dynamic Type](README.md)      
-* Paradigm 
+* Paradigm                    
     * Object Oriented Programming
         * [Single Responsibility Principle](Paradigm/srp.md)
         * [Open-Closed Principle](Paradigm/ocp.md)
