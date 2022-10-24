@@ -8,8 +8,8 @@ _❨ 오른쪽 최상단에 있는 `🔎 Search...`에 찾으시는 `Keyword`를
 
 * [README](README.md)
 * DataStructure & Algorithm
-    * [DataStructure](DataStructure/datastructure.md)
-    * [Algorithm](Algorithm/algorithm.md)
+    * [DataStructure](DataStructure/datastructure.md)                         
+    * [Algorithm](Algorithm/algorithm.md)                               
 * Accessibility
     * [VoiceOver](README.md)          
     * [Dynamic Type](README.md)      
