@@ -1035,9 +1035,9 @@ hashTable.forEach { print($0) }
 해시 함수는 임이의 길이를 갖는 메시지를 입력받아 고정된 길이의 해시값을 출력하는 함수입니다. 암호 알고리즘에는 키가 사용되지만, 해시 함수는 키를 사용하지 않으므로 같은 입력에 대해서는 항상 같은 출력이 나오게 됩니다.     
 	
 - 충돌(Collision) 
-    - 어떤 키값에 2개 이상의 데이터가 들어가는 경우를 말한다. 
+    - 같은 해쉬 주소(Hash Address)에 2개 이상의 데이터가 들어가는 경우를 말한다. 여기서 해쉬 주소는 해시 테이블의 index값이라고 할 수 있겠다. 자세한 코드는 위에 스위프트 코드2, 3를 보면 알 수 있다.
     - 데이터를 덮어쓴다면 충돌하지 않겠지만, 그렇지 않은 경우를 말한다. 예를 들면, data1 = 'Andy'와 data2 = 'Andrew'라는 데이터가 있을 때 파이썬의 ord() 함수를 이용해서 ord(data1[0
-]), ord(data2[0])를 실행하면 같은 A에 해당하는 65라는 아스키코드 값이 리턴된다. 이렇게 되면 다른 데이터에 같은 key값이 리턴되고 하나의 key값에 2개의 데이터가 들어가는 것이다. 이걸 충돌이라고 한다. 
+]), ord(data2[0])를 실행하면 같은 A에 해당하는 65라는 아스키코드 값이 리턴된다. 이렇게 되면 다른 데이터에 같은 Hash Address값이 리턴되고 하나의 Hash Address값에 2개의 데이터가 들어가는 것이다. 이걸 충돌이라고 한다. 
     - 이런 문제를 해결하기 위해서 별도 자료구조가 필요하다. 
     
 
@@ -1075,15 +1075,340 @@ hashTable.forEach { print($0) }
     - 최악의 경우(Collision이 모두 발생하는 경우)는 O(n)
     - 해쉬 테이블의 경우, 일반적인 경우를 기대하고 만들기 때문에, 시간 복잡도는 O(1) 이라고 말할 수 있음
 
-## Tree(트리) 
+## Tree(트리)
+<details>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <p>
+
+```swift
+import Foundation
+
+class Node {
+    var value: Int
+    var left: Node? = nil
+    var right: Node? = nil
+    
+    init(value: Int) {
+        self.value = value
+    }
+}
+
+class NodeMgmt {
+    var rootNode: Node
+    
+    init(rootNode: Node) {
+        self.rootNode = rootNode
+    }
+    
+    func insert(value: Int) -> Int {
+        //루트노드를 생성하고 현재 노드로 할당
+        var currentNode: Node = self.rootNode
+        
+        while true {
+            if value < currentNode.value {
+                //새로 들어온 데이터가 현재 노드보다 작으면 왼쪽
+                if currentNode.left == nil {
+                    //currentNode.left가 nil이면 더이상 데이터가 없는것이니 새로운 노드를 만들어서 할당하면 끝
+                    //while문을 빠져나가야 하니 break 필수
+                    currentNode.left = Node(value: value)
+                    return value
+                } else {
+                    //currentNode.left가 nil이 아니라면 데이터가 더 있다는거니까 기준이 되는 노드를 바꿔줘서 다시 비교를 해야함.
+                    currentNode = currentNode.left!
+                }
+            } else {
+                //새로 들어온 데이터가 현재 노드보다 크다면 오른쪽
+                if currentNode.right == nil {
+                    currentNode.right = Node(value: value)
+                    return value
+                } else {
+                    currentNode = currentNode.right!
+                }
+            }
+        }
+    }
+    
+    
+    func search(value: Int) -> Bool {
+        //맨 위부터 내려가야되니까 초기값을 할당해준건데, 위와는 다르게 옵셔널로 해준이유는 while문을 끝까지 돌게 하려고 한거야.
+        //currentNode 가 nil이라는 말은
+        var currentNode: Node? = self.rootNode
+        
+        while currentNode != nil {
+            guard let cNode = currentNode else { break }
+            if cNode.value == value {
+                return true
+            } else if value < cNode.value { //파라미터가 현재 노드의 값보다 작으면 왼쪽, 계속 순회
+                currentNode = cNode.left
+            } else {
+                currentNode = cNode.right //파라미터가 현재 노드의 값보다 크면 오른쪽, 계속 순회
+            }
+            
+            //이렇게 들어갔다가 제일 마지막 노드는 left, right에 값이 없겠지 ? insert 에서 안넣어줬고 초기값이 nil 이니까
+            //그러면 while 문은 종료가 되고 이 다음줄로 넘어가서 false를 리턴하는거야.
+        }
+        return false
+    }
+    
+    
+    /*
+     delete는 좀 복잡하다. 이렇게 나눠서 생각해야 함
+     1. 삭제할 데이터가 있는지부터 확인
+     2. 데이터가 있다면 ? 3가지 경우의 수를 통해 작업, 없다면 리턴 false
+         - 삭제할 노드가 Leaf Node인 경우
+         - 삭제할 노드의 Chile Node 가 1개인 경우
+         - 삭제할 노드의 Chile Node 가 2개인 경우
+     */
+    func delete(value: Int) -> Bool {
+        //삭제할 데이터가 있는지 여부를 판단한 Bool 타입 변수와 데이터를 삭제함에 따라서 브랜치를 새로 연결해줘야 하니
+        //부모노드도 가지고 있어야 하기 때문에 현재노드, 부모노드를 할당해준다.
+        var searched = false
+        var currentNode: Node? = self.rootNode
+        var parrentNode = self.rootNode
+        
+        while currentNode != nil {
+            guard let cNode = currentNode else { break }
+            if cNode.value == value {
+                searched = true
+                break
+            } else if value < cNode.value {
+                parrentNode = cNode
+                currentNode = cNode.left
+            } else {
+                parrentNode = cNode
+                currentNode = cNode.right
+            }
+        }
+        
+        //여기까지 왔다면 데이터가 있어서 break로 빠져나왔든, 또는 데이터는 없고 순회를 다해서 빠져나갔을 경우이다.
+        //만약에 데이터가 없다면 더 진행할 필요가 없으므로 여기서 처리해준다.
+        if searched == false { return false }
+        
+        // 1. 삭제할 노드가 Leaf Node인 경우
+        if currentNode?.left == nil && currentNode?.right == nil {
+            // 지울 노드가 parrentNode 기준 왼/오른쪽이냐에 따라서 브랜치도 다르게 처리해주어야 하기 때문에 이렇게 나눠준다.
+            if value < parrentNode.value {
+                parrentNode.left = nil
+            } else {
+                parrentNode.right = nil
+            }
+            currentNode = nil //다 사용했으니 currentNode는 삭제
+        }
+        
+        // 2. 삭제할 노드의 Chile Node 가 1개인 경우
+        /*
+         - 현재 노드가 왼쪽에만 Chile Node를 가지고 있을 경우
+         - ex.
+                        10
+         
+                    5(c)    15
+         
+                3       7
+         */
+        if currentNode?.left != nil && currentNode?.right == nil {
+            if value < parrentNode.value {
+                parrentNode.left = currentNode?.left
+            } else {
+                parrentNode.right = currentNode?.left
+            }
+            currentNode = nil
+        }
+        /*
+         - 현재 노드가 오른쪽에만 Chile Node를 가지고 있을 경우
+         - ex.
+                        10
+         
+                    5(c)    15
+         
+                        3       7
+         */
+        if currentNode?.left == nil && currentNode?.right != nil {
+            if value < parrentNode.value {
+                parrentNode.left = currentNode?.right
+            } else {
+                parrentNode.right = currentNode?.right
+            }
+            currentNode = nil
+        }
+        
+        
+        // 3. 삭제할 노드의 Chile Node 가 2개인 경우
+        /*
+         #### 5.5.3. Case3-1: 삭제할 Node가 Child Node를 두 개 가지고 있을 경우 (삭제할 Node가 Parent Node 왼쪽에 있을 때)
+         #### 5.5.4. Case3-2: 삭제할 Node가 Child Node를 두 개 가지고 있을 경우 (삭제할 Node가 Parent Node 오른쪽에 있을 때)
+         * 기본 사용 가능 전략 (여기서는 1번 전략 사용)
+           1. **삭제할 Node의 오른쪽 자식 중, 가장 작은 값을 삭제할 Node의 Parent Node가 가리키도록 한다.**
+           2. 삭제할 Node의 왼쪽 자식 중, 가장 큰 값을 삭제할 Node의 Parent Node가 가리키도록 한다.
+         * 기본 사용 가능 전략 중, 1번 전략을 사용하여 코드를 구현하기로 함
+           - 경우의 수가 또다시 두가지가 있음
+             - 삭제할 Node가 Parent Node의 왼쪽에 있고, 삭제할 Node의 오른쪽 자식 중, 가장 작은 값을 가진 Node의 Child Node가
+             - Case3-1-1: 없을 때
+             - Case3-1-2: 있을 때
+                - 가장 작은 값을 가진 Node의 Child Node가 왼쪽에 있을 경우는 없음, 왜냐하면 왼쪽 Node가 있다는 것은 해당 Node보다 더 작은 값을 가진 Node가 있다는 뜻이기 때문임
+         */
+        
+        
+        
+        if currentNode?.left != nil && currentNode?.right != nil { //삭제할 노드의 Chile Node 가 2개인 경우
+            
+            // 3-1,2 를 나눠서 작업하는데 밑에 가장 작은 노드가 자식을 가지냐에 따라서 또 2가지로 구분된다.
+            
+            if value < parrentNode.value {
+                //#### 5.5.3. Case3-1: 삭제할 Node가 Child Node를 두 개 가지고 있을 경우 (삭제할 Node가 Parent Node 왼쪽에 있을 때)
+                var changeNode = currentNode?.right
+                var changeParrentNode = currentNode?.right
+                //여기부터는 강의 그림 봐라. 그냥 보면 다시봐도 절대 이해 안감.
+                while changeNode?.left != nil {
+                    //오른쪽 자식을 순회하는 전략을 사용할건데, 이제 거기서 제일 작은애를 찾아야하니 계속 순회
+                    changeParrentNode = changeNode
+                    changeNode = changeNode?.left
+                }
+                
+                //여기까지오면 이제 가장 작은노드를 찾은거고 그게 changeNode이다.
+                //그럼 여기서 이제 가장 작은 노드의 오른쪽에 자식이 있는지 없는지를 판단해서 작업한다.
+                //왼쪽에 자식이 있을 수는 없다. 왼쪽에 자식이 있다는 건 그녀석이 가장 작은 수라는 뜻이기 때문
+                //여기 작업은 changeParrentNode의 브랜치를 이어주는 작업
+                if changeNode?.right != nil {
+                    changeParrentNode?.left = changeNode?.right //- Case3-1-1: 없을 때
+                } else {
+                    changeParrentNode?.left = nil //- Case3-1-2: 있을 때
+                }
+                   
+                //여기 작업은 changeNode를 위로 올려서 재연결 해주는 작업
+                parrentNode.left = changeNode
+                changeNode?.left = currentNode?.left
+                changeNode?.right = currentNode?.right
+            } else {
+                //#### 5.5.4. Case3-2: 삭제할 Node가 Child Node를 두 개 가지고 있을 경우 (삭제할 Node가 Parent Node 오른쪽에 있을 때)
+                var changeNode = currentNode?.right
+                var changeParrentNode = currentNode?.right
+                
+                while changeNode?.left != nil {
+                    changeParrentNode = changeNode
+                    changeNode = changeNode?.left
+                }
+                
+                if changeNode?.right != nil {
+                    changeParrentNode?.left = changeNode?.right
+                } else {
+                    changeParrentNode?.left = nil
+                }
+                   
+                parrentNode.right = changeNode //이 부분만 다르다.
+                changeNode?.left  = currentNode?.left
+                changeNode?.right = currentNode?.right
+            }
+        }
+        
+        
+        return true
+    }
+    
+}
+
+
+//var rootNode = Node(value: 13)
+//let bst = NodeMgmt(rootNode: rootNode)
+//
+//print("\n=== insert ===")
+//print(bst.insert(value: 21))
+//print(bst.insert(value: 15))
+//print(bst.insert(value: 25))
+//print(bst.insert(value: 42))
+//print(bst.insert(value: 33))
+//
+//
+//print("\n=== search ===")
+//print(bst.search(value: 25))
+
+// 0 ~ 999 숫자 중에서 임의로 100개를 추출해서 이진 탐색 트리에 입력, 검색, 삭제
+
+// 0 ~ 999 중 100 개의 숫자 랜덤 선택
+var bstNums: Set<Int> = []
+
+while bstNums.count < 100 {
+    let randomInt = Int.random(in: 0...999)
+    bstNums.insert(randomInt)
+}
+
+print(bstNums)
+
+// 선택된 100개의 숫자를 이진 탐색 트리에 입력, 임의로 루트 노드는 500을 넣기로 함 (0,1 같은걸 넣어버리면 트리가 한쪽으로 치우칠 수 있음)
+let rootNode = Node(value: 500)
+let bst = NodeMgmt(rootNode: rootNode)
+for num in bstNums {
+    _ = bst.insert(value: num)
+}
+
+// 입력한 100개의 숫자 검색 (검색 기능 확인)
+for num in bstNums {
+    if bst.search(value: num) == false { //100개를 검색했기 때문에 다 true를 리턴해야 하므로 false이면 검색 기능을 잘못 구현한 것임
+        print("search fail : \(num)")
+    }
+}
+
+// 입력한 100개의 숫자 중 10개의 숫자를 랜덤 선택
+var deleteNums: Set<Int> = []
+let tenbstNums = Array(bstNums)
+
+while deleteNums.count < 10 {
+    let randomInt = tenbstNums.randomElement() ?? 0
+    deleteNums.insert(randomInt)
+}
+
+
+// 선택한 10개의 숫자를 삭제 (삭제 기능 확인)
+for num in deleteNums {
+    if bst.delete(value: num) == false {
+        print("delete fail : \(num)")
+    }
+}
+
+
+```
+  </p>
+</details>
+
+- Node와 Branch를 이용해서, 사이클(순환)을 이루지 않도록 구성한 데이터 구조
+- 주요 용도  
+  - 트리 중 이진 트리 (Binary Tree) 형태의 구조로, 탐색(검색) 알고리즘 구현을 위해 많이 사용됨
+- 구조 
+  - Node: 트리에서 데이터를 저장하는 기본 요소 (데이터와 다른 연결된 노드에 대한 Branch 정보 포함)
+  - Branch: 노드와 노드 사이를 가리키는 선 
+  - Root Node: 트리 맨 위에 있는 노드
+  - Level: 최상위 노드를 Level 0으로 하였을 때, 하위 Branch로 연결된 노드의 깊이를 나타냄
+  - Parent Node: 어떤 노드의 다음 레벨에 연결된 노드
+  - Child Node: 어떤 노드의 상위 레벨에 연결된 노드
+  - Leaf Node (Terminal Node): Child Node가 하나도 없는 노드
+  - Sibling (Brother Node): 동일한 Parent Node를 가진 노드
+  - Depth: 트리에서 Node가 가질 수 있는 최대 Level
+					
+![](http://www.fun-coding.org/00_Images/tree.png)				
+			
+- 이진 트리(Binary Tree) vs 이진 탐색 트리 (Binary Search Tree)
+  - 이진 트리
+      - 자식 노드가 최대 2개인 트리 
+  - 이진 탐색 트리 (Binary Search Tree, BST)
+      - 이진 트리 + 추가정책
+      - 항상 부모 노드의 자식인 왼쪽 차일드 노드는 부모 노드보다 작은 값을 가진다. 또 오른쪽 차일드 노드는 부모 노드보다 큰 값을 갖는다.
+      - 주로 검색용도로 제일 많이 쓰인다. 배열을 기준으로 했을때 배열은 10번째 데이터가 O(10)이 걸린다면, 이진 탐색 트리는 한번 검색할때마다 반토막씩 나니까 훠얼씬 빠르다. 
+    				
+![](https://www.mathwarehouse.com/programming/images/binary-search-tree/binary-search-tree-sorted-array-animation.gif)							
+				
+- 이진 탐색 트리의 시간 복잡도와 단점
+	-  시간 복잡도 (탐색시)
+    	- depth (트리의 높이) 를 h라고 표기한다면, O(h)
+    	- n개의 노드를 가진다면, $h=log_2{n}$ 에 가까우므로, 시간 복잡도는 $O(log{n})$ (빅오 표기법에서 $log{n}$ 에서의 log의 밑은 10이 아니라, 2입니다.)
+    	- 한번 실행시마다, 50%의 실행할 수도 있는 명령을 제거한다는 의미. 즉 50%의 실행시간을 단축시킬 수 있다는 것을 의미함
+	- 이진 탐색 트리 단점
+    	- 평균 시간 복잡도는 $O(log{n})$ 이지만, 
+    	- 이는 트리가 균형잡혀 있을 때의 평균 시간복잡도이며, 다음 예와 같이 구성되어 있을 경우, 최악의 경우는 링크드 리스트등과 동일한 성능을 보여줌 $O(n)$
+    				
+![](http://www.fun-coding.org/00_Images/worstcase_bst.png)			
+					
+
 
 ## Heap(힙) 
-
-## Reference
-[https://fastcampus.co.kr/dev_online_devjob/?gclid=Cj0KCQjwqc6aBhC4ARIsAN06NmOdZUJGwc8x-w8ht0jS3idCSNhUZ49m--cQdDsVqIZWSnVmrBz5zxMaAtTBEALw_wcB](https://fastcampus.co.kr/dev_online_devjob/?gclid=Cj0KCQjwqc6aBhC4ARIsAN06NmOdZUJGwc8x-w8ht0jS3idCSNhUZ49m--cQdDsVqIZWSnVmrBz5zxMaAtTBEALw_wcB)
-
-[https://www.fun-coding.org/python-question1-answer.html](https://www.fun-coding.org/python-question1-answer.html)
-
 
 <details>
   <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
@@ -1091,7 +1416,210 @@ hashTable.forEach { print($0) }
 
 ```swift
 
+import Foundation
+
+
+class Heap {
+    var heapArray: [Int] = []
+    
+    init(value: Int) {
+        self.heapArray.append(0) // 0 말고 옵셔널로 처리하거나 -1 같은걸로 처리하는 방법도 있긴 하겠는데,,
+        self.heapArray.append(value)
+    }
+    
+    //제일 마지막에 입력된 데이터가 루트노드로 가게되고 그 데이터의 위와 아래를 바꿔줘야 되는지를 판단하는 메소드
+    //경우의 수 3가지
+    //1. 완전 이진 트리이므로 왼쪽 차일드 노드가 없는 경우 ( 바꿀 게 더이상 없으므로 끝냄 )
+    //2. 왼쪽만 차일드 노드가 있는 경우 ( 부모와 차일드 비교해서 부모보다 크다면? 바꿔주기 )
+    //3. 왼쪽 오른쪽 차일드 둘 다 있는 경우 ( 왼쪽과 오른쪽 차일드를 먼저 비교하고 그것 중에 큰 녀석을 부모와 비교해서 크다면? 바꿔주기 )
+    private func moveDown(_ poppedIndex: Int) -> Bool {
+        let leftChildIndex = poppedIndex * 2
+        let rightChildIndex = poppedIndex * 2 + 1
+        
+        if leftChildIndex >= heapArray.count {
+            //1. 완전 이진 트리이므로 왼쪽 차일드 노드가 없는 경우 ( 바꿀 게 더이상 없으므로 끝냄 )
+            /*
+                          15
+             
+                    10          8
+             
+                5       4
+             
+             이걸 왜 이렇게 하냐면, BST 같은 경우네는 Node라는 클래스를 가지고 구현을 했었잖아.
+             그래서 left, right가 옵셔널 이었고. 근데 얘는 배열로 구현한단 말이야. 그러면 당연히 중간에 빈데이터가 없어야돼. 그건 배열이 아니니까.
+              
+             그럼 왜 이걸 이렇게 계산하냐? 자 보자. 위에 힙을 기준으로 heapArray.count는 6이야. 0번째를 포함해서. 즉 1번째 ~ 5번째를 가리키고 있는거지
+             근데 데이터 8을 기준으로 leftChildIndex는 3 * 2 = 6 이지? 그럼 지금 6이 있나? 없지.
+             데이터 5를 기준으로도 해보자 4 * 2 = 8 이다. 8 >= 6 이니까 왼쪽이 없는게 맞고
+             데이터 10을 기준으로 해보면 2 * 2 = 4 4 >= 6 이 아니니까 얘는 왼쪽 노드가 있는거지
+             데이터 4를 기준으로 해보면 4 * 2 + 1 = 9, 9 >= 6 이니까 얘도 왼쪽이 없는거고
+             
+             뭐 이런 느낌이다. 쓰면서도 좀 헷갈리긴하는데 애매하면 그냥 외워. 큰 의미없을듯
+             */
+            return false
+        } else if rightChildIndex >= heapArray.count {
+            //2. 왼쪽만 차일드 노드가 있는 경우 ( 부모와 차일드 비교해서 부모보다 크다면? 바꿔주기 )
+            if heapArray[poppedIndex] < heapArray[leftChildIndex] {
+                //2-1. poppedIndex인 내가 왼쪽 자식 인덱스값 보다 작다면 바꿔줘야되는 거니까 true
+                return true
+            } else { //2-2 크다면 안바꿔줘도 되니까 false
+                return false
+            }
+        } else {
+            //3. 왼쪽 오른쪽 차일드 둘 다 있는 경우 ( 왼쪽과 오른쪽 차일드를 먼저 비교하고 그것 중에 큰 녀석을 부모와 비교해서 크다면? 바꿔주기 )
+            if heapArray[leftChildIndex] > heapArray[rightChildIndex] {
+                //3-1. 왼쪽과 오른쪽을 비교해서 왼쪽이 크다면
+                if heapArray[poppedIndex] < heapArray[leftChildIndex] {
+                    //3-2. 왼쪽의 큰 녀석인 내가 왼쪽 자식 인덱스값 보다 작다면 바꿔줘야되는 거니까 true
+                    return true
+                } else {
+                    //3-2 크다면 안바꿔줘도 되니까 false
+                    return false
+                }
+            } else {
+                //3-1. 오른쪽이 크다면
+                if heapArray[poppedIndex] < heapArray[rightChildIndex] {
+                    //3-2. 왼쪽의 큰 녀석인 내가 왼쪽 자식 인덱스값 보다 작다면 바꿔줘야되는 거니까 true
+                    return true
+                } else {
+                    //3-2 크다면 안바꿔줘도 되니까 false
+                    return false
+                }
+            }
+
+        }
+    }
+    
+    //데이터를 insert 할 때, 위와 아래를 바꿔줘야 되는지를 판단하는 메소드
+    private func moveUp(_ insertedIndex: Int) -> Bool {
+        if insertedIndex <= 1 { return false } //루트 노드(insertedIndex <= 1)라면 바꿀 필요 없으니 바로 리턴
+        let parentIndex = insertedIndex / 2
+        return heapArray[insertedIndex] > heapArray[parentIndex] //가장 마지막에 넣은 데이터가 부모데이터보다 크다면 위아래 스왑
+    }
+    
+    func insert(_ value: Int) {
+        self.heapArray.append(value)
+        
+        //가장 마지막 데이터의 index, 첫번째 0 넣은 길이도 포함해야 한다.
+        var insertedIndex = self.heapArray.count - 1
+        
+        while moveUp(insertedIndex) {
+            let parentIndex = insertedIndex / 2
+            heapArray.swapAt(insertedIndex, parentIndex)
+            insertedIndex = parentIndex
+        }
+    }
+    
+    func pop() -> Int {
+        let returnedData = heapArray[1] //최대값 또는 최소값 추출, 항상 루트 노드만 추출, 0번째는 항상 비어있으므로 제외
+        heapArray[1] = heapArray.removeLast() //마지막에 입력된 데이터를 삭제하면서 해당 리턴값을 루트 노드로 할당
+        
+        var poppedIndex = 1 //pop된 index, 항상 루트노드부터 시작한다.
+        
+        while moveDown(poppedIndex) { //moveDown이 true인 경우에만 신경쓰면 되니 false인 경우는 상관하지 않는다.
+            let leftChildIndex = poppedIndex * 2
+            let rightChildIndex = poppedIndex * 2 + 1
+            
+            //1. 완전 이진 트리이므로 왼쪽 차일드 노드가 없는 경우 ( 바꿀 게 더이상 없으므로 끝냄 )
+            //-> 무시
+            
+            //2. 왼쪽만 차일드 노드가 있는 경우 ( 부모와 차일드 비교해서 부모보다 크다면? 바꿔주기 )
+            if rightChildIndex >= heapArray.count {
+                //2. 왼쪽만 차일드 노드가 있는 경우 ( 부모와 차일드 비교해서 부모보다 크다면? 바꿔주기 )
+                if heapArray[poppedIndex] < heapArray[leftChildIndex] {
+                    heapArray.swapAt(poppedIndex, leftChildIndex) //바꿔주고,
+                    poppedIndex = leftChildIndex //계속 순회를 해야되니까 index를 바꿔준 child로 교체
+                }
+            } else {
+            //3. 왼쪽 오른쪽 차일드 둘 다 있는 경우 ( 왼쪽과 오른쪽 차일드를 먼저 비교하고 그것 중에 큰 녀석을 부모와 비교해서 크다면? 바꿔주기 )
+                if heapArray[leftChildIndex] > heapArray[rightChildIndex] {
+                    //3-1. 왼쪽과 오른쪽을 비교해서 왼쪽이 크다면
+                    if heapArray[poppedIndex] < heapArray[leftChildIndex] {
+                        heapArray.swapAt(poppedIndex, leftChildIndex) //바꿔주고,
+                        poppedIndex = leftChildIndex //계속 순회를 해야되니까 index를 바꿔준 child로 교체
+                    }
+                } else {
+                    //3-1. 오른쪽이 크다면
+                    if heapArray[poppedIndex] < heapArray[rightChildIndex] {
+                        heapArray.swapAt(poppedIndex, rightChildIndex)
+                        poppedIndex = rightChildIndex
+                    }
+                }
+            }
+        }
+        return returnedData //꼭 변수선언을 해줘야하는게 heapArray[1]에 수정작업이 이뤄지기 때문
+    }
+}
+
+print("\n===코드 검증===")
+let heap = Heap(value: 15)
+heap.insert(10)
+heap.insert(8)
+heap.insert(5)
+heap.insert(4)
+print(heap.heapArray)
+
+print("\n===20 insert===")
+heap.insert(20)
+print(heap.heapArray)
+
+print("\n===pop===")
+heap.pop()
+print(heap.heapArray)
 ```
   </p>
 </details>
     
+- 데이터에서 최대값과 최소값을 빠르게 찾기 위해 고안된 자료구조
+- 위의 BST나 Tree와 뭐가 다르냐? 이건 오로지 최대값/최소값을 빠르게 검색하기 위한 자료구조이다.
+- 트리의 한 종류로 완전 이진 트리이다. 
+- 힙을 사용하는 이유
+  - 배열에 데이터를 넣고, 최대값과 최소값을 찾으려면 O(n) 이 걸리지만, 힙에 데이터를 넣고, 최대값과 최소값을 찾으면, $O(log n)$ 이 걸림
+  - 우선순위 큐와 같이 최대값 또는 최소값을 빠르게 찾아야 하는 자료구조 및 알고리즘 구현 등에 활용됨
+- 구조 
+    - 힙은 최대값을 구하기 위한 최대 힙(Max Heap) 와 최소값을 구하기 위한 최소 힙(Min Heap) 로 분류됨.
+    - 힙은 다음과 같이 두 가지 정책을 가지고 있는 자료구조임
+        1. 부모 노드의 값은 자식 노드의 값보다 크거나 같다. (최대 힙의 경우) 만약 최소 힙이라면 반대이다. 작거나 같다. 
+        2. 완전 이진 트리 형태를 가진다. (왼쪽아래부터 데이터를 넣는다.) 
+    
+- 완전 이진 트리(Complete Binary Tree)
+    - 왼쪽 아래 부터 데이터를 채워지는 트리 
+    - 이진 트리 이므로 자식노드가 최대 2개를 갖는다.
+
+- 힙(Heap)과 이진 탐색 트리(Binary Search Tree)의 공통점과 차이점		
+    * 공통점			
+    	- 힙과 이진 탐색 트리는 모두 이진 트리임 ( 자식이 최대 2개라는 말이다. ) 
+    * 차이점						
+        - 힙은 각 부모 노드의 값이 자식 노드보다 크거나 같음(Max Heap의 경우, Min Heap은 반대) 
+        - BST는 는 왼쪽 자식 노드의 값이 가장 작고, 그 다음 부모 노드, 그 다음 오른쪽 자식 노드 값이 가장 큼
+        - 힙은 위와 같은 조건은 없음. 힙의 왼쪽 및 오른쪽 자식 노드의 값은 오른쪽이 클 수도 있고, 왼쪽이 클 수도 있음
+        - BST는 검색을 위한 구조이고 힙은 최대/최소값을 빠르게 찾기위한 구조 중 하나로 이해하면 됨 
+    		
+![](https://www.fun-coding.org/00_Images/completebinarytree_bst.png)			
+- 힙 구현(배열로 구현, 왜?)
+    - 일반적으로 힙 구현시 배열 자료구조를 활용함, 왜? 
+    - 완전 이진 트리 형태로 구현되어 있어서 중간에 빈값도 없고 하기 때문에 index로 특정 부모, 자식 노드를 특정할 수 있음. 대박임.
+    - 배열은 인덱스가 0번부터 시작하지만, 힙 구현의 편의를 위해, root 노드 인덱스 번호를 1로 지정하면, 구현이 좀더 수월함, 왜? ( 아래에서 부모, 왼쪽자식, 오른쪽 자식 인덱스번호를 계산하는 공식이 있는데 0부터 시작해 버리면 0 / 2, 0 * 2 가 다 0 이 되버리기 때문에 더 복잡해짐 )
+    - index를 강제로 바꾼다거나 그런건 아니고 그냥 배열의 0번째에는 아무것도 안넣어버리고 index 1번째 부터 데이터를 넣겠다는 말임. 
+    > 공식
+    > - 부모 노드 인덱스 번호 = 자식 노드 인덱스 번호 / 2
+    > - 왼쪽 자식 노드 인덱스 번호 = 부모 노드 인덱스 번호 * 2
+    > - 오른쪽 자식 노드 인덱스 번호 = 부모 노드 인덱스 번호 * 2 + 1 
+    
+![](https://www.fun-coding.org/00_Images/heap_array.png)				
+				
+- 시간 복잡도
+    - depth (트리의 높이) 를 h라고 표기한다면,
+    - 최소값 또는 최대값을 빼는 연산은 O(1)이지만, 힙의 성질에 맞게 재구조화(heapify)하는 과정이 필요하다. 
+    - 근데, 이진트리이므로 반땡이긴 하지만 삽입 또는 삭제시 삽입은 맨끝에서 루트까지 올라올 수 있고 삭제는 맨위에서 맨아래까지 내려올 수 있다. 
+    - 따라서 시간 복잡도는 $h = log_2{n} $ 에 가까우므로, 시간 복잡도는 $ O(log{n}) $ 이다.
+    - 참고: 빅오 표기법에서 $log{n}$ 에서의 log의 밑은 10이 아니라, 2입니다.
+    - 한번 실행시마다, 50%의 실행할 수도 있는 명령을 제거한다는 의미. 즉 50%의 실행시간을 단축시킬 수 있다는 것을 의미함
+
+
+## Reference
+[https://fastcampus.co.kr/dev_online_devjob/?gclid=Cj0KCQjwqc6aBhC4ARIsAN06NmOdZUJGwc8x-w8ht0jS3idCSNhUZ49m--cQdDsVqIZWSnVmrBz5zxMaAtTBEALw_wcB](https://fastcampus.co.kr/dev_online_devjob/?gclid=Cj0KCQjwqc6aBhC4ARIsAN06NmOdZUJGwc8x-w8ht0jS3idCSNhUZ49m--cQdDsVqIZWSnVmrBz5zxMaAtTBEALw_wcB)
+
+[https://www.fun-coding.org/python-question1-answer.html](https://www.fun-coding.org/python-question1-answer.html)				
+			    
+[https://github.com/kickbell/DataStructure_and_Algorithm](https://github.com/kickbell/DataStructure_and_Algorithm)				
