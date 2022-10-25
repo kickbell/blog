@@ -1667,32 +1667,32 @@ print(heap.heapArray)
 		- 방향이 없는 그래프
 		- 간선을 통해, 노드는 양방향으로 갈 수 있음
 		- 보통 노드 A, B가 연결되어 있을 경우, (A, B) 또는 (B, A) 로 표기							
-		- ![](https://www.fun-coding.org/00_Images/undirectedgraph.png)						
+		- 무방향 그래프 ![](https://www.fun-coding.org/00_Images/undirectedgraph.png)						
     - 방향 그래프 (Directed Graph)			
 		- 간선에 방향이 있는 그래프			
 		- 보통 노드 A, B가 A -> B 로 가는 간선으로 연결되어 있을 경우, <A, B> 로 표기 (<B, A> 는 B -> A 로 가는 간선이 있는 경우이므로 <A, B> 와 다름)
-		- ![](https://www.fun-coding.org/00_Images/directedgraph.png)							
+		- 방향 그래프 ![](https://www.fun-coding.org/00_Images/directedgraph.png)							
 	- 가중치 그래프 (Weighted Graph) 또는 네트워크 (Network)
 		- 간선에 비용 또는 가중치가 할당된 그래프
 		- 위에 그림처럼 집->지하철->회사, 집->버스->회사라고 하면 이해하기 쉽게는 거리느낌이다.
     		- 집에서 지하철역까지 200미터, 버스정류장까지 400미터 같은 느낌이므로 가중치가 합쳐서 300미터인 밑에 경로가 더 좋은 경로이다. 
-		- ![](https://www.fun-coding.org/00_Images/weightedgraph.png)				
+		- 가중치 그래프 ![](https://www.fun-coding.org/00_Images/weightedgraph.png)				
 	- 연결 그래프 (Connected Graph) 와 비연결 그래프 (Disconnected Graph)
 		- 연결 그래프 (Connected Graph)
 	  		- 무방향 그래프에 있는 모든 노드에 대해 항상 경로가 존재하는 경우
 			- 모든 노드가 항상 간선으로 연결되어 있다는 뜻 
 		- 비연결 그래프 (Disconnected Graph)
 		  	- 무방향 그래프에서 특정 노드에 대해 경로가 존재하지 않는 경우
-		- ![](https://www.fun-coding.org/00_Images/disconnectedgraph.png)							
+			- 비연결 그래프![](https://www.fun-coding.org/00_Images/disconnectedgraph.png)						
 	- 사이클 (Cycle) 과 비순환 그래프 (Acyclic Graph)
 		- 사이클 (Cycle)
 			- 단순 경로의 시작 노드와 종료 노드가 동일한 경우
 		- 비순환 그래프 (Acyclic Graph)
   			- 사이클이 없는 그래프	
-			- ![](https://www.fun-coding.org/00_Images/acyclicgraph.png)							
+			- 비순환 그래프 ![](https://www.fun-coding.org/00_Images/acyclicgraph.png)							
 	- 완전 그래프 (Complete Graph)
 		- 그래프의 모든 노드가 서로 연결되어 있는 그래프								
-		- ![](https://www.fun-coding.org/00_Images/completegraph.png)											
+		- 완전 그래프 ![](https://www.fun-coding.org/00_Images/completegraph.png)											
 						
 
 - 그래프(Grape)와 트리(Tree)의 차이 
