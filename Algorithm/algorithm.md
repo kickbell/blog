@@ -1287,21 +1287,21 @@ print(bfs(graph, startNode))
 ![](https://www.fun-coding.org/00_Images/bfsqueue.png)	
 			
 > - 큐 2개(visited queue, need_visited queue)를 활용해서 데이터를 넣는 순서 
-  1. 맨처음 A를 need_visited queue에 넣는다. 
-  2. need_visited queue에 들어가있는 데이터 중에 맨 앞에있는 데이터를 꺼낸다.( 데이터는 큐에서 없어진다. ) 
-  3. 꺼낸 데이터가 visited queue에 있는지 확인한다.
-      - 확인해서 있다면 
-          1. visited queue에 꺼낸 데이터를 넣는다. 
-          2. 그리고 visited queue 넣은 데이터의 키값에 해당되는 value를 need_visited queue 에 순서대로 넣는다. 다음턴으로 넘어간다.
-      - 확인해서 없다면 
-          1. 아무것도 하지 않는다. 다음턴으로 넘어간다.
-  4. need_visited queue에 들어가있는 데이터 중에 맨 앞에있는 데이터를 꺼낸다.( 데이터는 큐에서 없어진다. ) 
-  5. 꺼낸 데이터가 visited queue에 있는지 확인한다. ( 아래생략 )
-  6. need_visited queue에 들어가있는 데이터 중에 맨 앞에있는 데이터를 꺼낸다.( 데이터는 큐에서 없어진다. )
-  7. 꺼낸 데이터가 visited queue에 있는지 확인한다. ( 아래생략 )
-  ...
-  8. 끝날때까지 진행한다. 
-  9. need_visited queue 이 비게 된다면 그래프를 다 순회한 것이므로 종료한다. 
+> 	1. 맨처음 A를 need_visited queue에 넣는다. 
+> 	2. need_visited queue에 들어가있는 데이터 중에 맨 앞에있는 데이터를 꺼낸다.( 데이터는 큐에서 없어진다. ) 
+> 	3. 꺼낸 데이터가 visited queue에 있는지 확인한다.
+>		- 확인해서 있다면 
+>			1. visited queue에 꺼낸 데이터를 넣는다. 
+>			2. 그리고 visited queue 넣은 데이터의 키값에 해당되는 value를 need_visited queue 에 순서대로 넣는다. 다음턴으로 넘어간다.
+>		- 확인해서 없다면 
+>			1. 아무것도 하지 않는다. 다음턴으로 넘어간다.
+> 	4. need_visited queue에 들어가있는 데이터 중에 맨 앞에있는 데이터를 꺼낸다.( 데이터는 큐에서 없어진다. ) 
+> 	5. 꺼낸 데이터가 visited queue에 있는지 확인한다. ( 아래생략 )
+> 	6. need_visited queue에 들어가있는 데이터 중에 맨 앞에있는 데이터를 꺼낸다.( 데이터는 큐에서 없어진다. )
+> 	7. 꺼낸 데이터가 visited queue에 있는지 확인한다. ( 아래생략 )
+> 	...
+> 	8. 끝날때까지 진행한다. 
+> 	9. need_visited queue 이 비게 된다면 그래프를 다 순회한 것이므로 종료한다. 
 
 - 시간 복잡도
     - O(n)과 같은 n을 사용하는 방법 말고 O(V + E)로 표시하는 시간복잡도를 갖는다. 
@@ -1405,21 +1405,21 @@ print(dfs(graph, startNode))
 								    
 ![](https://velog.velcdn.com/images/dev_kickbell/post/add77935-4cf9-497e-b9cd-47326d19b85c/image.png)						
 > - 큐(visited queue) 와 스택(need_visited stack)를 활용해서 데이터를 넣는 순서 
-  1. 맨처음 A를 need_visited stack에 넣는다. 
-  2. need_visited stack에 들어가있는 데이터 중에 마지막에 있는 데이터를 꺼낸다.( 스택이니까. ) 
-  3. 꺼낸 데이터가 visited queue에 있는지 확인한다.
-      - 확인해서 있다면 
-          1. visited queue에 꺼낸 데이터를 넣는다. 
-          2. 그리고 visited queue 넣은 데이터의 키값에 해당되는 value를 need_visited stack에 넣는다. 다음턴으로 넘어간다.
-      - 확인해서 없다면 
-          1. 아무것도 하지 않는다. 다음턴으로 넘어간다.
-  4. need_visited stack에 들어가있는 데이터 중에 마지막에 있는 데이터를 꺼낸다.( 스택이니까. ) 
-  5. 꺼낸 데이터가 visited queue에 있는지 확인한다. ( 아래생략 )
-  6. need_visited stack에 들어가있는 데이터 중에 마지막에 있는 데이터를 꺼낸다.( 스택이니까. ) 
-  7. 꺼낸 데이터가 visited queue에 있는지 확인한다. ( 아래생략 )
-  ...
-  8. 끝날때까지 진행한다. 
-  9. need_visited stack 이 비게 된다면 그래프를 다 순회한 것이므로 종료한다. 
+> 	1. 맨처음 A를 need_visited stack에 넣는다. 
+> 	2. need_visited stack에 들어가있는 데이터 중에 마지막에 있는 데이터를 꺼낸다.( 스택이니까. ) 
+> 	3. 꺼낸 데이터가 visited queue에 있는지 확인한다.
+> 		- 확인해서 있다면 
+>			1. visited queue에 꺼낸 데이터를 넣는다. 
+>			2. 그리고 visited queue 넣은 데이터의 키값에 해당되는 value를 need_visited stack에 넣는다. 다음턴으로 넘어간다.
+>		- 확인해서 없다면 
+>			1. 아무것도 하지 않는다. 다음턴으로 넘어간다.
+> 	4. need_visited stack에 들어가있는 데이터 중에 마지막에 있는 데이터를 꺼낸다.( 스택이니까. ) 
+> 	5. 꺼낸 데이터가 visited queue에 있는지 확인한다. ( 아래생략 )
+>  	6. need_visited stack에 들어가있는 데이터 중에 마지막에 있는 데이터를 꺼낸다.( 스택이니까. ) 
+>  	7. 꺼낸 데이터가 visited queue에 있는지 확인한다. ( 아래생략 )
+>  	...
+>  	8. 끝날때까지 진행한다. 
+>  	9. need_visited stack 이 비게 된다면 그래프를 다 순회한 것이므로 종료한다. 
     
 - 시간 복잡도
     - O(n)과 같은 n을 사용하는 방법 말고 O(V + E)로 표시하는 시간복잡도를 갖는다. 
