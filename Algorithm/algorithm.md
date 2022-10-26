@@ -752,11 +752,16 @@ print(파도반수열_dp(10))
 				
     
 ## Divide and Conquer(분할 정복)
-- 문제를 나눌 수 없을 때까지 나누어서 각각을 풀면서 다시 합병해서 문제의 답을 얻는 알고리즘
+- 문제를 나눌 수 없을 때까지 나누고(분할) 난 후에 각각을 해결(정복)하면서 다시 합병(조합)해서 문제의 답을 얻는 알고리즘
 - 하향식 접근법으로 상위 해답을 구하기 위해 아래로 내려가면서 하위 해답을 구하는 방식이다. 
 - 일반적으로 재귀함수로 구현한다. 
 - 문제를 잘게 쪼갤 때, 부분 문제는 서로 중복되지 않는다. 
-- 병합정렬, 퀵정렬을 사용 예시로 들 수있다. ( 분할 정복을 이해하기 위해서는 아래 병합/퀵 정렬을 보자. )
+- 대표적인 예로 병합정렬, 퀵정렬, 이진탐색을 사용 예시로 들 수있다. 
+- 분할과 정복 말고도 나누어서 정복한 문제를 다시 조합해줘야 하는 개념도 있다. 
+- 개념설명 ( 정복이라는 의미가 다시 합치는 것?이 아니라 말그대로 문제를 정복한다는 의미이다. 그리고 그걸 다시 조합해야 한다. )
+    - 분할(Divide): 문제를 더이상 분할할 수 없을 때까지 동일한 유형의 여러 하위 문제로 나눈다.
+    - 정복(Conquer): 가장 작은 단위의 하위 문제를 해결하여 정복한다.
+    - 조합(Combine): 하위 문제에 대한 결과를 원래 문제에 대한 결과로 다시 조합한다.
 
 ## Dynamic Programming(동적 계획법) vs Divide and Conquer(분할 정복)
 - 공통점
@@ -836,7 +841,7 @@ print(quickSort2(list))
 ![](https://velog.velcdn.com/images/dev_kickbell/post/c8681bda-61df-4e2e-a69e-4d98572a6fd6/image.png)![](https://velog.velcdn.com/images/dev_kickbell/post/47feec0b-8124-41d4-9541-e9fcc484b1aa/image.png)![](https://velog.velcdn.com/images/dev_kickbell/post/18473394-9efd-49a9-b198-3b18f2a87baf/image.png) 
 			
 - 정복(Conquer)			
-    - 이제 분할된 데이터를 다시 합치는데, quickSort의 리턴값은 리스트이다. 그래서 아래의 모양대로 분할된 그대로 다시 리턴하면서 주루룩 더하게 되면 정렬된 데이터가 짜잔 하고 신기하게도 완성된다. ( 이미 분할 하면서 정렬을 했기 때문이다. ) 
+    - 이제 분할된 데이터를 다시 합치(Combine)는데, quickSort의 리턴값은 리스트이다. 그래서 아래의 모양대로 분할된 그대로 다시 리턴하면서 주루룩 더하게 되면 정렬된 데이터가 짜잔 하고 신기하게도 완성된다. ( 이미 분할(Divide) 하면서 정렬(Conquer)을 했기 때문이다. ) 
     - quickSort(left) + [pivot] + quickSort(right)
     - 자세한 사항은 코드 예시를 참고하자. 
 		    
@@ -919,7 +924,7 @@ print(mergeSort(list))
 - Divide and Conquer(분할 정복) 개념을 사용한다. 
 - 재귀용법을 활용한 정렬 알고리즘이다. 
     - 리스트를 절반으로 계속 분할(Divide)한다. 리스트가 1개가 남을 때까지 계속 한다.
-    - 합치는데(Conquer), 좌우를 비교해서 정렬하면서 합친다.
+    - 그런 후에, 좌우를 비교해서 정렬(Conquer)하면서 합친(Combine)다.
 		    		
 ![](https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif)
 			
@@ -936,9 +941,668 @@ print(mergeSort(list))
 			    
 ![](https://www.fun-coding.org/00_Images/mergesortcomplexity.png)			
 				
+## Sequential Search(순차 탐색)
+    
+<details>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <p>
+
+```swift
+import Foundation
+
+func sequencial(_ array: [Int], searchData: Int) -> Int {
+    for index in 0..<array.count {
+        if array[index] == searchData { return index } //찾는 데이터의 index 반환
+    }
+    return -1 //찾는 데이터 없음
+}
+
+let list = (1...10).map { _ in Int.random(in: 1...100) }
+//print(list)
+
+(1...10).forEach { _ in
+    print(sequencial(list, searchData: Int.random(in: 1...100)))
+}
+```
+  </p>
+</details>
+
+- 탐색은 여러 데이터 중에서 원하는 데이터를 찾아내는 것을 의미
+- 데이터가 담겨있는 리스트를 앞에서부터 하나씩 비교해서 원하는 데이터를 찾는 방법
+- 이름에 비해 매우 쉬운 탐색 방법이다. 
+- 알고리즘 분석
+    - 최악의 경우 리스트 길이가 n일 때, n번 비교해야 함
+    - O(n)
 
 
-## 이진탐색..
+## Binary Search(이진 탐색)
+    
+<details>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <p>
+
+```swift
+
+import Foundation
+
+func processTime(closure: () -> ()){
+    let start = CFAbsoluteTimeGetCurrent()
+    closure()
+    let processTime = CFAbsoluteTimeGetCurrent() - start
+    print("경과 시간: \(processTime)\n")
+}
+
+/*
+ 중요 부분
+ 1. array[mediumIndex...]
+ 2. array[..<mediumIndex] // ...으로 하면 터지는데 잘 이해가 안가긴 한다. 
+ */
+func binarySearch1(_ array: [Int], searchData: Int) -> Bool {
+    //제일 마지막까지 데이터를 나누고 마지막 데이터가 찾는 데이터인 경우
+    if array.count == 1 && searchData == array.first ?? 0 { return true }
+    //제일 마지막까지 데이터를 나누고, 찾는 데이터가 없는 경우
+    if array.count == 1 && searchData != array.first ?? 0 { return false }
+    
+    let mediumIndex = array.count / 2
+    
+    //제일 마지막까지 나누지 않았어도 데이터를 찾은 경우
+    if searchData == array[mediumIndex] { return true }
+    
+    //그렇지 않은 경우
+    if searchData > array[mediumIndex] {
+        return binarySearch1(Array(array[mediumIndex...]), searchData: searchData)
+    } else {
+        //..< 이게 중요한데.. 흠 정확히는 모르겠.
+        return binarySearch1(Array(array[..<mediumIndex]), searchData: searchData)
+    }
+}
+
+/*
+ 중요 부분
+ 1. if startIndex > endIndex { return false }
+ 2. mediumIndex + 1,  mediumIndex - 1
+ */
+func binarySearch2(_ array: [Int],_ searchData: Int, _ startIndex: Int,_ endIndex: Int) -> Bool {
+    if startIndex > endIndex { return false } //중요
+    
+    let mediumIndex = (startIndex + endIndex) / 2
+    
+    //제일 마지막까지 나누지 않았어도 데이터를 찾은 경우
+    if searchData == array[mediumIndex] { return true}
+    
+    if searchData > array[mediumIndex] {
+        return binarySearch2(array, searchData, mediumIndex + 1, endIndex)
+    } else {
+        return binarySearch2(array, searchData, startIndex, mediumIndex - 1)
+    }
+}
+
+
+
+/*
+ 수 찾기
+ https://www.acmicpc.net/problem/1920
+ 
+ 문제가 이해하기가 약간 어렵다. 뭐 모든 문제가 그렇긴 하지.
+ 근데 그냥 이거다. 5개의 숫자를 가진 input 4 1 5 2 3 이 있고, 마찬가지로 5개의 숫자를 가진 1 3 7 9 5 이 있다.
+ 
+ N = 5
+ N_list = [4 1 5 2 3]
+ M = 5
+ M_list = [1 3 7 9 5]
+ 
+ 여기서부터 찾는거다.
+ 
+ M_list에서 1이 N_list에 포함되면 1, 아니면 0 -> 1
+ M_list에서 3이 N_list에 포함되면 1, 아니면 0 -> 1
+ M_list에서 7이 N_list에 포함되면 1, 아니면 0 -> 0
+ M_list에서 9이 N_list에 포함되면 1, 아니면 0 -> 0
+ M_list에서 5이 N_list에 포함되면 1, 아니면 0 -> 1
+ */
+
+
+let N = 5
+let N_list = [4, 1, 5, 2, 3]
+let M = 5
+let M_list = [1, 3, 7, 9, 5]
+
+func find1(_ nlist: [Int],_ mlist: [Int]) {
+    for m in mlist {
+        if nlist.contains(m) {
+//            print("1")
+        } else {
+//            print("0")
+        }
+    }
+}
+
+
+func find2(_ nlist: [Int],_ mlist: [Int]) {
+    for m in mlist {
+        if binarySearch1(nlist, searchData: m) {
+//            print("1")
+        } else {
+//            print("0")
+        }
+    }
+}
+
+func find3(_ nlist: [Int],_ mlist: [Int]) {
+    let sortedArray = nlist.sorted()
+    
+    for m in mlist {
+        if binarySearch2(sortedArray, m, 0, sortedArray.count - 1) {
+//            print("1")
+        } else {
+//            print("0")
+        }
+    }
+}
+
+print("\n===수찾기 find1===")
+find1(N_list, M_list)
+
+print("\n===수찾기 find2===")
+let nlist = N_list.sorted()
+find2(nlist, M_list)
+
+print("\n===수찾기 find3===")
+find3(nlist, M_list)
+
+
+
+print("\n===경과 시간 비교===")
+/*
+ 경과 시간: 0.019398927688598633
+ 경과 시간: 0.0088731050491333
+ 경과 시간: 0.006464958190917969
+ */
+
+let list1 = (1...1000).map { _ in Int.random(in: 1...100)}
+let list2 = (1...1000).map { _ in Int.random(in: 1...100)}
+
+processTime {
+        find1(list1, list2)
+}
+
+processTime {
+        let sortedList = list1.sorted()
+        find2(sortedList, list2)
+}
+
+processTime {
+        let sortedList = list1.sorted()
+        find3(sortedList, list2)
+}
+```
+  </p>
+</details>
+
+- 탐색할 자료를 둘로 나누어 해당 데이터가 있을만한 곳을 탐색하는 방법 
+- Divide and Conquer(분할 정복) 개념을 사용한다.
+- 재귀용법을 활용한 정렬 알고리즘이다. 
+- 정렬되어야 한다는 조건이 있다. 
+- 이진 탐색(Binary Search)과 순차 탐색(Sequential Search)
+![](https://www.mathwarehouse.com/programming/images/binary-vs-linear-search/binary-and-linear-search-animations.gif)
+- 이진 탐색(Binary Search)과 이진 탐색 트리(Binary Search Tree)
+    - 공통점 
+    	- 이름이 비슷하다. 그래서 헷갈릴 수 있다. 
+    	- 둘 다 주로 검색 용도로 사용되는 알고리즘이다. 
+    - 차이점 
+    	- 이진 탐색(Binary Search)
+    		- 배열 자료구조를 사용한다. 
+    		- 데이터가 정렬된 상태에서 검색을 해야 한다는 조건이 있다.
+    	- 이진 탐색 트리(Binary Search Tree)
+        	- 트리 자료구조를 사용한다.
+    		- 정렬과는 관계가 없고, 이진 탐색 트리만의 정책을 따른다. 
+				 
+![](https://www.mathwarehouse.com/programming/images/binary-search-tree/binary-search-tree-sorted-array-animation.gif)										
+
+- 알고리즘 분석
+	- O(logn)
+* n개의 리스트를 매번 2로 나누어 1이 될 때까지 비교연산을 k회 진행
+    - <font size=4em>n X $\frac { 1 }{ 2 }$ X $\frac { 1 }{ 2 }$ X $\frac { 1 }{ 2 }$ ... = 1</font>
+    - <font size=4em>n X $\frac { 1 }{ 2 }^k$ = 1</font>
+    - <font size=4em>n = $2^k$ = $log_2 n$ = $log_2 2^k$</font>
+    - <font size=4em>$log_2 n$ = k</font>
+    - 빅 오 표기법으로는 k + 1 이 결국 최종 시간 복잡도임 (1이 되었을 때도, 비교연산을 한번 수행)
+    - 결국 O($log_2 n$ + 1) 이고, 2와 1, 상수는 삭제 되므로, O($log n$)
+
+## Breadth-First Search(너비 우선 탐색)
+			
+<details>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <p>
+
+```swift
+import Foundation
+
+/*
+ 그래프는 아래와 같이 입력
+ https://www.fun-coding.org/00_Images/bfsgraph.png
+ 파이썬은 3.6 버전부터 dict가 입력순으로 정렬된다고 한다.
+ swift는 정렬되지 않으니 키값을 기준으로 정렬해서 쓰겠다.
+ */
+
+var graph: [String: [String]] = [:]
+
+graph["A"] = ["B", "C"]
+graph["B"] = ["A", "D"]
+graph["C"] = ["A", "G", "H", "I"]
+graph["D"] = ["B", "E", "F"]
+graph["E"] = ["D"]
+graph["F"] = ["D"]
+graph["G"] = ["C"]
+graph["H"] = ["C"]
+graph["I"] = ["C", "J"]
+graph["J"] = ["I"]
+
+let startNode = graph.sorted { $0.key < $1.key }.first?.key ?? ""
+
+
+/*
+ swift에서는 popFirst를 Array에는 없다.
+ ArraySlice에만 있기 때문이다.
+ 그래서 Array에서도 사용하려면, Range<T>를 리턴하는 indices를 사용해서 서브스크립트 문법을 통해 사용한다.
+ extension 으로도 만들 수 있다.
+
+ //1. ArraySlice 와 서브스크립트를 활용
+ var arr = [1,2,3]
+ arr[arr.indices].popFirst()
+ 
+ //2. 불편하다면 extension
+ extension Array {
+     mutating func popFirst() -> Element? {
+         return self[self.indices].popFirst()
+     }
+ }
+ 
+ //3. removeFirst()는 안되나요 ?
+ 안된다. 빈배열에 removeFirst 를 하면 크래시가 발생하지만,
+ 빈배열에 popFirst를 하면 nil이 리턴되기 때문에 다르다.
+ */
+
+
+/*
+ 중요한 포인트가 몇가지 있다.
+ 1. swift dict는 python처럼 입력순으로 정렬되지 않는다.
+ 2. 정렬이 필요한가? 필요하다. startNode를 정하기 위해서. 그것 외에는 필요가 없다.
+    let startNode = graph.sorted { $0.key < $1.key }.first?.key ?? ""
+ 3. Array에는 popFirst()가 없기 때문에 ArraySlice를 사용했다.
+ 4. popFirst()를 하면 마치 디큐처럼 배열에서 첫번째 데이터는 사라지고 사라진 데이터를 리턴한다.
+ 5. removeFirst()는 사용할 수 없다. 빈배열에서 사용하면 크래시가 발생하기 때문이다 .
+ */
+func bfs(_ sortedGraph: [String: [String]], _ startNode: String) -> [String] {
+    var visitedQueue: [String] = []
+    var needVisitedQueue: [String] = []
+
+    needVisitedQueue.append(startNode)
+//    var count = 0 //실행횟수, 시간복잗도 확인
+    
+    while !needVisitedQueue.isEmpty {
+//        count += 1
+        let node = needVisitedQueue[needVisitedQueue.indices].popFirst() ?? ""
+        if !visitedQueue.contains(node) {
+            visitedQueue.append(node)
+            needVisitedQueue.append(contentsOf: graph[node] ?? [])
+        }
+    }
+
+//    print("count : \(count)")
+    return visitedQueue
+}
+
+
+print(bfs(graph, startNode))
+//["A", "B", "C", "D", "G", "H", "I", "E", "F", "J"]
+//bfs 의 시간복잡도는 O(V+E)
+//V는 노드수, E는 간선수
+//따라서 19
+//count : 19
+```
+  </p>
+</details>
+
+   
+    
+- BFS 와 DFS 는 대표적인 그래프 탐색알고리즘
+    - 너비 우선 탐색 (Breadth First Search): 노드와 같은 레벨에 있는 노드들 (형제 노드들)을 먼저 탐색하는 방식
+    - 깊이 우선 탐색 (Depth First Search): 노드의 자식들을 먼저 탐색하는 방식
+    
+- BFS/DFS 방식 이해를 위한 예제 
+    - BFS 방식: A - B - C - D - G - H - I - E - F - J 
+    	- 한 단계씩 내려가면서, 해당 노드와 같은 레벨에 있는 노드들 (형제 노드들)을 먼저 순회함
+    - DFS 방식: A - B - D - E - F - C - G - H - I - J 
+    	- 한 노드의 자식을 타고 끝까지 순회한 후, 다시 돌아와서 다른 형제들의 자식을 타고 내려가며 순화함
+    	- A - B 로 가든, A - C 로 가든 방향은 상관없다. 깊이 부터 순회하는 정책만 잘 따르면 된다.		
+			
+![](https://www.fun-coding.org/00_Images/BFSDFS.png)			
+    
+- 딕셔너리와 배열을 통해서 그래프를 표현할 수 있다. 
+    			
+![](https://www.fun-coding.org/00_Images/bfsgraph.png)		
+		
+- 큐 2개를 사용해서 아래의 순서에 따라 데이터를 넣으면 그래프를 구현할 수 있다. 
+			    
+![](https://www.fun-coding.org/00_Images/bfsqueue.png)	
+			
+> - 큐 2개(visited queue, need_visited queue)를 활용해서 데이터를 넣는 순서 
+  1. 맨처음 A를 need_visited queue에 넣는다. 
+  2. need_visited queue에 들어가있는 데이터 중에 맨 앞에있는 데이터를 꺼낸다.( 데이터는 큐에서 없어진다. ) 
+  3. 꺼낸 데이터가 visited queue에 있는지 확인한다.
+      - 확인해서 있다면 
+          1. visited queue에 꺼낸 데이터를 넣는다. 
+          2. 그리고 visited queue 넣은 데이터의 키값에 해당되는 value를 need_visited queue 에 순서대로 넣는다. 다음턴으로 넘어간다.
+      - 확인해서 없다면 
+          1. 아무것도 하지 않는다. 다음턴으로 넘어간다.
+  4. need_visited queue에 들어가있는 데이터 중에 맨 앞에있는 데이터를 꺼낸다.( 데이터는 큐에서 없어진다. ) 
+  5. 꺼낸 데이터가 visited queue에 있는지 확인한다. ( 아래생략 )
+  6. need_visited queue에 들어가있는 데이터 중에 맨 앞에있는 데이터를 꺼낸다.( 데이터는 큐에서 없어진다. )
+  7. 꺼낸 데이터가 visited queue에 있는지 확인한다. ( 아래생략 )
+  ...
+  8. 끝날때까지 진행한다. 
+  9. need_visited queue 이 비게 된다면 그래프를 다 순회한 것이므로 종료한다. 
+
+- 시간 복잡도
+    - O(n)과 같은 n을 사용하는 방법 말고 O(V + E)로 표시하는 시간복잡도를 갖는다. 
+    - 노드 수: V
+    - 간선 수: E
+    - 위 코드에서 while need_visit 은 V + E 번 만큼 수행함
+    - 시간 복잡도: O(V + E)
+    
+
+## Depth-First Search(깊이 우선 탐색)
+    
+<details>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <p>
+
+```swift
+
+import Foundation
+
+/*
+ 그래프는 아래와 같이 입력
+ https://www.fun-coding.org/00_Images/dfsgraph.png
+ 파이썬은 3.6 버전부터 dict가 입력순으로 정렬된다고 한다.
+ swift는 정렬되지 않으니 키값을 기준으로 정렬해서 쓰겠다.
+ */
+
+var graph: [String: [String]] = [:]
+
+graph["A"] = ["B", "C"]
+graph["B"] = ["A", "D"]
+graph["C"] = ["A", "G", "H", "I"]
+graph["D"] = ["B", "E", "F"]
+graph["E"] = ["D"]
+graph["F"] = ["D"]
+graph["G"] = ["C"]
+graph["H"] = ["C"]
+graph["I"] = ["C", "J"]
+graph["J"] = ["I"]
+
+let startNode = graph.sorted { $0.key < $1.key }.first?.key ?? ""
+
+/*
+ 중요한 포인트가 몇가지 있다.
+ 1. swift dict는 python처럼 입력순으로 정렬되지 않는다.
+ 2. 정렬이 필요한가? 필요하다. startNode를 정하기 위해서. 그것 외에는 필요가 없다.
+    let startNode = graph.sorted { $0.key < $1.key }.first?.key ?? ""
+ 3. 그림과는 다른 결과값이 나왔는데, 방향의 문제이지 dfs의 정책을 위반하지 않는다.
+    무슨 말이냐면 그림은 왼쪽부터 돌아서 ABDEFCGHIJ 순이지만 우리 결과값은 ACIJHGBDFE 이다.
+    이것은 오른쪽 먼저하냐 왼쪽먼저 하냐의 방향의 차이니까 dfs의 정책을 무시한 것이 아니다.
+    그렇다면 데이터가 들어가 있는 value의 순서는 상관이 없나? 그건 아닌 것 같은데?
+ */
+func dfs(_ sortedGraph: [String: [String]], _ startNode: String) -> [String] {
+    var visitedQueue: [String] = []
+    var needVisitedStack: [String] = []
+
+    needVisitedStack.append(startNode)
+//    var count = 0 //실행횟수, 시간복잗도 확인
+    
+    while !needVisitedStack.isEmpty {
+//        count += 1
+        let node = needVisitedStack.popLast() ?? ""
+        if !visitedQueue.contains(node) {
+            visitedQueue.append(node)
+            needVisitedStack.append(contentsOf: graph[node] ?? [])
+        }
+    }
+
+//    print("count : \(count)")
+    return visitedQueue
+}
+
+
+print(dfs(graph, startNode))
+//["A", "C", "I", "J", "H", "G", "B", "D", "F", "E"]
+//bfs 의 시간복잡도는 O(V+E)
+//V는 노드수, E는 간선수
+//따라서 19
+//count : 19
+```
+  </p>
+</details>    
+
+- BFS 와 DFS 는 대표적인 그래프 탐색알고리즘
+    - 너비 우선 탐색 (Breadth First Search): 노드와 같은 레벨에 있는 노드들 (형제 노드들)을 먼저 탐색하는 방식
+    - 깊이 우선 탐색 (Depth First Search): 노드의 자식들을 먼저 탐색하는 방식
+    
+- BFS/DFS 방식 이해를 위한 예제 
+    - BFS 방식: A - B - C - D - G - H - I - E - F - J 
+    	- 한 단계씩 내려가면서, 해당 노드와 같은 레벨에 있는 노드들 (형제 노드들)을 먼저 순회함
+    - DFS 방식: A - B - D - E - F - C - G - H - I - J 
+    	- 한 노드의 자식을 타고 끝까지 순회한 후, 다시 돌아와서 다른 형제들의 자식을 타고 내려가며 순화함
+    	- A - B 로 가든, A - C 로 가든 방향은 상관없다. 깊이 부터 순회하는 정책만 잘 따르면 된다.		
+					
+![](https://www.fun-coding.org/00_Images/BFSDFS.png)			
+    
+- 딕셔너리와 배열을 통해서 그래프를 표현할 수 있다. 
+    					
+![](https://www.fun-coding.org/00_Images/dfsgraph.png)		
+		
+- 큐 1개, 스택 1개를 사용해서 아래의 순서에 따라 데이터를 넣으면 그래프를 구현할 수 있다. 
+								    
+![](https://velog.velcdn.com/images/dev_kickbell/post/add77935-4cf9-497e-b9cd-47326d19b85c/image.png)						
+> - 큐(visited queue) 와 스택(need_visited stack)를 활용해서 데이터를 넣는 순서 
+  1. 맨처음 A를 need_visited stack에 넣는다. 
+  2. need_visited stack에 들어가있는 데이터 중에 마지막에 있는 데이터를 꺼낸다.( 스택이니까. ) 
+  3. 꺼낸 데이터가 visited queue에 있는지 확인한다.
+      - 확인해서 있다면 
+          1. visited queue에 꺼낸 데이터를 넣는다. 
+          2. 그리고 visited queue 넣은 데이터의 키값에 해당되는 value를 need_visited stack에 넣는다. 다음턴으로 넘어간다.
+      - 확인해서 없다면 
+          1. 아무것도 하지 않는다. 다음턴으로 넘어간다.
+  4. need_visited stack에 들어가있는 데이터 중에 마지막에 있는 데이터를 꺼낸다.( 스택이니까. ) 
+  5. 꺼낸 데이터가 visited queue에 있는지 확인한다. ( 아래생략 )
+  6. need_visited stack에 들어가있는 데이터 중에 마지막에 있는 데이터를 꺼낸다.( 스택이니까. ) 
+  7. 꺼낸 데이터가 visited queue에 있는지 확인한다. ( 아래생략 )
+  ...
+  8. 끝날때까지 진행한다. 
+  9. need_visited stack 이 비게 된다면 그래프를 다 순회한 것이므로 종료한다. 
+    
+- 시간 복잡도
+    - O(n)과 같은 n을 사용하는 방법 말고 O(V + E)로 표시하는 시간복잡도를 갖는다. 
+    - 노드 수: V
+    - 간선 수: E
+    - 위 코드에서 while need_visit 은 V + E 번 만큼 수행함
+    - 시간 복잡도: O(V + E)
+    
+    
+## Greedy Algorithm(탐욕 알고리즘)
+    
+<details>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <p>
+
+```swift
+
+import Foundation
+
+/*
+ ### 문제1: 동전 문제
+   - 지불해야 하는 값이 4720원 일 때 1원 50원 100원, 500원 동전으로 동전의 수가 가장 적게 지불하시오.
+     - 가장 큰 동전부터 최대한 지불해야 하는 값을 채우는 방식으로 구현 가능
+     - 탐욕 알고리즘으로 매순간 최적이라고 생각되는 경우를 선택하면 됨
+ */
+let coins = [500, 50, 1, 100]
+
+func minCoinCount(price: Int, coins: [Int]) -> (Int, [(Int, Int)]) {
+    var totalCoinCount = 0
+    var history: [(Int, Int)] = []
+    var price = price
+    let sortedCoins = coins.sorted(by: >) //[500, 100, 50, 1], reverse
+    
+    for coin in sortedCoins {
+        let coinNum = price / coin
+        totalCoinCount += coinNum
+        price -= coinNum * coin
+        history.append((coin, coinNum))
+    }
+    
+    return (totalCoinCount, history)
+}
+
+print("\n===동전 문제===")
+print(minCoinCount(price: 4720, coins: coins))
+
+
+/*
+ ### 문제2: 부분 배낭 문제 (Fractional Knapsack Problem)
+   - 무게 제한이 k인 배낭에 최대 가치를 가지도록 물건을 넣는 문제
+     - 각 물건은 무게(w)와 가치(v)로 표현될 수 있음
+     - 물건은 쪼갤 수 있으므로 물건의 일부분이 배낭에 넣어질 수 있음, 그래서 Fractional Knapsack Problem 으로 부름
+       - Fractional Knapsack Problem 의 반대로 물건을 쪼개서 넣을 수 없는 배낭 문제도 존재함 (0/1 Knapsack Problem 으로 부름)
+     <img src="https://www.fun-coding.org/00_Images/knapsack.png">
+ */
+
+typealias Bag = (weight: Double, value: Double)
+typealias History = (weight: Double, value: Double, percent: Double)
+typealias ReturnValue = (totalValue: Double, history: [History])
+
+func maxValue(_ bags: [Bag],
+              _ limitWeight: Double) -> ReturnValue {
+    let sortedBags = bags.sorted { $0.value/$0.weight > $1.value/$1.weight } //더 높은 가치순으로 정렬
+    var totalValue: Double = 0
+    var history: [History] = []
+    var limitWeight = limitWeight
+    
+    for bag in sortedBags {
+        if limitWeight - bag.weight >= 0 {
+            //더 넣을 공간이 남아있다면
+            limitWeight -= bag.weight
+            totalValue += bag.value
+            history.append((bag.weight, bag.value, 1.0))
+        } else {
+            //넣을거 다 넣고 쪼개서 넣는거라면
+            let fraction = limitWeight / bag.weight //쪼갠부분이 1.0을 기준으로 0.?인지 계산
+//            limitWeight -= bag.weight 이건 필요가 없다. 왜? 어차피 마지막이라 0보다 작거나 같을테니까
+            totalValue += (bag.value * fraction) // 이 부분 중요
+            history.append((bag.weight, bag.value, fraction))
+            break //마지막이니 꼭 끝내줘야 한다.
+        }
+    }
+    
+    return (totalValue, history)
+}
+
+print("\n===부분 배낭 문제===")
+let bags: [Bag] = [(10,10), (15,12), (20,10), (25,8), (30,5)]
+let limitWeight = 30.0
+
+let result = maxValue(bags, limitWeight)
+print(result.totalValue)
+print(result.history.forEach { print($0)})
+
+
+
+/*
+ ATM 인출기
+ https://www.acmicpc.net/problem/11399
+ 
+ 인하은행에는 ATM이 1대밖에 없다. 지금 이 ATM앞에 N명의 사람들이 줄을 서있다. 사람은 1번부터 N번까지 번호가 매겨져 있으며, i번 사람이 돈을 인출하는데 걸리는 시간은 Pi분이다.
+ 사람들이 줄을 서는 순서에 따라서, 돈을 인출하는데 필요한 시간의 합이 달라지게 된다. 예를 들어, 총 5명이 있고, P1 = 3, P2 = 1, P3 = 4, P4 = 3, P5 = 2 인 경우를 생각해보자. [1, 2, 3, 4, 5] 순서로 줄을 선다면, 1번 사람은 3분만에 돈을 뽑을 수 있다. 2번 사람은 1번 사람이 돈을 뽑을 때 까지 기다려야 하기 때문에, 3+1 = 4분이 걸리게 된다. 3번 사람은 1번, 2번 사람이 돈을 뽑을 때까지 기다려야 하기 때문에, 총 3+1+4 = 8분이 필요하게 된다. 4번 사람은 3+1+4+3 = 11분, 5번 사람은 3+1+4+3+2 = 13분이 걸리게 된다. 이 경우에 각 사람이 돈을 인출하는데 필요한 시간의 합은 3+4+8+11+13 = 39분이 된다.
+ 줄을 [2, 5, 1, 4, 3] 순서로 줄을 서면, 2번 사람은 1분만에, 5번 사람은 1+2 = 3분, 1번 사람은 1+2+3 = 6분, 4번 사람은 1+2+3+3 = 9분, 3번 사람은 1+2+3+3+4 = 13분이 걸리게 된다. 각 사람이 돈을 인출하는데 필요한 시간의 합은 1+3+6+9+13 = 32분이다. 이 방법보다 더 필요한 시간의 합을 최소로 만들 수는 없다.
+ 줄을 서 있는 사람의 수 N과 각 사람이 돈을 인출하는데 걸리는 시간 Pi가 주어졌을 때, 각 사람이 돈을 인출하는데 필요한 시간의 합의 최솟값을 구하는 프로그램을 작성하시오.
+ */
+
+
+let timeList = [3, 1, 4, 3, 2]
+
+
+/*
+ 되게 참신?한 방법이 쓰인다. 아래 이중포문 참고
+ */
+func minTotalTimeUseForLoop(_ timeList: [Int]) -> Int {
+    let sortedTimeList: [Int] = timeList.sorted()
+    var minTotalTime = 0
+    for index in 0...timeList.count - 1 {
+        for index2 in 0...index {
+            //결국에 [1,2,3,3,4] 라는 리스트를 받았을 떄, 1, 1+2, 1+2+3, 1+2+3+3, 1+2+3+3+4처럼 동작해야 했다.
+            //즉 0번째까지 더하기, 0~1번째까지 더하기, 0~2번째까지 더하기, 0~3번째까지 더하기, 0~4번째까지 더하기 처럼 말이다.
+            //그래서 여기서는 이중포문에 0...index + 1를 써서 그걸 해결했다. 신박하다?.. 굿잡..
+            //print(index, index2)
+            minTotalTime += sortedTimeList[index2]
+        }
+    }
+    return minTotalTime
+}
+
+
+//참고로 난 이렇게 풀었는데, 위에 선생님 풀이가 더 나은 것 같다.
+func minTotalTime(_ timeList: [Int]) -> Int {
+    let sortedTimeList: [Int] = timeList.sorted()
+    var totalTime: Int = 0
+    var history: [Int] = []
+    
+    for work in sortedTimeList {
+        totalTime += work
+        history.append(totalTime)
+    }
+    
+    return history.reduce(0, +)
+}
+
+print("\n===ATM 인출기===")
+//1. 선생님 풀이
+print(minTotalTimeUseForLoop(timeList))
+//2. 나의 풀이
+print(minTotalTime(timeList))
+```
+  </p>
+</details>
+    
+    
+    
+
+- 최적의 해에 가까운 값을 구하기 위해 사용됨
+- 여러 경우 중 하나를 결정해야할 때마다, **매순간 최적이라고 생각되는 경우를 선택**하는 방식으로 진행해서, 최종적인 값을 구하는 방식
+- 탐욕 알고리즘의 한계
+    - 탐욕 알고리즘은 근사치 추정에 활용
+    - 반드시 최적의 해를 구할 수 있는 것은 아니기 때문
+    - 최적의 해에 가까운 값을 구하는 방법 중의 하나임				
+    
+![](https://www.fun-coding.org/00_Images/greedy.png)			
+    		
+- '시작' 노드에서 시작해서 가장 작은 값을 찾아 leaf node 까지 가는 경로를 찾을 시에
+    - Greedy 알고리즘 적용시 시작 -> 7 -> 12 를 선택하게 되므로 7 + 12 = 19 가 됨 
+    - 하지만 실제 가장 작은 값은 시작 -> 10 -> 5 이며, 10 + 5 = 15 가 답
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+## Binary Search(이진 탐색)
+## Binary Search(이진 탐색)
+## Binary Search(이진 탐색)
 
 <details>
   <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
