@@ -2186,13 +2186,13 @@ func debug(_ index: Int, _ edge: Edge) {
     - 프로세스 
         1. 각 트리에 대해 rank(높이)를 저장해둔다. 
         2. 두 개의 트리를 합칠 때, 두 트리의 rank가 다르다면 ? 
-	    - ![](https://www.fun-coding.org/00_Images/unionbyrank_findunion.png)			
-	    - rank가 작은 트리를 rank가 높은 트리의 자식노드로 붙인다. 
-	    - 이진트리가 아니기 때문에 어떻게 붙이든 상관이 없다.
-	    - (A,B,F)-(D)를 (C)-(E)-(G)에 그냥 붙였으면 최악의 경우 (A,B,F)-(D)-(C)-(E)-(G)로 rank가 4인 트리가 되지만, 이 기법을 쓰면 rank가 2로 만들 수 있다. (rank는 0부터) 
+	  	- ![](https://www.fun-coding.org/00_Images/unionbyrank_findunion.png)			
+	  	- rank가 작은 트리를 rank가 높은 트리의 자식노드로 붙인다. 
+	  	- 이진트리가 아니기 때문에 어떻게 붙이든 상관이 없다.
+	  	- (A,B,F)-(D)를 (C)-(E)-(G)에 그냥 붙였으면 최악의 경우 (A,B,F)-(D)-(C)-(E)-(G)로 rank가 4인 트리가 되지만, 이 기법을 쓰면 rank가 2로 만들 수 있다. (rank는 0부터) 
         3. 두 트리의 rank가 같다면 ? 
-	    - ![](https://www.fun-coding.org/00_Images/unionbyranksame_findunion.png)			
-	    - 둘 중에 아무거나 한 쪽의 rank를 1 증가 시켜주고, 반대 쪽의 트리를 자식노드로 붙여준다. 
+	  	- ![](https://www.fun-coding.org/00_Images/unionbyranksame_findunion.png)			
+	  	- 둘 중에 아무거나 한 쪽의 rank를 1 증가 시켜주고, 반대 쪽의 트리를 자식노드로 붙여준다. 
     - 초기화시, 모든 원소는 높이(rank) 가 0 인 개별 집합인 상태에서, 하나씩 원소를 합칠 때, union-by-rank 기법을 사용한다면,
 	  - 높이가 h 인 트리가 만들어지려면, 높이가 h - 1 인 두 개의 트리가 합쳐져야 함
 	  - 높이가 h - 1 인 트리를 만들기 위해 최소 n개의 원소가 필요하다면, 높이가 h 인 트리가 만들어지기 위해서는 최소 2n개의 원소가 필요함
