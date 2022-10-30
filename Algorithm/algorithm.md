@@ -2158,13 +2158,13 @@ func debug(_ index: Int, _ edge: Edge) {
     - 예를 들어서 {1, 2, 3}과 {4, 5, 6}은 서로소이며 {1, 2, 3}과 {3, 4, 5}는 아니다.
 				
 - Union Find 알고리즘 프로세스
-    - 1. 초기화 
+    - 초기화 
 	  - ![](https://www.fun-coding.org/00_Images/initial_findunion.png)				
 	  - n개의 원소를 개별집합으로 이뤄지도록 초기화 하는 작업 				
-    - 2. Union 
+    - Union 
 	  - ![](https://www.fun-coding.org/00_Images/union_findunion.png)					
 	  - 두 개별 집합을 하나의 집합으로 합치는 작업, 두 트리를 하나의 트리로 합침			
-    - 3. Find 
+    - Find 
 	  - ![](https://www.fun-coding.org/00_Images/find_findunion.png)					
 	  - 여러 노드가 있을 때, 두 개의 노드를 선택해서 그 두개의 노드의 루트 노드를 찾는다. 		
 	  - 위 그림에서 A, B를 예로 들면 A, B는 D라는 같은 루트 노드를 갖는다. 그러면 얘네들은 서로 같은 부분 집합 안에 들어가있다 라고 판단한다. 		
@@ -2184,19 +2184,19 @@ func debug(_ index: Int, _ edge: Edge) {
     - 밑에 있는 Path Compression 기법과 같이 사용하면 O(1)까지 낮출 수 있다. 
     - 2개의 부분 집합이 합쳐질 때, 어떻게 하면 높이를 작게하느냐에 초점을 맞춘 기법이다. (루트 노드를 찾는 시간을 줄이기 위해서) 
     - 프로세스 
-	  1. 각 트리에 대해 rank(높이)를 저장해둔다. 
-	  2. 두 개의 트리를 합칠 때, 두 트리의 rank가 다르다면 ? 
-	  	- ![](https://www.fun-coding.org/00_Images/unionbyrank_findunion.png)			
-	  	- rank가 작은 트리를 rank가 높은 트리의 자식노드로 붙인다. 
-	  	- 이진트리가 아니기 때문에 어떻게 붙이든 상관이 없다.
-	  	- (A,B,F)-(D)를 (C)-(E)-(G)에 그냥 붙였으면 최악의 경우 (A,B,F)-(D)-(C)-(E)-(G)로 rank가 4인 트리가 되지만, 이 기법을 쓰면 rank가 2로 만들 수 있다. (rank는 0부터) 
-	  3. 두 트리의 rank가 같다면 ? 
-	  	- ![](https://www.fun-coding.org/00_Images/unionbyranksame_findunion.png)			
-	  	- 둘 중에 아무거나 한 쪽의 rank를 1 증가 시켜주고, 반대 쪽의 트리를 자식노드로 붙여준다. 
+        1. 각 트리에 대해 rank(높이)를 저장해둔다. 
+        2. 두 개의 트리를 합칠 때, 두 트리의 rank가 다르다면 ? 
+	    - ![](https://www.fun-coding.org/00_Images/unionbyrank_findunion.png)			
+	    - rank가 작은 트리를 rank가 높은 트리의 자식노드로 붙인다. 
+	    - 이진트리가 아니기 때문에 어떻게 붙이든 상관이 없다.
+	    - (A,B,F)-(D)를 (C)-(E)-(G)에 그냥 붙였으면 최악의 경우 (A,B,F)-(D)-(C)-(E)-(G)로 rank가 4인 트리가 되지만, 이 기법을 쓰면 rank가 2로 만들 수 있다. (rank는 0부터) 
+        3. 두 트리의 rank가 같다면 ? 
+	    - ![](https://www.fun-coding.org/00_Images/unionbyranksame_findunion.png)			
+	    - 둘 중에 아무거나 한 쪽의 rank를 1 증가 시켜주고, 반대 쪽의 트리를 자식노드로 붙여준다. 
     - 초기화시, 모든 원소는 높이(rank) 가 0 인 개별 집합인 상태에서, 하나씩 원소를 합칠 때, union-by-rank 기법을 사용한다면,
-	  1. 높이가 h 인 트리가 만들어지려면, 높이가 h - 1 인 두 개의 트리가 합쳐져야 함
-	  2. 높이가 h - 1 인 트리를 만들기 위해 최소 n개의 원소가 필요하다면, 높이가 h 인 트리가 만들어지기 위해서는 최소 2n개의 원소가 필요함
-	  3. 따라서 union-by-rank 기법을 사용하면, union/find 연산의 시간복잡도는 O(N) 이 아닌, $ O(log{N}) $ 로 낮출 수 있음
+	  - 높이가 h 인 트리가 만들어지려면, 높이가 h - 1 인 두 개의 트리가 합쳐져야 함
+	  - 높이가 h - 1 인 트리를 만들기 위해 최소 n개의 원소가 필요하다면, 높이가 h 인 트리가 만들어지기 위해서는 최소 2n개의 원소가 필요함
+	  - 따라서 union-by-rank 기법을 사용하면, union/find 연산의 시간복잡도는 O(N) 이 아닌, $ O(log{N}) $ 로 낮출 수 있음
 				    
 - Path Compression(경로 압축) 기법
     - ![](https://www.fun-coding.org/00_Images/pathcompression_findunion.png)			
