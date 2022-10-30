@@ -1587,33 +1587,997 @@ print(minTotalTime(timeList))
 - '시작' 노드에서 시작해서 가장 작은 값을 찾아 leaf node 까지 가는 경로를 찾을 시에
     - Greedy 알고리즘 적용시 시작 -> 7 -> 12 를 선택하게 되므로 7 + 12 = 19 가 됨 
     - 하지만 실제 가장 작은 값은 시작 -> 10 -> 5 이며, 10 + 5 = 15 가 답
+    
+    
+## Dijkstra Algorithm(다익스트라 알고리즘)	
+		    
+<details>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <p>
+
+```swift
+import Foundation 
+
+let graph: [String: [String: Int]] = [
+    "A":["B":8, "C":1, "D":2],
+    "B":[:],
+    "C":["B":5, "D":2],
+    "D":["E":3, "F":5],
+    "E":["F":1],
+    "F":["A":5]
+]
 
 
+/*
+ ### 다익스트라 알고리즘
+ - 탐색할 그래프의 시작 정점과 다른 정점들간의 최단 거리 구하기
+ */
+func dijkstra(graph: [String: [String: Int]], startNode: String) -> [String: Int] {
+    //1. 초기화
+    var distances: [String: Int] = [:]
+    var priorityQueue = PriorityQueue<(distance: Int, node: String)>(sort:<) //우선순위큐의 구현은 github에 첨부되어 있음.
+    graph.forEach { distances[$0.key] = Int.max }
+    distances[startNode] = 0
+    priorityQueue.enqueue((distances[startNode] ?? 0, startNode))
     
+    //2. 구현부
+    while !priorityQueue.isEmpty {
+        let item = priorityQueue.dequeue() ?? (0, "")
+        let currentDistance = item.distance
+        let currentNode = item.node
+        
+        if distances[currentNode] ?? 0 < currentDistance { continue }
+        
+        //adjacent 인접한
+        for (adjacentNode, adjacentDistance) in graph[currentNode] ?? ["":0] {
+            let distance = currentDistance + adjacentDistance
+            
+            if distance < (distances[adjacentNode] ?? 0) {
+                distances[adjacentNode] = distance
+                priorityQueue.enqueue((distance, adjacentNode))
+            }
+        }
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-## Binary Search(이진 탐색)
-## Binary Search(이진 탐색)
-## Binary Search(이진 탐색)
+    return distances
+}
 
+print("\n===dijkstra===")
+let result = dijkstra(graph: graph, startNode: "A").sorted { $0.key < $1.key }
+print(result.forEach { print($0) })
+
+
+
+/*
+ ### 참고: 최단 경로 출력
+ - 탐색할 그래프의 시작 정점과 다른 정점들간의 최단 거리 및 최단 경로 출력하기
+ */
+func dijkstra(graph: [String: [String: Int]], startNode: String, endNode: String) -> [String : (distance: Int, node: String)] {
+    //1. 초기화
+    //위에랑 다른점은 distances의 value값이 Int -> (distance: Int, node: String)로 바뀌면서 초기화 코드가 싹 바뀜.
+    var distances: [String: (distance: Int, node: String)] = [:]
+    var priorityQueue = PriorityQueue<(distance: Int, node: String)>(sort:<)
+    graph.forEach { distances[$0.key] = (Int.max, $0.key) }
+    distances[startNode] = (0, startNode)
+    priorityQueue.enqueue((distances[startNode]?.distance ?? 0, startNode))
+    
+    //2. 구현부
+    //구현부도 바뀐쪽은 1번과 같음.
+    while !priorityQueue.isEmpty {
+        let item = priorityQueue.dequeue() ?? (0, "")
+        let currentDistance = item.distance
+        let currentNode = item.node
+        
+        if distances[currentNode]?.distance ?? 0 < currentDistance { continue }
+        
+        //adjacent 인접한
+        for (adjacentNode, adjacentDistance) in graph[currentNode] ?? ["":0] {
+            let distance = currentDistance + adjacentDistance
+            
+            if distance < (distances[adjacentNode]?.distance ?? 0) {
+                distances[adjacentNode] = (distance, currentNode)
+                priorityQueue.enqueue((distance, adjacentNode))
+            }
+        }
+    }
+    
+    //3. 바뀐 부분을 사용해서 아래와 같이
+    //start to end까지 최단 경로를 출력하기 위한 로직이 추가됨.
+    var path = endNode
+    var pathOutput = endNode + " <- "
+    while distances[path]?.node ?? "" != startNode {
+        let node = distances[path]?.node ?? ""
+        pathOutput += node + " <- "
+        path = distances[path]?.node ?? ""
+    }
+    pathOutput += startNode
+    print("1. startNode로 부터 endNode까지의 최단경로")
+    print(pathOutput)
+    
+    return distances
+}
+
+
+print("\n===dijkstra + start to end===")
+let result2 = dijkstra(graph: graph, startNode: "A", endNode: "F").sorted { $0.key < $1.key }
+
+print("\n2. startNode로 부터 다른 노드들 사이의 최단거리")
+print(result2.forEach { print($0) })
+
+```
+  </p>
+</details>    
+		
+		
+			
+
+    
+- 그래프 자료구조를 사용한 두 노드를 잇는 최단거리를 찾는 알고리즘 
+- 가중치(Weight)그래프에서 간선(Edge)의 가중치 합이 최소가 되도록 하는 경로를 찾는 것이 목적이다. 
+- 최단 경로 문제의 종류 
+    1. 단일 출발 및 단일 도착 최단 경로 문제
+    	- 그래프 내의 특정 노드 u 에서 출발, 또다른 특정 노드 v 에 도착하는 가장 짧은 경로를 찾는 문제
+    2. 단일 출발 최단 경로 문제(SSP) 
+    	- single-source shortest path problem
+    	- 그래프 내의 특정 노드 u 와 그래프 내 다른 모든 노드 각각의 가장 짧은 경로를 찾는 문제
+		- A, B, C, D 라는 노드가 있고 시작점을 A라고 하면 A - B, A - C, A - D 에 대한 최단경로를 찾는 문제  
+    3. 전체 쌍 최단 경로 문제(ASP): 
+    	- all pairs shortest path problem
+    	- 그래프 내의 모든 노드 쌍 (u, v) 에 대한 최단 경로를 찾는 문제
+    	- A - B, A - C, A - D, B - C, B - D... 
+- 변형이 많은 알고리즘인데 일반적으로는 2번을 뜻한다. 
+- 가장 개선된 변형인 우선순위 큐를 활용한 버전을 볼 것이고, 아래그림에서 A->B,C,D->E,F 식으로 순회하기 때문에 실질적으로 마치 너비우선탐색(BFS)처럼 순회한다. 
+
+- 다익스크라 알고리즘을 이해하기 위한 예제 
+		
+![](https://www.fun-coding.org/00_Images/dijkstra.png)			
+		
+- 1. 초기화 
+    - 첫 노드를 기준으로 배열을 생성하고, 초기값을 할당한다. 
+    - 첫 노드의 초기값은 0, 나머지는 무한대로 저장한다. 
+    - 우선순위 큐에 튜플 타입으로 (첫 노드, 0)을 먼저 넣는다.		
+			
+![](https://www.fun-coding.org/00_Images/dijkstra_initial.png)		
+
+- 2. A 노드 기준 거리 계산 			
+    - 우선순위 큐에서 하나를 뺀다. (처음이니 첫 노드가 꺼내진다.) 
+    - 꺼낸 노드에서 갈 수 있는 노드는 B, C, D 이다. (F로는 못간다. 방향 그래프라서 화살표가 있다.)
+    - 꺼낸 노드에서 각 B, C, D 노드로 갈 수 있는 거리와 생성한 배열의 거리를 비교해서 더 짧으면 바꿔준다. 그렇지 않으면 바꾸지 않는다. 
+    - 바꿔지면 큐에 넣는다. 다만 저 큐는 우선순위큐(min heap)이므로 늦게 넣었어도 가중치(weight)를 기준으로 넣을때마다 정렬된다. 
+    - 첫 노드 기준 한바퀴를 다 돌았다. 
+			
+![](https://www.fun-coding.org/00_Images/dijkstra_1st.png)			
+				    	
+- 3. C 노드 거리 계산 (우선순위 큐에서 꺼낸 데이터) 
+	- 우선순위 큐에서 데이터를 하나 꺼낸다. min heap 이므로 (C, 1)이 꺼내진다. 
+    - 기존에 A를 기준으로 순회했다면, 이번에는 C를 기준으로 순회하는 것이다. 
+    - C를 기준으로 보자. C에서는 C->D, C->B가 있다. 
+    	- C->D
+    		- 지금 생성한 배열을 기준으로 보면 (A,0) (C,1) 이다. 이 말은 A->C까지의 거리가 1이라는 말이다. 
+    		- 그리고 C->D의 거리는 2이다. 그런데, A->D는 (A,0) (D,2)로 2이다. 즉, A->C->D가 A->D 보다 더 늦다.
+    		- 이러면 아무것도 하지 않는다. 그냥 큐에서 데이터만 하나 빠진것이다. 
+    	- C->B
+    		- C->B를 보자. 얘는 A->B는 8인데, A->C->B는 1+5 = 6이다. 
+    		- 이러면 아까전에 했던 것처럼 A->C->B 가 A->B 보다 낮으니 배열을 6으로 업데이트하고 (B,6)을 큐에 넣는다. 
+    		- 주의할 점은 실질적으로 큐에는 (6,B)로 들어간다. (데이터를 꺼낼때 앞에 거를 기준으로 빼오기 때문에) 또, 지금 그림을 보면 이미 (B,8)이 있다. 그럼에도 (B,6)으로 새로 들어가는 것이다. 
+    		- 자, 이제 C에서 갈 수 있는 방향은 다 돌았으니 한바퀴가 또 끝났다. 		
+		    		
+![](https://www.fun-coding.org/00_Images/dijkstra_2nd.png)			
+				    
+- 4. D 노드 거리 계산 (우선순위 큐에서 꺼낸 데이터) 		
+	- 같은 방식으로 진행한다. 			
+    - D에서는 D->E, D->F가 있다. 
+    - 배열에 현재 저장된 A->D가 2인데, 그림상으로 E까지는 2+3=5, F까지는 2+5=7이다. 하지만 배열에는 inf(무한대)가 저장되어 있다. 비교해서 당연히 거리가 더 짧으므로 배열을 바꿔주고 우선순위 큐에 넣어준다. 
+    - 한바퀴가 또 끝났다. 
+			    
+![](https://www.fun-coding.org/00_Images/dijkstra_3rd.png)			
+				
+- 5. E 노드 거리 계산 (우선순위 큐에서 꺼낸 데이터) 	
+    - E 기준으로 진행한다. 
+    - 배열을 보면 A->E는 5이다. 그리고 그림을 보면 E에서 갈 수 있는 곳은 F밖에 없고 거리는 1이다. 1+5인데 배열에는 A->F가 7로 되어있으므로 배열을 업데이트하고 큐에 데이터를 넣어준다. 
+    - 한바퀴가 또 끝났다. 
+				
+![](https://www.fun-coding.org/00_Images/dijkstra_3-2th.png)				
+				    
+- 5. B,F 노드 거리 계산 (우선순위 큐에서 꺼낸 데이터) 	
+    - B 기준으로 진행한다. B가 2개지만 weight가 제일 낮은 6이 최소힙에서 꺼내진다. 
+    - B 는 갈 수 있는 데가 없다 종료한다. 
+    - 다시 데이터를 꺼낸다. F, 6이 나왔다. 
+    - F는 배열을 보니 A->F가 6인데, F->A 가 5이다. 하지만, A->A는 0이다. 따라서 아무것도 하지 않는다.
+    - 한바퀴가 또 끝났다. (사실상 두바퀴였나) 
+			    	
+![](https://www.fun-coding.org/00_Images/dijkstra_4th.png)			
+				
+- 6. F,B 노드 거리 계산 (우선순위 큐에서 꺼낸 데이터) 	
+    - F 기준으로 진행한다. (F,7)이 나왔다. 어차피 계산을 해도 바로 위에처럼 아무것도 안할 것이지만, 여기선 최적화를 진행한다.
+    - 뭐냐면, A->F는 6이다. 그리고 지금 꺼낸 큐에서 나온 데이터는 (F,7)이다. 그러면 큐에서 나온 데이터는 뭔짓을 해도 A->F보다 작을 수 는 없는 거다. 그렇지? 왜냐 A->F는 6이니까. 이후에 계산할 작업인 F->A는 어차피 둘 다 더할 값이기 때문이다. (만약에 F->A가 아니라 F->G 였더라도) 
+    - 정리하면, 현재 배열의 거리가 큐에서 꺼낸 거리보다 작다면 그 이후를 계산할 필요없이 바로 다음 작업을 진행하면 된다. 
+	- F는 끝났고, 이제 B를 진행한다. 방금 말했던 것처럼 배열의 B는 6이고, 큐에서 꺼낸 데이터는 8이니 아무것도 진행하지 않는다. 
+	
+- 7. 종료 
+    - 우선순위 큐가 비어있으니 종료한다. 
+    - 현재 배열의 남아있는 데이터가 바로 첫 노드인 A를 기준으로 각 노드까지의 최단 경로이다. 
+    - 이 방법의 장점은 우선순위 큐를 사용하므로, minheap에서 가장 짧은 거리가 먼저 나와서 그거 기준으로 계산하기 때문에 더 긴 거리의 루트에 대해서는 계산을 스킵할 수 있다. 
+    - 무슨 말이냐면, 위에서 처럼 짧은 거리부터 계산을 하기 때문에 그것부터 계산해서 배열이 딱 세팅되어 있다. 그런데, 그 배열의 데이터보다 큰 데이터가 큐에서 나오면 그건 계산의 의미가 없으므로 스킵해버릴 수 있는 것이다. 
+    
+    
+- 시간 복잡도
+    - 위 다익스트라 알고리즘은 크게 다음 두 가지 과정을 거침
+	- 과정1: 각 노드마다 인접한 간선들을 모두 검사하는 과정
+    	- A를 기준으로하면 B,C,D를 꼭 다 한번씩 검사하고 C를 기준으로 하면 B,D를 검사하고 하는 식이다. 
+    	- 즉 모든 간선(Edge)들은 다 한번씩 검사한다. 그러므로 O(E). 
+    - 과정2: 우선순위 큐에 노드/거리 정보를 넣고 삭제(pop)하는 과정
+    	- 우선순위 큐에 가장 많은 노드, 거리 정보가 들어가는 시나리오는 그래프의 모든 간선이 검사될 때마다, 배열의 최단 거리가 갱신되고, 우선순위 큐에 노드/거리가 추가되는 것임
+    	- 이 때 추가는 각 간선마다 최대 한 번 일어날 수 있으므로, 최대 O(E)의 시간이 걸리고, O(E) 개의 노드/거리 정보에 대해 우선순위 큐를 유지하는 작업은 $ O(log{E}) $ 가 걸림 
+    	- 따라서 해당 과정의 시간 복잡도는 $ O(Elog{E}) $ 
+		    
+- 총 시간 복잡도
+    - 과정1 + 과정2 = O(E) + $ O(Elog{E}) $  = $ O(E + Elog{E}) = O(Elog{E}) $
+		  
+- heap의 시간 복잡도
+    - 우선순위 큐는 배열로 구현하면 쉽지만, heap으로 내부적으로 구현하는 것이 제일 효율이 좋다. 
+    - depth (트리의 높이) 를 h라고 표기한다면,
+    - n개의 노드를 가지는 heap 에 데이터 삽입 또는 삭제시, 최악의 경우 root 노드에서 leaf 노드까지 비교해야 하므로  h=log2n  에 가까우므로, 시간 복잡도는  O(logn)
+    
+## Minimum Spanning Tree(최소 신장 트리)
+- 신장 트리(Spanning Tree)란?
+    - 모든 노드가 연결되어 있으면서 트리 자료구조의 속성을 만족하는 그래프 
+    - 트리 자료구조의 속성이란, 노드와 브랜치를 이용해서 싸이클을 이루지 않도록 구성한다는 뜻
+    - 트리 또한 그래프의 한 종류
+    - 트리는 트리자료구조인데, 아래의 조건을 다 만족하는 트리
+    	1. 그래프의 모든 노드를 포함해야 한다. 
+    	2. 모든 노드가 서로 연결되어야 한다. 
+    	3. 싸이클이 존재하지 않아야 한다. 
+    - 아래의 그림을 보면 더 이해가 쉽다. 왼쪽의 1개가 오리지널 그래프이고, 오른쪽의 8개가 1개의 오리지널 그래프에서 위의 3가지 조건을 만족하여 나올 수 있는 신장 트리들을 그려놓은 것이다.
+    
+![](https://www.fun-coding.org/00_Images/spanningtree.png)    
+    
+- 최소 신장 트리(Minimum Spanning Tree)란? 
+    - 그래프에 가중치(weight)가 있는 그래프가 있다고 하자. 
+    - 그리고 그 녀석은 신장트리 조건을 만족한다. (모든 노드 포함, 연결, 싸이클 없음) 
+    - 그리고 그렇게 가능한 신장트리 중에 가중치의 합이 최소인 신장트리를 최소 신장 트리라고 말한다. 
+    - 아래 사진을 보면 오른쪽 MST가 신장 트리 중에 1+2+3으로 최소인 것을 볼 수 있다. 1+5+3 안되고, 1+5+7, 5+3+7도 안된다.
+    - 최소 신장 트리를 구하는 대표적인 알고리즘이 크루스칼(Kruskal’s), 프림(Prim's) 알고리즘(algorithm) 이다. 
+			    
+![](https://www.fun-coding.org/00_Images/mst.png)			
+				    
+- 최소 신장 트리(Minimum Spanning Tree)는 왜 사용하나요 ? 
+    - 우리가 알지 못핧 뿐, 우리 실생활에 아주 밀접하게 사용되고 있다. 가중치(weight)가 늘어난다는 것은 거리가 늘어난다는 것이고, 그것이 지하철이 됐든 전기선이 됐든 터무니 없는 금액의 공사 비용이 증가하는 것을 의미한다. 
+    - 어떤 노드와 노드를 전부 연결하되, 가능한 최소의 비용으로 연결해야 하는 경우 
+    - 도로 건설: 도시를 모두 연결하여 도로 길이 최소화
+    	- 지하철 노선 
+    	- 고속도로, 국도 
+    	- 기찻길 
+    - 통신: 전화선의 길이가 최소화 되도록 케이블망 구축 
+    - 전기: 전력선의 길이가 최소화 되도록 전선망을 구축 
+    - 네트워크: 라우터 경로를 설정하는데, 최적의 라우팅 경로를 선택 
+    - 배관: 파이프를 모두 연결하되 총 길이를 최소로 연결
+    	- 도시 하수도 
+    	- 대형 선박 내의 배관
+					
+![](https://velog.velcdn.com/images/dev_kickbell/post/c6220515-e574-4718-b8c4-6c3dd1f3a718/image.png)		
+							
+
+## Kruskal's Algorithm(크루스칼 알고리즘)			
+    
 <details>
   <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
   <p>
 
 ```swift
 
+import Foundation
+
+func processTime(closure: () -> ()){
+    let start = CFAbsoluteTimeGetCurrent()
+    closure()
+    let processTime = CFAbsoluteTimeGetCurrent() - start
+    print("경과 시간: \(processTime)\n")
+}
+
+/*
+ 그래프는 아래의 링크 그래프를 예시로 작성한다.
+ https://velog.velcdn.com/images/dev_kickbell/post/745e799d-2fcd-4c01-a617-e4e788fd369e/image.png
+ */
+
+
+let graph: [String: Any] = [
+    "nodes": ["A", "B", "C", "D", "E", "F", "G"],
+    "edges": [
+        (7, "A", "B"), //노드의 앞 뒤 순서도 중요
+        (5, "A", "D"),
+        (7, "B", "A"),
+        (8, "B", "C"),
+        (9, "B", "D"),
+        (7, "B", "E"),
+        (8, "C", "B"),
+        (5, "C", "E"),
+        (5, "D", "A"),
+        (9, "D", "B"),
+        (7, "D", "E"),
+        (6, "D", "F"),
+        (7, "E", "B"),
+        (5, "E", "C"),
+        (7, "E", "D"),
+        (8, "E", "F"),
+        (9, "E", "G"),
+        (6, "F", "D"),
+        (8, "F", "E"),
+        (11, "F", "G"),
+        (9, "G", "E"),
+        (11, "G", "F")
+    ]
+]
+
+typealias Edge = (weight: Int, fromNode: String, toNode: String)
+
+var parent: [String : String] = [:] //노드 : 루트노드 을 리턴해주는 딕셔너리
+var rank: [String : Int] = [:] //노드 : 랭크값 을 리턴해주는 딕셔너리
+
+//1. 초기화(Union Find 알고리즘)
+func makeSet(_ node: String) {
+    parent[node] = node
+    rank[node] = 0
+}
+
+//2. Union((Union Find 알고리즘))
+func union(_ fromNode: String,_ toNode: String) {
+    /*
+     union-by-rank 기법
+     */
+    let root1 = find(fromNode) //각 루트 노드를 가져오기
+    let root2 = find(toNode)
+    
+    if rank[root1] ?? 0 > rank[root2] ?? 0 {
+        //높이가 작은 트리를 높이가 큰 루트 노드에 자식으로 붙임
+        parent[root2] = root1
+    } else if rank[root1] ?? 0 < rank[root2] ?? 0 {
+        //높이가 작은 트리를 높이가 큰 루트 노드에 자식으로 붙임
+        parent[root1] = root2
+    } else {
+        //랭크 값이 같다면 둘 중 하나 골라서 랭크값을 높이고 자식 노드로 붙임
+        //여기서는 root2의 랭크값을 높였으므로 root1을 root2로 붙였음
+        if rank[root1] ?? 0 == rank[root2] ?? 0 {
+            let num = rank[root2] ?? 0
+            rank[root2] = num + 1
+        }
+        
+        parent[root1] = root2
+    }
+}
+
+//3. Find(Union Find 알고리즘)
+func find(_ node: String) -> String {
+    /*
+     path compression 기법
+     
+     이게 좀 헷갈릴 수 있다. 근데 잘 들어봐.
+     밑에 debug 함수 만들어놨으니 그거 보면 더 쉽다.
+     일단 초기화를 해. 그러면 parent는 이렇게 되겠지 ? A:A, B:B, C:C, D:D, E:E, F:F
+     그런 상태에서 데이터가 가중치별로 정렬이 되어있어.
+     
+     (weight: 5, fromNode: "A", toNode: "D"),
+     (weight: 5, fromNode: "C", toNode: "E"),
+     (weight: 5, fromNode: "D", toNode: "A"),
+     (weight: 5, fromNode: "E", toNode: "C"),
+     (weight: 6, fromNode: "D", toNode: "F"),
+     (weight: 6, fromNode: "F", toNode: "D"),
+     (weight: 7, fromNode: "A", toNode: "B"),
+     (weight: 7, fromNode: "B", toNode: "A"),
+     (weight: 7, fromNode: "B", toNode: "E")...
+     
+     ---0 count (weight: 5, fromNode: "A", toNode: "D")---
+     
+     그리고 아래 코드로 싸이클 여부를 판단해.
+     
+     if find(fromNode) != find(toNode) { ... }
+     
+     parent 에 지금 아무 것도 안해줬으니 parent["A"] = "A"이고, "D"도 "D"겠지.
+     그러면 아래 코드에 따라서, parent[node] = find(parent[node] ?? "") 를 한번 더 타고
+     parent에 해준게 없으니 리턴은 parent[node] ?? "" 가 되는거야. 뭐 한게 없지?
+     
+     근데 그러고 다음 코드로 가보자.
+     
+     저 메인 코드의 union(fromNode, toNode) 이야.
+     
+     결론적으로 말하면 둘 다 rank가 같으니 toNode의 rank가 +1이 되고,
+     (A:chile) - (D:root)로 연결이 될거야.
+     
+     그리고 parent는 A:D, B:B, C:C, D:D, E:E, F:F로 변하는거지.
+     
+     ---1 count (weight: 5, fromNode: "C", toNode: "E")---
+
+     그리고 다음 C,E를 넣으면 마찬가지로 (C:chile) - (E:root)
+     
+     여기까지 하면 아래와 같이 되겠지.
+     parent A:D, B:B, C:E, D:D, E:E, F:F
+     rank   A:0, B:0, C:0, D:1, E:1, F:0
+     
+     ---2 count (weight: 5, fromNode: "D", toNode: "A")---
+     ---3 count (weight: 5, fromNode: "E", toNode: "C")---
+
+     그리고 D, A를 넣었다.
+     find(D), find(A) 둘 다 루트가 D네? 그럼 얘네는 같은 부분집합(싸이클)에 속해있다고 보면 돼.
+     그러면 find(fromNode) != find(toNode) 이 아니므로 그냥 다음 for문으로 넘어가.
+     
+     E,C 도 마찬가지.
+     
+     ---4 count (weight: 6, fromNode: "D", toNode: "F")---
+
+     D의 루트노드는 D, F는 F로 달라. 그러면 싸이클이 아니겠고
+     rank 값은 D가 1, F가 0이네 그러면 F가 D 밑으로 들어가야돼. 그러면 현재까지는 이렇게 되는거지
+     
+        D   E
+      / |   |
+     A  F   C
+
+     parent A:D, B:B, C:E, D:D, E:E, F:D
+     rank   A:0, B:0, C:0, D:1, E:1, F:0
+     
+     ---5 count (weight: 6, fromNode: "F", toNode: "D")---
+
+     이러면, F의 루트는 D, D의 루트도 D니까 싸이클이네. 넘어가.
+     
+     ---6 count (weight: 7, fromNode: "A", toNode: "B")---
+
+     A의 루트는 D, B의 루트는 B네. 싸이클이 아니야. union 해야해.
+     중요한건 여기서 rank를 따져야되는데 if rank[root1] ?? 0 > rank[root2] ?? 0 {...} 로직이므로
+     루트
+     A는 루트인 D의 랭크를 봐야해서 rank는 1, B는 0이야. 그러면 작은애가 큰애 밑으로 들어가야하니. 트리가 이렇게 돼.
+     
+        D     E
+      / | \   |
+     A  F  B  C
+     
+     그리고 B의 루트를 D로 바꿔줘. path compression 기법.
+     
+     ---7 count (weight: 7, fromNode: "B", toNode: "A")---
+
+     같은 방식으로 B의 루트는 D, A의 루트도 D 무시
+     
+     ---8 count (weight: 7, fromNode: "B", toNode: "E")---
+     
+     같은 방식으로 B의 루트는 D, E의 루트는 E야 싸이클이 없네. union 해야해.
+     rank를 보는데 B는 D기준이니 1, E는 E인데 E도 랭크가 1이네?
+     그러면 둘 중 아무거나 하나 골라서 랭크를 +1 해주고 자식 노드로 들어가야되는데
+     우리는 코드에서 toNode가 올라가게 작성했으니까 E의 rank를 +1하고 D 의 트리를 E로 붙여줘 아래처럼.
+
+            E
+           /|
+          / C
+         /
+        D
+      / | \
+     A  F  B
+     
+     ... 이런식으로 쭉 하면 결국엔 아래와 같은 트리가 완성되고 그게 최소 신장 트리야.
+
+            E
+           /|\
+          / C G
+         /
+        D
+      / | \
+     A  F  B
+    */
+    if parent[node] != node {
+        parent[node] = find(parent[node] ?? "")
+    }
+    return parent[node] ?? ""
+}
+
+/*
+ 이걸 swift 내장함수 sorted 대신에 써봤는데 오히려 sorted가 시간이 덜걸리더라.
+ 내부가 quickSort로 되어있던가? 아니면 더 좋은걸로 되어있나보다.
+ */
+//func quickSortWithEdge(_ edges: [Edge]) -> [Edge] {
+//    if edges.count <= 1 { return edges }
+//
+//    let pivot: Edge = (edges.first?.weight ?? 0,
+//                       edges.first?.fromNode ?? "",
+//                       edges.first?.toNode ?? "")
+//    let left = edges[1...].filter { pivot.weight > $0.weight }
+//    let right = edges[1...].filter { pivot.weight <= $0.weight }
+//
+//    return quickSortWithEdge(left) + [pivot] + quickSortWithEdge(right)
+//}
+
+func kruskal(_ graph: [String: Any]) -> [Edge] {
+    var mst: [Edge] = []
+    
+    //1. 초기화
+    guard let nodes = graph["nodes"] as? [String] else { return []}
+    for node in nodes {
+        makeSet(node)
+    }
+    
+    //2. 간선 weight 기반 sorting ( 이 부분의 sortting은 quicksort를 쓰는게 더 좋지 )
+    guard let edges = graph["edges"] as? [Edge] else { return []}
+    let sortedEdges = edges.sorted { $0.weight < $1.weight }
+//    let sortedEdges = quickSortWithEdge(edges)
+
+    //3. 싸이클이 없는 간선만 연결
+    for (index, edge) in sortedEdges.enumerated() {
+        let fromNode = edge.fromNode
+        let toNode = edge.toNode
+
+        if find(fromNode) != find(toNode) { //싸이클이 없는 걸 이 코드만으로 판별
+            union(fromNode, toNode)
+            mst.append(edge)
+        }
+        
+        //debug(index, edge) //debug 용도 함수
+    }
+    return mst
+}
+
+print("\n===kruskal===")
+//processTime {
+    kruskal(graph).sorted { $0.weight < $1.weight }.forEach { print($0) }
+//}
+
+
+func debug(_ index: Int, _ edge: Edge) {
+    print("\n---\(index) count \(edge)---")
+    print(parent.sorted { $0.key < $1.key }.forEach { print($0)})
+    print(rank.sorted { $0.key < $1.key }.forEach { print($0)})
+}
+
+```
+  </p>
+</details> 
+        
+
+- 최소 신장 트리를 구하기 위한 알고리즘
+- 정렬 후에 가중치가 낮은 간선부터 연결한다. (Greedy Algorithm 을 기반으로 하고 있다.) 
+- 가중치(weight)를 기준으로 작은 것부터 노드를 연결하되, 싸이클이 생기면 그 노드는 연결하지 않는다. 모든 노드가 다 연결될 때까지 이 작업을 반복한다. 
+- 싸이클이 생기지의 여부를 판단하기 위해서 Union Find 알고리즘을 사용한다. 
+			    
+![](https://www.fun-coding.org/00_Images/kruscal_internal1.png)	![](https://www.fun-coding.org/00_Images/kruscal_internal2.png)		
+			    
+- 시간복잡도 
+    - O(E log E)
+    	- 1. 모든 정점을 독립적인 집합으로 만든다. -> O(V)
+    	- 2. 모든 간선을 비용을 기준으로 정렬하고, 비용이 작은 간선부터 양 끝의 두 정점을 비교한다. -> O(E log E)
+     		- 퀵소트를 사용한다면 시간 복잡도는 O(n log n) 이며, 간선이 n 이므로 O(E log E)
+    	- 3. 두 정점의 최상위 정점을 확인하고, 서로 다를 경우 두 정점을 연결한다. (최소 신장 트리는 사이클이 없으므로, 사이클이 생기지 않도록 하는 것임)
+    		- union-by-rank 와 path compression 기법 사용시 시간 복잡도가 결국 상수값에 가까움, O(1)
+    - 따라서 O(V)보다 O(E)가 많으니 O(V)는 무시하고, O(E)보다는 O(E log E)가 크니까 결국엔 시간복잡도는 퀵소트를 사용하는 시간복잡도인 O(E log E)이다. 		
+				
+![](https://www.fun-coding.org/00_Images/kruscal_time.png)			
+						    
+    
+## Union Find Algorithm(합집합 찾기 알고리즘) 
+- 트리 자료구조를 사용한다. 
+- 각자의 노드의 루트 노드를 비교해서 루트 노드가 같다면, 서로 같은 부분 집합 안에 들어가있다라는 것으로 싸이클 여부를 판단한다.
+- 트리 구조이고, 항상 루트노드를 찾아 비교해야 하기 때문에 최적화 기법(union-by-rank, path compression)을 사용한다. 
+- 여기서는 크루스칼 알고리즘에서 싸이클이 생기는지의 여부를 판단하기 위해 쓰이나, 크루스칼 알고리즘에서만 사용되는 것은 아니다. 
+- 정확히는 Disjoint Set(서로소 집합)을 만들 때 사용하는 알고리즘이다. 
+- [Disjoint Set(서로소 집합)](https://ko.wikipedia.org/wiki/%EC%84%9C%EB%A1%9C%EC%86%8C_%EC%A7%91%ED%95%A9)이란? 
+    - 공통 원소가 없는 두 집합이다.
+    - 예를 들어서 {1, 2, 3}과 {4, 5, 6}은 서로소이며 {1, 2, 3}과 {3, 4, 5}는 아니다.
+				
+- Union Find 알고리즘 프로세스
+    - 1. 초기화 
+    	- ![](https://www.fun-coding.org/00_Images/initial_findunion.png)				
+    	- n개의 원소를 개별집합으로 이뤄지도록 초기화 하는 작업 				
+    - 2. Union 
+    	- ![](https://www.fun-coding.org/00_Images/union_findunion.png)					
+    	- 두 개별 집합을 하나의 집합으로 합치는 작업, 두 트리를 하나의 트리로 합침			
+    - 3. Find 
+	    - ![](https://www.fun-coding.org/00_Images/find_findunion.png)					
+    	- 여러 노드가 있을 때, 두 개의 노드를 선택해서 그 두개의 노드의 루트 노드를 찾는다. 		
+    	- 위 그림에서 A, B를 예로 들면 A, B는 D라는 같은 루트 노드를 갖는다. 그러면 얘네들은 서로 같은 부분 집합 안에 들어가있다 라고 판단한다. 			
+    	- 이 말은, D와 E를 루트 노드로 갖는 2개의 부분 집합을 합칠 때도 동일하게 적용된다. 루트 노드가 같지 않으면 싸이클이 없는 것으로 판단한다는 뜻이다. 							
+					    
+- Union Find 알고리즘 최적화 
+    - 기본적으로 트리구조를 사용하기 때문에 성능을 고려할 필요가 있다.
+    - 각자의 노드의 루트 노드를 비교해서 루트 노드가 같다면, 서로 같은 부분 집합 안에 들어가있다라는 것으로 싸이클 여부를 판단한다.
+    - Union의 순서에 따라서 최악의 경우 아래의 그림과 같이 링크드 리스트 형태가 될 수 있다. 
+    - 그러면 시간복잡도가 O(n)이 될 수 있으므로 최적화 기법으로 union-by-rank 기법, path compression 기법을 사용한다. 
+			
+![](https://www.fun-coding.org/00_Images/worst_findunion.png)		
+								
+- Union By Rank 기법
+    - Union Find 알고리즘 중에 Union 작업할 때 사용된다.
+    - Union/Find 연산시의 시간복잡도를 O(n)에서 O(logN)으로 낮추기 위해서 사용한다. 
+    - 밑에 있는 Path Compression 기법과 같이 사용하면 O(1)까지 낮출 수 있다. 
+    - 2개의 부분 집합이 합쳐질 때, 어떻게 하면 높이를 작게하느냐에 초점을 맞춘 기법이다. (루트 노드를 찾는 시간을 줄이기 위해서) 
+    - 프로세스 
+    	- 1. 각 트리에 대해 rank(높이)를 저장해둔다. 
+    	- 2. 두 개의 트리를 합칠 때, 두 트리의 rank가 다르다면 ? 
+    		- ![](https://www.fun-coding.org/00_Images/unionbyrank_findunion.png)			
+    		- rank가 작은 트리를 rank가 높은 트리의 자식노드로 붙인다. 
+    		- 이진트리가 아니기 때문에 어떻게 붙이든 상관이 없다.
+    		- (A,B,F)-(D)를 (C)-(E)-(G)에 그냥 붙였으면 최악의 경우 (A,B,F)-(D)-(C)-(E)-(G)로 rank가 4인 트리가 되지만, 이 기법을 쓰면 rank가 2로 만들 수 있다. (rank는 0부터) 
+    	- 3. 두 트리의 rank가 같다면 ? 
+		    - ![](https://www.fun-coding.org/00_Images/unionbyranksame_findunion.png)			
+    		- 둘 중에 아무거나 한 쪽의 rank를 1 증가 시켜주고, 반대 쪽의 트리를 자식노드로 붙여준다. 
+    - 초기화시, 모든 원소는 높이(rank) 가 0 인 개별 집합인 상태에서, 하나씩 원소를 합칠 때, union-by-rank 기법을 사용한다면,
+    	- 높이가 h 인 트리가 만들어지려면, 높이가 h - 1 인 두 개의 트리가 합쳐져야 함
+    	- 높이가 h - 1 인 트리를 만들기 위해 최소 n개의 원소가 필요하다면, 높이가 h 인 트리가 만들어지기 위해서는 최소 2n개의 원소가 필요함
+    	- 따라서 union-by-rank 기법을 사용하면, union/find 연산의 시간복잡도는 O(N) 이 아닌, $ O(log{N}) $ 로 낮출 수 있음
+				    
+- Path Compression(경로 압축) 기법
+    - ![](https://www.fun-coding.org/00_Images/pathcompression_findunion.png)			
+    - Union Find 알고리즘 중에 Find 작업할 때 사용된다.
+    - Find 작업을 한번 했다면, 그렇게 거쳐간 노드들을 루트 노드에 다이렉트로 연결되게 변경시키는 기법이다. 
+    - 이진 트리가 아니기 때문에 자식 노드의 갯수는 상관이 없고, 이렇게 변경하면 이후부터는 Find시 1회만에 루트 노드를 찾을 수 있다. 
+				    
+- Union By Rank 와 Path Compression 기법 사용시의 시간복잡도 
+    - O(1)이다. 수학적으로 이미 증명되었다. 
+    - $O(M log^*{N})$
+    	- $log^*{N}$ 은 다음 값을 가짐이 증명되었음
+    	- N이 $2^{65536}$ 값을 가지더라도, $log^*{N}$ 의 값이 5의 값을 가지므로, 거의 O(1), 즉 상수값에 가깝다고 볼 수 있음
+    - <div style="text-align:left">
+      <table>
+        <tr>
+          <th style="text-align:center">N</th>
+          <th style="text-align:center">$log^*{N}$</th>
+        </tr>
+        <tr>
+          <td style="text-align:left">1</td>
+          <td style="text-align:left">0</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">2</td>
+          <td style="text-align:left">1</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">4</td>
+          <td style="text-align:left">2</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">16</td>
+          <td style="text-align:left">3</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">65536</td>
+          <td style="text-align:left">4</td>
+        </tr>
+        <tr>
+          <td style="text-align:left">$2^{65536}$</td>
+          <td style="text-align:left">5</td>
+        </tr>
+      </table>
+      </div>   
+ 
+  
+    
+  
+  
+## Prim's Algorithm(프림 알고리즘)			
+    
+<details>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <p>
+
+```swift
+
+import Foundation
+
+/*
+ 그래프는 아래의 링크 그래프를 예시로 작성한다.
+ https://velog.velcdn.com/images/dev_kickbell/post/745e799d-2fcd-4c01-a617-e4e788fd369e/image.png
+ */
+
+let edges = [
+    (7, "A", "B"), (5, "A", "D"),
+    (8, "B", "C"), (9, "B", "D"), (7, "B", "E"),
+    (5, "C", "E"),
+    (7, "D", "E"), (6, "D", "F"),
+    (8, "E", "F"), (9, "E", "G"),
+    (11, "F", "G")
+]
+
+typealias Edge = (weight: Int, fromNode: String, toNode: String)
+
+func prim(_ startNode: String, _ edges: [Edge]) -> [Edge] {
+    var mst: [Edge] = []
+    var adjacentEdges: [String: [Edge]] = [:]
+    
+    //1. 초기화
+    //이유는 모르겠지만, adjacentEdges[edge.toNode]?.append(edge)가 안되서 두개로 나누었다.
+    //밑에 for문도 튜플이 아니라 edge로 바꾸면 오동작하는데 이유를 모르겠네 진짜로..
+    for (_, n1, n2) in edges {
+        adjacentEdges[n1] = []
+        adjacentEdges[n2] = []
+    }
+    for (weight, n1, n2) in edges {
+        adjacentEdges[n1]?.append((weight, n1, n2))
+        adjacentEdges[n2]?.append((weight, n2, n1))
+    }
+    
+    //2. 연결된 노드 리스트 생성
+    var connectedNodes: Set = [startNode]
+    
+    //3. 간선 리스트 생성
+    var candidateEdges: [Edge] = adjacentEdges[startNode] ?? []
+    
+    
+    while !candidateEdges.isEmpty {
+        //강의에서는 candidateEdges가 힙구조가 되어서 바로 제일 작은걸 꺼내왔지만,
+        //swift에서는 그런 라이브러리를 아직 못찾아서 일단 sorted를 사용.
+        //빈배열에서 removeFirst()를 하면 크래쉬가 발생하지만, while구문에서 통과되지 않을 것이므로 고고함.
+        candidateEdges.sort(by: { $0.weight < $1.weight })
+        let poppedEdge = candidateEdges.removeFirst()
+        
+        if !connectedNodes.contains(poppedEdge.toNode) { //싸이클이 없는 경우
+            connectedNodes.insert(poppedEdge.toNode) //연결된 노드 리스트에 추가
+            mst.append(poppedEdge) //결과값인 최소 신장 트리에도 추가
+            
+            //A->D라고 치면 D를 연결된 노드 리스트에 넣어줬고, 이제 D에 연결된 간선들을
+            //간선 리스트에 넣어줘야 한다. 여기가 그 작업이다.
+            for newEdge in adjacentEdges[poppedEdge.toNode] ?? [] {
+                /*
+                 여기의 if문은 무슨 뜻이냐면,
+                 음, 예를들어
+                   A
+                  / \
+                 B   E-F 가 있다고 치자. 근데 F가 이제 싸이클이 없어서 연결된 노드 리스트에 넣고
+                 
+                 간선 리스트에 F와 연결된 간선들을 넣으려고 하는 상황인거야. 근데 F를 보니 아래와 같이 생긴거지.
+                   F
+                  /|\
+                 B H G  이래버리면 이중에 B는 어차피 넣을 필요가 없어. 왜? 연결된 노드 리스트에 이미 있으니까.
+                 이 상황에서는 H, G만 넣으면 되는거지. B를 굳이 넣어서 괜히 연산을 더 할필요가 없는 것.
+                 */
+                if !connectedNodes.contains(newEdge.toNode) {
+                    candidateEdges.append(newEdge)
+                }
+            }
+        }
+    }
+    return mst
+}
+
+print("\n===prim=== ")
+prim("A", edges).forEach { print($0) }
+
+/*
+ 강사님 결과값이랑 약간 다른데, (7, 'B', 'E') 이부분이 다름.
+ 근데 그래프 그려보면 어차피 7로 같아서 로직은 맞는 것 같다.
+ 그냥 최소 신장 트리인데 여러 개중에 하나로 그려진 듯..?
+ 
+ [(5, 'A', 'D'),
+  (6, 'D', 'F'),
+  (7, 'A', 'B'),
+  (7, 'B', 'E'),
+  (5, 'E', 'C'),
+  (9, 'E', 'G')]
+ */
+
+
+/*
+ 개선된 프림 알고리즘
+ - 간선이 아니라 노드를 기준으로 하기 때문에 시간복잡도가 𝑂(𝐸𝑙𝑜𝑔𝑉) 로 줄어든다.
+ 
+ from heapdict import heapdict
+
+ def prim(graph, start):
+     mst, keys, pi, total_weight = list(), heapdict(), dict(), 0
+     for node in graph.keys():
+         keys[node] = float('inf')
+         pi[node] = None
+     keys[start], pi[start] = 0, start
+
+     while keys:
+         current_node, current_key = keys.popitem()
+         mst.append([pi[current_node], current_node, current_key])
+         total_weight += current_key
+         for adjacent, weight in mygraph[current_node].items():
+             if adjacent in keys and weight < keys[adjacent]:
+                 keys[adjacent] = weight
+                 pi[adjacent] = current_node
+     return mst, total_weight
+ 
+ 
+ 
+ mygraph = {
+     'A': {'B': 7, 'D': 5},
+     'B': {'A': 7, 'D': 9, 'C': 8, 'E': 7},
+     'C': {'B': 8, 'E': 5},
+     'D': {'A': 5, 'B': 9, 'E': 7, 'F': 6},
+     'E': {'B': 7, 'C': 5, 'D': 7, 'F': 8, 'G': 9},
+     'F': {'D': 6, 'E': 8, 'G': 11},
+     'G': {'E': 9, 'F': 11}
+ }
+ mst, total_weight = prim(mygraph, 'A')
+ print ('MST:', mst)
+ print ('Total Weight:', total_weight)
+ */
+
 ```
   </p>
 </details>
     
+    
+
+
+- 최소 신장 트리를 구하기 위한 알고리즘
+- 크루스칼 알고리즘과 다른 점은 똑같이 Greedy Algorithm 을 기반으로 하는데, 주체가 다르다. 
+- 크루스칼 알고리즘이 단순 가중치를 기준으로 정렬을 해서 낮은 가중치부터 연결하고 그 다음 낮은 가중치를 연결 하는 식으로 동작했다고 하면, 프림 알고리즘은 시작할 첫번째 노드를 선택하고 선택한 노드를 기준으로 연결된 간선 중에 낮은 가중치가 있는 것 부터 연결, 그리고 새롭게 연결된 노드가 가지고 있는 간선들 중에 가중치가 낮은 것을 연결하는 식으로 동작한다. 
+
+- 프로세스 
+    - 1. 배열 2개를 만든다. '연결된 노드 리스트', '간선 리스트' 
+    - 2. 알고리즘을 시작한다. 여기서는 A로 시작했다. 처음이라 아무것도 없으니 '연결된 노드 리스트'에 A를 삽입한다.
+    - 3. '간선 리스트'에 A에 연결된 간선인 (5, A, D)와 (7, A, B)를 추가한다. 
+    - 4. '간선 리스트'에서 데이터를 하나 추출(간선 리스트에서 사라짐)에서 하는데, 최소힙처럼 동작해서 가중치가 낮은 (5, A, D)가 추출된다. 
+    - 5. 그러면 목표는 D인데, D가 '연결된 노드 리스트'에 들어있으면? 싸이클로 판단하고 스킵한다. 없다면 '연결된 노드 리스트' 삽입한다. 그리고 '간선 리스트'에 D와 연결되어있는 간선들을 삽입한다. (6, D, F), (7, D, E), (8, D, B) 
+    - 6. 다시 '간선 리스트'에서 데이터를 하나 추출한다. 가중치가 가장 낮은게 나오니까 (6, D, F)이 추출된다. 
+    - 7. 5 번 작업을 진행한다. F는 없으니 추가한다. 간선 리스트에도 F와 연결된 간선들을 추가해준다. 
+    - 8. 6 번 작업을 진행한다. 가중치 7이 두 개지만, 그림 상에서는 (7, A, B)가 선택되었다. 
+    - 9. B 추가, 간선리스트 추가 
+    - 10. 또 7이 두 개지만, 그림 상에서는 (7, B, E)가 선택되었다. 
+    - 11. E 추가, 간선리스트 추가 
+    - 12. 가중치 5인 (5, E, B)가 선택되었다. 
+    - 13. B 추가, 간선리스트 추가
+    - 14. 가중치 7인 (7, D, E)가 나오지만 E는 이미 '연결된 노드 리스트'에 있다. 스킵된다. 
+    - 15. 가중치 8인 (8, F, E)가 나오지만 E는 이미 '연결된 노드 리스트'에 있다. 스킵된다. 
+    - 16. 가중치 8인 (8, B, C)가 나오지만 C는 이미 '연결된 노드 리스트'에 있다. 스킵된다.
+    - 17. 이런 식으로 반복된다. 언제까지? 간선리스트가 빌 때까지. 
+    - 18. 간선리스트가 비었다. 최소 신장 트리가 완성되었고 알고리즘이 종료된다. 		
+			
+![](https://www.fun-coding.org/00_Images/prim1.png) ![](https://www.fun-coding.org/00_Images/prim2.png)![](https://www.fun-coding.org/00_Images/prim3.png)			
+			
+- 시간복잡도 
+	- 최악의 경우, while 구문에서 모든 간선에 대해 반복하고, 최소 힙 구조를 사용하므로 O($ElogE$) 시간 복잡도를 가짐
+
+- 개선된 프림 알고리즘 
+    - 코드는 위의 링크 참고(파이썬)
+    - 간선이 아닌 노드를 중심으로 우선순위 큐를 적용하는 방식
+    - 초기화 - 정점:key 구조를 만들어놓고, 특정 정점의 key값은 0, 이외의 정점들의 key값은 무한대로 놓음.  모든 정점:key 값은 우선순위 큐에 넣음
+    - 가장 key값이 적은 정점:key를 추출한 후(pop 하므로 해당 정점:key 정보는 우선순위 큐에서 삭제됨), (extract min 로직이라고 부름)
+    - 해당 정점의 인접한 정점들에 대해 key 값과 연결된 가중치 값을 비교하여 key값이 작으면 해당 정점:key 값을 갱신
+    - 정점:key 값 갱신시, 우선순위 큐는 최소 key값을 가지는 정점:key 를 루트노드로 올려놓도록 재구성함 (decrease key 로직이라고 부름)
+    - 개선된 프림 알고리즘 구현시 고려 사항
+    	- 우선순위 큐(최소힙) 구조에서, 이미 들어가 있는 데이터의 값 변경시, 최소값을 가지는 데이터를 루트노드로 올려놓도록 재구성하는 기능이 필요함
+    	- 구현 복잡도를 줄이기 위해, heapdict 라이브러리를 통해, 해당 기능을 간단히 구현
+    
+- 개선된 프림 알고리즘의 시간 복잡도: $O(ElogV)$
+    - 최초 key 생성 시간 복잡도: $O(V)$ 
+    - while 구문과 keys.popitem() 의 시간 복잡도는 $O(VlogV)$
+    - while 구문은 V(노드 갯수) 번 실행됨
+    - heap 에서 최소 key 값을 가지는 노드 정보 추출 시(pop)의 시간 복잡도: $O(logV)$ 
+    - for 구문의 총 시간 복잡도는 $O(ElogV)$
+    - for 구문은 while 구문 반복시에 결과적으로 총 최대 간선의 수 E만큼 실행 가능 $O(E)$
+    - for 구문 안에서 key값 변경시마다 heap 구조를 변경해야 하며, heap 에는 최대 V 개의 정보가 있으므로 $O(logV)$
+    - 일반적인 heap 자료 구조 자체에는 본래 heap 내부의 데이터 우선순위 변경시, 최소 우선순위 데이터를 루트노드로 만들어주는 로직은 없음. 이를 decrease key 로직이라고 부름, 해당 로직은 heapdict 라이브러리를 활용해서 간단히 적용가능    
+    - 따라서 총 시간 복잡도는 $O(V + VlogV + ElogV)$ 이며,
+    	- O(V)는 전체 시간 복잡도에 큰 영향을 미치지 않으므로 삭제,
+    	- E > V 이므로 (최대 $V^2 = E$ 가 될 수 있음), $O((V + E)logV)$ 는 간단하게 $O(ElogV)$ 로 나타낼 수 있음
+    
+    
+## Kruskal's(크루스칼) vs Prim's(프림)
+- 사용 용도가 다를 수 있다. 
+- 크루스칼 알고리즘은 일단 전체 간선의 가중치를 다 알고 있다는 가정 하에 그걸 정렬해서 연결하는 방식 
+- 프림 알고리즘은 일부 가중치는 모를 때? 또는 한정된 정보 내에서 하나씩 선택해가면서 추가되는 정보에 따라서 연결하는 방식  
+- 프림 알고리즘은 개선된 버전이 있다. 크루스칼 알고리즘 시간복잡도(O(E log E)), 일반 프림 알고리즘 시간복잡도(O(E log E))에 비해 개선된 버전은 (𝑂(𝐸𝑙𝑜𝑔𝑉))로 더 효율적이다. (E > V 이므로 (최대  𝑉2=𝐸  가 될 수 있음))
+    
+    
+## Backtracking(백트래킹)
+    
+<details>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <p>
+
+```swift
+
+import Foundation
+
+func isAvailable(_ currentCandidate: [Int],_ column: Int) -> Bool {
+    //현재 퀸이 2번째까지 되어있다면 currentCandidate.count 는 2이다.
+    //그런데 배열은 0부터 시작하므로 currentRow는 0,1,2해서 3번째 이다.
+    //그리고 매개변수로 현재 열(column)이 넘어온다. 그러면 이것을 바탕으로 계산을 할 수 있다.
+    let currentRow = currentCandidate.count
+    
+    for queenRow in 0..<currentRow {
+        if currentCandidate[queenRow] == column ||
+            abs(currentCandidate[queenRow] - column) == (currentRow - queenRow) {
+            return false
+        }
+    }
+    return true
+}
+
+
+func dfs(_ n: Int, _ currentRow: Int, _ currentCandidate: [Int], _ finalResult: [Int] ) {
+    var currentCandidate = currentCandidate //현재까지 퀸이 들어간 결과
+    var finalResult = finalResult //최종 결과
+    
+    if currentRow == n { //재귀적으로 사용되므로 종료조건
+        finalResult.append(contentsOf: currentCandidate)
+        print("n: \(n) -> answer:", finalResult)
+        return
+    }
+
+    //가로줄을 행(行, row), 세로줄을 열(列, column)
+    for column in 0..<n {
+        //isAvailable -> Promising
+        //현재까지 퀸이 들어간 결과와 현재 열을 넣으면 그걸 기반으로 조건에 부합하는지 체크
+        if isAvailable(currentCandidate, column) {
+            //여기까지 왔다는 건 조건을 통과했다는 거니까 퀸 후보자 배열에 컬럼을 추가해준다.
+            currentCandidate.append(column)
+            //그리고 이제 다음행을 봐야겠지? 그래서 재귀적으로 +1 해서 다시 호출한다.
+            dfs(n, currentRow + 1, currentCandidate, finalResult)
+            /*
+             Prunning(가지치기), 이거 재귀라 되게 헷갈린다. 자 봐봐.
+             
+             자 생각해봐. 저 dfs 함수에서 if currentRow == n {...} 종료조건에도 해당이 되지 않고,
+             isAvailable()에도 true가 아니면 어떻게 될까 ?
+             
+             그럼 그냥 리턴한다. 즉, 항상 저 두 조건이 true 일리가 없지 않나? 그러면 리턴이 되서 아래로 내려간다.
+             그러면 여기서 가지치기를 하는 건데, 재귀함수 잖아? 그러면 한뎁스씩 내려갔다가 다시 스택처럼 올라온다.
+             
+             f(5)->f(4)->f(3)->f(2)->f(1)->f(종료조건:0)
+             f(종료조건:0)->f(1)->f(2)->f(3)->f(4)->f(5) 처럼 말이다.
+             
+             그러면, 저기서는 리턴조건은 최종 조건이 아니라 isAvailable() 일 것이고, 현재의 column이
+             currentCandidate 에 적합하지 않으니 다시 돌아가서 다른 후보자를 탐색해야 한다.
+             그래서 아래처럼 popLast()를 해주면 조건을 만족하지 않는 곳 까지 쭉쭉 리턴되고, 다음 for문을 돌겠지?
+             그러면 다음 녀석이 isAvailable()를 만족하면 이제 다음 currentCandidate 를 탐색하는 식이다.
+             
+             좀 헷갈릴 수 있다. 아니 지금도 매우 헷갈리다. 이래서 backtracking 이다.
+             */
+            _ = currentCandidate.popLast()
+        }
+    }
+    
+}
+
+
+func nQueens(_ n: Int) -> [Int] {
+    let finalResult: [Int] = []
+    dfs(n, 0, [], finalResult)
+    return finalResult
+}
+
+
+print("\n===nQueens===")
+_ = nQueens(4)
+```
+  </p>
+</details>
+
+- 알고리즘은 아니고 일종의 문제를 푸는 전략이다. 
+- 제약 조건 만족 문제에서 사용한다. 
+- 모든 경우의 수(후보군)을 상태 공간 트리(State Space Tree)로 표현한다. 
+    - 상태 공간 트리란, 문제 해결 과정의 중간 상태를 각각의 노드로 나타낸 트리인데 몰라도 된다. 전혀. 아래 그림이 상태 공간 트리. 
+- 컨셉이 트리 느낌으로 한다는 것이지 실제 코드 구현에서 트리를 만들거나 하지는 않는다. 
+- 각 후보군을 DFS 방식으로 확인한다. 
+- 조건이 맞는지를 검사하는 것을 Promising, 조건이 맞지 않으면 해당 트리를 끊어버리는 것을 Pruning(가지치기)라고 한다. 
+- 제약 조건이 전부 다 맞아야만 하는 문제에서 Pruning 함으로써 그 아래의 트리는 탐색해도 되지 않아 시간을 절약할 수 있다. 
+- 프로세스 설명 ( 문제와 같이 이해하는 것이 더 쉽다. 아래로 내려가자. )
+    1. 예를 들어, 조건이 이런식이다 a, b, e, h가 다 홀수인지 확인해라. 
+    2. 그러면 a를 검사하고 b를 검사하고 e를 검사하고 h를 검사하는 식이 제일 효율적이다. (DFS 깊이 우선 탐색)
+    3. 그런데 a는 홀수인데, b는 짝수이다? 그러면 정답이 아니다. 그러면 a-b 사이의 간선을 끊어버린다. 그럼 b 이하 트리는 검색할 필요도 없어진다. 
+    4. 이게 전부다. 검사하는걸 Promising, 가지치기 하는 것을 Pruning 이라고 부른단다. 
+    5. 이것을 Backtracking(백트래킹 또는 퇴각검색)전략이라고 부르는 이유이다. 
+			    
+![](https://www.fun-coding.org/00_Images/statespacetree.png)			
+				
+- N Queen 문제 이해 
+    - ![](https://www.fun-coding.org/00_Images/queen_move.png)			
+    - 대표적인 백트래킹 문제이다. 		
+    - 뭐냐면, 체스에서 퀸은 아래 그림과 같이 굉장히 유능하게 움직일 수 있다. 그리고 문제는 "NxN 크기의 체스판에서 N개의 퀸을 배치한다고 했을 때, 서로 공격할 수 없도록 배치할 수 있는 경우의 수를 구해라." 이다. 
+    - 화살표 오른쪽 사진이 하나의 예시이다.  
+    
+- Prunning(가지치기) 
+    - ![](https://www.fun-coding.org/00_Images/backtracking.png)			
+    - 막연하나? 그럴 수 있다. 근데 이렇게 생각해보자. 저 문제를 배열로 표현하면 오른쪽 사진과 같다. 
+    - 그리고 또 왼쪽 사진처럼 트리로 표현할 수도 있을 것 같다. 그럼 배운 것처럼 회색 동그라미는 조건을 만족하지 않으므로 무시하고 가지를 쳐버릴 수 있을 것이다. 이 부분은 그냥 저걸 배열로 표현할 수 있고, 그렇게 되면 가지치기를 할 수 있다 정도 까지만 이해하면 되겠다. 
+    - 컨셉이 트리 느낌으로 한다는 것이지 실제 코드 구현에서 트리를 만들거나 하지는 않는다. 괜히 어렵게 표현하는 것이다. 
+    - 그러면 제약 조건을 만족하는 방법이 뭘까? 내려가보자. 
+    
+- Promising(조건체크) 
+    - ![](https://www.fun-coding.org/00_Images/nqueen.png)			
+    - 퀸은 겹치지 않아야 하므로 한줄에는 1개만 있어야 하고, 수직/대각선 이동이 다 가능하다. 
+    - 그렇다면, 위에 만든 배열로 조건을 생성할 수 있다. 
+    - 수직체크 : current_column - queen_column != 0 이어야 한다.
+    - 대각선체크 : abs(queen_column - current_column) != current_row - queen_row 이어야 한다. 
+    	- 이 부분 헷갈릴 수 있어서 따로 적어보겠다. 위 사진을 예로 들어보자. 퀸 위치(0,1), 내 위치(1,2)라고 하자. 
+    	- 그러면 튜플의 앞에 것의 차이(음수가 나올 수 있으므로 절대값 사용)인 abs(queen_column - current_column) 와 뒤에 것의 차이 current_row - queen_row 가 같으면 겹친다는 거다. 즉 달라야 된다는 거다. 
+    	- 공식으로 굳이 따지자면, abs(0 - 1) != 2 - 1 이어야 하는데 1 == 1 로 같다. 그러면 조건을 만족하지 못하는 것이다. 
 
 ## Reference			
 [https://velog.velcdn.com/images/dev_kickbell/post/f4c3753a-b41a-43f7-86ab-f9ee661ae089/image.png](https://velog.velcdn.com/images/dev_kickbell/post/f4c3753a-b41a-43f7-86ab-f9ee661ae089/image.png)	
