@@ -1,4 +1,3 @@
-
 > 1 OS(Operating System)란 무엇일까요?
 2 OS의 커널에 대해서 설명해보세요.
 3 Linux 의 구성요소를 말씀해보세요.
@@ -24,6 +23,11 @@
     	- ALU(산술논리연산장치) : 그냥 계산기.
         - 레지스터 : CPU 내부의 작은 저장장치, 여러개가 있음. 
         - 제어장치 : 제어신호(메모리 읽어, 메모리에 저장해 같은)라는 전기 신호를 내보낸다. 또 명령어도 해석한다. 
+	- CPU가 일하는 법
+    	- ![](https://velog.velcdn.com/images/dev_kickbell/post/5028e544-4908-43b0-97a9-c6f58e371b37/image.png)![](https://velog.velcdn.com/images/dev_kickbell/post/28e21789-b487-4a04-9fd8-76a39862f49f/image.png)![](https://velog.velcdn.com/images/dev_kickbell/post/68b68086-3e74-4cdf-a402-1bc71090fa37/image.png)
+
+
+
 - 주기억장치(메모리)
 	- RAM과 ROM인데 걍 램만 기억하자
     - 현재 실행되는 프로그램(프로세스)의 명령어와 데이터를 저장하는 부품이다. 
