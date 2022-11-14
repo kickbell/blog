@@ -73,7 +73,7 @@ _( 책/블로그/강의를 통한 자료는 최대한 언어를 바꾼다던지 
     * [Static IP Connect for Mac](Miscellaneous/static-ip-connect.md)            
     * [SwiftPlantUML으로 UML 다이어그램 쉽게 그리기](Miscellaneous/swiftplantuml.md)        
 * Python          
-    * [Python vs Swift](Python/python.md)                                                       
+    * [Python vs Swift](Python/python.md)                                                                   
     * [Shorts](Python/python-shorts.md)                                                       
           
 
