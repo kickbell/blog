@@ -17,5 +17,30 @@ https://developer.apple.com/documentation/cryptokit/digest
 SHA256 
 
 ```swift
+import CommonCrypto
+
+func sha256(data : Data) -> Data {
+    var hash = [UInt8](repeating: 0,  count: Int(CC_SHA256_DIGEST_LENGTH))
+    data.withUnsafeBytes {
+        _ = CC_SHA256($0.baseAddress, CC_LONG(data.count), &hash)
+    }
+    return Data(hash)
+}
+
+let s = readLine()!
+let data = s.data(using: .utf8)!
+let shaData = sha256(data: data)
+let result = shaData.map { String(format:"%02x", $0) }.joined()
+print(result)
+
+
+//iOS 13 After
+import CryptoKit
+
+let s = readLine()!
+let data = s.data(using: .utf8)
+let digest = SHA256.hash(data: data!)
+let digestString = digest.map { String(format: "%02x", $0) }.joined() //16진수를 숫자로 바꾸는듯?
+print(digestString)
 
 ```
