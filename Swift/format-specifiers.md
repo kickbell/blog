@@ -11,6 +11,7 @@ https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Strin
 더 자세한 글을 원한다면 
 
 swift 해시사용법글을 참
+(https://github.com/kickbell/blog/blob/main/Swift/hash.md)
 
 
 ```swift
