@@ -160,6 +160,64 @@ print(priorityQueue.dequeue() ?? (0, ""))
 ```
   </p>
 </details>
+	  
+## Deque(덱, 양방향 순환큐) 				    
+- 큐인데 양쪽으로 입출력을 할 수 있는 자료구조 
+- 스택 + 큐의 느낌이라고 볼 수 있다. 
+- https://github.com/kodecocodes/swift-algorithm-club/tree/master/Deque
+    
+<details>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <p>
+
+```swift
+public struct Deque<T> {
+  private var array = [T]()
+
+  public var isEmpty: Bool {
+    return array.isEmpty
+  }
+
+  public var count: Int {
+    return array.count
+  }
+
+  public mutating func enqueue(_ element: T) {
+    array.append(element)
+  }
+
+  public mutating func enqueueFront(_ element: T) {
+    array.insert(element, at: 0)
+  }
+
+  public mutating func dequeue() -> T? {
+    if isEmpty {
+      return nil
+    } else {
+      return array.removeFirst()
+    }
+  }
+
+  public mutating func dequeueBack() -> T? {
+    if isEmpty {
+      return nil
+    } else {
+      return array.removeLast()
+    }
+  }
+
+  public func peekFront() -> T? {
+    return array.first
+  }
+
+  public func peekBack() -> T? {
+    return array.last
+  }
+}
+
+```
+  </p>
+</details>
 
 
 
