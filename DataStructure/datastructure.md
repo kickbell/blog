@@ -20,7 +20,7 @@
 ## Queue(큐)
 
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -80,7 +80,7 @@ print(queue.dequeue() ?? "")
 - LIFO(Last In Fast Out)
 		
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -125,7 +125,7 @@ print(queue.dequeue() ?? "")
 - 튜플(priority: Int, data: Int) 형태로 사용되며 5등이 10등보다 좋은 것처럼 숫자가 낮은 것이 우선순위가 높은 것이다.
     
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -167,7 +167,7 @@ print(priorityQueue.dequeue() ?? (0, ""))
 - https://github.com/kodecocodes/swift-algorithm-club/tree/master/Deque
     
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -223,7 +223,7 @@ public struct Deque<T> {
 
 ## Stack(스택) 
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -282,7 +282,7 @@ print(stack.pop() ?? 0)
 ## Linked List(링크드 리스트, 연결 리스트) 
 
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드 1</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -380,7 +380,7 @@ print(node?.data ?? 0)
 </details>
     
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드 2</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -513,7 +513,7 @@ print(searchNode!.data)
 ## Double Linked List(더블 링크드 리스트)
 		    
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드 1</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -616,7 +616,7 @@ linkedList.desc()
 </details>
     
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드 2</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -772,7 +772,7 @@ linkedList.desc()
 ## Hash Table(해쉬 테이블) 
 
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드 1</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -840,7 +840,7 @@ typealias HashAddress = Int
 </details>
 
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드 2</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -943,7 +943,7 @@ hashTable.forEach { print($0) }
 </details>
 
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드 3</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -1101,13 +1101,14 @@ hashTable.forEach { print($0) }
 해시 함수는 임이의 길이를 갖는 메시지를 입력받아 고정된 길이의 해시값을 출력하는 함수입니다. 암호 알고리즘에는 키가 사용되지만, 해시 함수는 키를 사용하지 않으므로 같은 입력에 대해서는 항상 같은 출력이 나오게 됩니다.     
 	
 - 충돌(Collision) 
-    - 같은 해쉬 주소(Hash Address)에 2개 이상의 데이터가 들어가는 경우를 말한다. 여기서 해쉬 주소는 해시 테이블의 index값이라고 할 수 있겠다. 자세한 코드는 위에 스위프트 코드2, 3를 보면 알 수 있다.
+    - 같은 해쉬 주소(Hash Address)에 2개 이상의 데이터가 들어가는 경우를 말한다. 여기서 해쉬 주소는 해시 테이블의 index값이라고 할 수 있겠다. 자세한 코드는 위에를 보면 알 수 있다.
     - 데이터를 덮어쓴다면 충돌하지 않겠지만, 그렇지 않은 경우를 말한다. 예를 들면, data1 = 'Andy'와 data2 = 'Andrew'라는 데이터가 있을 때 파이썬의 ord() 함수를 이용해서 ord(data1[0
 ]), ord(data2[0])를 실행하면 같은 A에 해당하는 65라는 아스키코드 값이 리턴된다. 이렇게 되면 다른 데이터에 같은 Hash Address값이 리턴되고 하나의 Hash Address값에 2개의 데이터가 들어가는 것이다. 이걸 충돌이라고 한다. 
     - 이런 문제를 해결하기 위해서 별도 자료구조가 필요하다. 
     
 
-- 충돌(Collision) 해결하기 
+- 충돌(Collision) 해결하기 ![image](https://user-images.githubusercontent.com/85085822/206020274-a053a614-88fc-4c9b-a0de-2f858e82f0e7.png)
+
     - 1. Chaining 기법 
         - 충돌이 일어나면, 링크드 리스트라는 자료 구조를 사용해서, 링크드 리스트로 데이터를 추가로 뒤에 연결시켜서 저장하는 기법이다. 공간이 추가로 들어간다. 
     - 2. Linear Probing 기법
@@ -1143,7 +1144,7 @@ hashTable.forEach { print($0) }
 
 ## Tree(트리)
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -1477,7 +1478,7 @@ for num in deleteNums {
 ## Heap(힙) 
 
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
