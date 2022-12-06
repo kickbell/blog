@@ -1107,8 +1107,7 @@ hashTable.forEach { print($0) }
     - 이런 문제를 해결하기 위해서 별도 자료구조가 필요하다. 
     
 
-- 충돌(Collision) 해결하기 ![image](https://user-images.githubusercontent.com/85085822/206020274-a053a614-88fc-4c9b-a0de-2f858e82f0e7.png)
-
+- 충돌(Collision) 해결하기 
     - 1. Chaining 기법 
         - 충돌이 일어나면, 링크드 리스트라는 자료 구조를 사용해서, 링크드 리스트로 데이터를 추가로 뒤에 연결시켜서 저장하는 기법이다. 공간이 추가로 들어간다. 
     - 2. Linear Probing 기법
