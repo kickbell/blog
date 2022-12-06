@@ -1,7 +1,8 @@
 ## Algorithm(알고리즘)이란 ? 
 - 어떤 문제를 풀기 위한 절차 또는 방법 
 - 어떤 문제에 대해 특정한 '입력'을 넣으면 원하는 '출력'을 얻을 수 있도록 만드는 프로그래밍을 말한다. 
-- 예를 들어, '라면 레시피'라는 알고리즘이 있다. 이 특정한 '입력'은 물 500ml를 몇분간끓이고, 면과 스프를 넣으면 라면이라는 '출력'을 얻는 알고리즘이다. 그런데, 라면은 사람마다 끓이는 스타일이 다를 수 있다. 누구는 찬물에 먼저 스프를 넣을 수 있고, 누구는 물을 350ml만 할 수도 있고 또 라면을 10분간 끓일 수도 있다. 결과물은 어찌됐건 같은 '라면'이다. 그러면 어찌됐건 똑같은 라면이라는 '출력'이 나왔다고 했을 때, 무슨 알고리즘을 택해야 할까의 기준은 이러하다. 
+- 예를 들어, '라면 레시피'라는 알고리즘이 있다. 이 특정한 '입력'은 물 500ml를 몇분![image](https://user-images.githubusercontent.com/85085822/206020402-b3035910-dc60-434b-b5d5-1a992076233b.png)
+간끓이고, 면과 스프를 넣으면 라면이라는 '출력'을 얻는 알고리즘이다. 그런데, 라면은 사람마다 끓이는 스타일이 다를 수 있다. 누구는 찬물에 먼저 스프를 넣을 수 있고, 누구는 물을 350ml만 할 수도 있고 또 라면을 10분간 끓일 수도 있다. 결과물은 어찌됐건 같은 '라면'이다. 그러면 어찌됐건 똑같은 라면이라는 '출력'이 나왔다고 했을 때, 무슨 알고리즘을 택해야 할까의 기준은 이러하다. 
 - 어떤 방법이 더 시간을 적게 쓰는지, 또 어떤 방법이 더 공간을 적게 사용하는 지의 여부다. 시간복잡도/공간복잡도 라는 개념인데 나중에 살펴보겠다. 
 			
 ![](https://velog.velcdn.com/images/dev_kickbell/post/d52af376-b87d-4b33-8365-22e9dcc65c4c/image.png)		
@@ -36,7 +37,7 @@
 ## Bubble Sort(버블 정렬)
 
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -193,7 +194,7 @@ processTime { print(bubblesort3(sortedList)) }
 ## Insertion Sort(삽입 정렬)
     
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -262,7 +263,7 @@ print(insertSort(Array(list)))
 ## Selction Sort(선택 정렬) 
 
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -335,7 +336,7 @@ print(selectionSort(Array(list)))
 ## Recursive Call(재귀 용법, 재귀 호출)
 
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -561,7 +562,7 @@ print(totalCount(6))
 ## Dynamic Programming(동적 계획법) 
     
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -777,7 +778,7 @@ print(파도반수열_dp(10))
 ## Quick Sort(퀵 정렬) 
 
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -859,7 +860,7 @@ print(quickSort2(list))
 ## Merge Sort(병합 정렬)
     
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -944,7 +945,7 @@ print(mergeSort(list))
 ## Sequential Search(순차 탐색)
     
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -978,7 +979,7 @@ let list = (1...10).map { _ in Int.random(in: 1...100) }
 ## Binary Search(이진 탐색)
     
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -1171,7 +1172,7 @@ processTime {
 ## Breadth-First Search(너비 우선 탐색)
 			
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -1314,7 +1315,7 @@ print(bfs(graph, startNode))
 ## Depth-First Search(깊이 우선 탐색)
     
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -1432,7 +1433,7 @@ print(dfs(graph, startNode))
 ## Greedy Algorithm(탐욕 알고리즘)
     
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -1592,7 +1593,7 @@ print(minTotalTime(timeList))
 ## Dijkstra Algorithm(다익스트라 알고리즘)	
 		    
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -1861,7 +1862,7 @@ print(result2.forEach { print($0) })
 ## Kruskal's Algorithm(크루스칼 알고리즘)			
     
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -2249,7 +2250,7 @@ func debug(_ index: Int, _ edge: Edge) {
 ## Prim's Algorithm(프림 알고리즘)			
     
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
@@ -2458,7 +2459,7 @@ prim("A", edges).forEach { print($0) }
 ## Backtracking(백트래킹)
     
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm">스위프트 코드</a></summary>
+  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
   <p>
 
 ```swift
