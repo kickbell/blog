@@ -32,11 +32,11 @@
     * [VoiceOver](README.md)          
     * [Dynamic Type](README.md)       -->
 * 패러다임 
-    * [단일 책임 원칙, SRP](Paradigm/srp.md)
-    * [개방 폐쇄 원칙, OCP](Paradigm/ocp.md)
-    * [리스코프 치환 원칙, LSP](Paradigm/lsp.md)
-    * [인터페이스 분리 원칙, ISP](Paradigm/isp.md)
-    * [의존성 역전 원칙, DIP](Paradigm/dip.md)   
+    * [SRP, 단일 책임 원칙](Paradigm/srp.md)
+    * [OCP, 개방 폐쇄 원칙](Paradigm/ocp.md)
+    * [LSP, 리스코프 치환 원칙](Paradigm/lsp.md)
+    * [ISP, 인터페이스 분리 원칙](Paradigm/isp.md)
+    * [DIP, 의존성 역전 원칙](Paradigm/dip.md)   
     * [만들면서 느껴보는 POP](Paradigm/protocol-oriented-programming.md)                
     * [Swift로 함수형 프로그래밍 시작하기](Paradigm/functional-programming.md)
 * 아키텍쳐 
