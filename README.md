@@ -10,14 +10,15 @@ _( 책/블로그/강의를 통한 자료는 최대한 언어를 바꾼다던지 
 
 ####               
 
-* [README](README.md)                                                            
+# Summary
+* [README](README.md)               
 * DataStructure & Algorithm                  
-    * [DataStructure](DataStructure/datastructure.md)                                              
-    * [Algorithm](Algorithm/algorithm.md)                         
-* Accessibility                                 
+    * [DataStructure](DataStructure/datastructure.md)                                  
+    * [Algorithm](Algorithm/algorithm.md)                                     
+<!-- * Accessibility
     * [VoiceOver](README.md)          
-    * [Dynamic Type](README.md)      
-* Paradigm                    
+    * [Dynamic Type](README.md)       -->
+* Paradigm 
     * Object Oriented Programming
         * [Single Responsibility Principle](Paradigm/srp.md)
         * [Open-Closed Principle](Paradigm/ocp.md)
@@ -32,14 +33,14 @@ _( 책/블로그/강의를 통한 자료는 최대한 언어를 바꾼다던지 
     * ReactorKit           
         * [Pulse(EN)](Architecture-Pattern/reactorkit-pulse-en.md)
         * [Pulse(KR)](Architecture-Pattern/reactorkit-pulse-kr.md)       
-    * Coordinator Pattern          
+<!--     * Coordinator Pattern          
         * [Basic](Architecture-Pattern/coordinator-pattern-basic.md)
         * [Advance](Architecture-Pattern/coordinator-pattern-advance.md)
-        * [RxFlow](Architecture-Pattern/coordinator-pattern-rxflow.md)
+        * [RxFlow](Architecture-Pattern/coordinator-pattern-rxflow.md) -->
 * Design Pattern
-    * [Dependency Injection](README.md)           
+<!--     * [Dependency Injection](README.md)           
     * [KVO](README.md)                                
-    * [Singletons](README.md)  
+    * [Singletons](README.md)   -->
 * iOS                
     * [WKWebView Debuging](iOS/webviewinfo-from-safari.md)
     * [Dynamically Change the App Icon](iOS/dynamically-change-the-appIcon.md)       
@@ -54,7 +55,7 @@ _( 책/블로그/강의를 통한 자료는 최대한 언어를 바꾼다던지 
     * [ObservableObject, @ObservedObject, @Published](SwiftUI/observableobject-observedobject-published.md)     
     * [@ObservedObject vs @StateObject](SwiftUI/observed-state-object.md)                               
     * [@Environmentobject](SwiftUI/environmentobject.md)                              
-* RxSwift 
+<!-- * RxSwift 
     * [Just, From, Of](RxSwift/just-from-of.md)       
     * [Empty, Never, Throw](RxSwift/empty-never-throw.md)         
     * [CombineLatest, WithLatestFrom, Zip](RxSwift/combinelatest-withlatestfrom-zip.md)         
@@ -62,7 +63,7 @@ _( 책/블로그/강의를 통한 자료는 최대한 언어를 바꾼다던지 
     * [Reactive Wrapper](RxSwift/reactive-wrapper.md)
     * [Reactive Extension](RxSwift/reactive-extension.md)         
     * [Rxswift Handbook](RxSwift/rxswift-handbook.md)       
-    * [Rxswift vs Combine](RxSwift/rxswift-vs-combine.md)      
+    * [Rxswift vs Combine](RxSwift/rxswift-vs-combine.md)       -->
 * Git
     * [Git gitignore](Git/gitignore.md)
     * [Git SSH key](Git/git-sshkey.md)
@@ -70,11 +71,14 @@ _( 책/블로그/강의를 통한 자료는 최대한 언어를 바꾼다던지 
 * Miscellaneous         
     * [Struct을 [String: Any]로 변환할 때, Encodable의 Extension을 사용 해야 하나요?](Miscellaneous/stringany-convert-encodable.md)
     * [Podfile, Dependency Rule(SPM)](Miscellaneous/podfile-dependency-rule.md)               
-    * [Static IP Connect for Mac](Miscellaneous/static-ip-connect.md)            
-    * [SwiftPlantUML으로 UML 다이어그램 쉽게 그리기](Miscellaneous/swiftplantuml.md)        
+    * [Static IP Connect for Mac](Miscellaneous/static-ip-connect.md)           
+    * [SwiftPlantUML으로 UML 다이어그램 쉽게 그리기](Miscellaneous/swiftplantuml.md)            
 * Python          
-    * [Python vs Swift](Python/python.md)                                                                   
-    * [Shorts](Python/python-shorts.md)                                                       
+    * [Python vs Swift](Python/python.md)                            
+    * [Shorts](Python/python-shorts.md)                         
+
+
+                                             
           
 
 
