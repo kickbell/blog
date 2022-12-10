@@ -32,16 +32,13 @@
     * [VoiceOver](README.md)          
     * [Dynamic Type](README.md)       -->
 * 패러다임 
-    * 객체지향 프로그래밍 패러다임
-        * [Single Responsibility Principle](Paradigm/srp.md)
-        * [Open-Closed Principle](Paradigm/ocp.md)
-        * [Liskov Substitution Principle](Paradigm/lsp.md)
-        * [Interface Segregation Principle](Paradigm/isp.md)
-        * [Dependency Inversion Principle](Paradigm/dip.md)   
-    * 프로토콜 지향 프로그래밍 패러다임
-        * [만들면서 느껴보는 POP](Paradigm/protocol-oriented-programming.md)                
-    * 함수형 프로그래밍 패러다임             
-        * [Swift로 함수형 프로그래밍 시작하기](Paradigm/functional-programming.md)
+    * [단일 책임 원칙, SRP](Paradigm/srp.md)
+    * [개방 폐쇄 원칙, OCP](Paradigm/ocp.md)
+    * [리스코프 치환 원칙, LSP](Paradigm/lsp.md)
+    * [인터페이스 분리 원칙, ISP](Paradigm/isp.md)
+    * [의존성 역전 원칙, DIP](Paradigm/dip.md)   
+    * [만들면서 느껴보는 POP](Paradigm/protocol-oriented-programming.md)                
+    * [Swift로 함수형 프로그래밍 시작하기](Paradigm/functional-programming.md)
 * 아키텍쳐 
     * ReactorKit           
         * [Pulse(EN)](Architecture-Pattern/reactorkit-pulse-en.md)
@@ -55,9 +52,9 @@
     * [Dynamically Change the App Icon](iOS/dynamically-change-the-appIcon.md)       
     * [WKDataDetectorTypes](iOS/wkdatadetectortypes.md) 
 * Swift    
-    * [Pattern Mathching](Swift/swift-pattern-mathching.md)               
+    * [패턴 매칭](Swift/swift-pattern-mathching.md)               
     * [Array.allSatisfy(_:)](Swift/allsatisfy.md)                       
-    * [Initialization](Swift/initialization.md)                               
+    * [생성자](Swift/initialization.md)                               
 * SwiftUI                         
     * [Markdown Syntax](SwiftUI/markdown-syntax.md)           
     * [@State, @Binding](SwiftUI/state-binding.md)           
@@ -83,8 +80,8 @@
     * [Static IP Connect for Mac](Miscellaneous/static-ip-connect.md)           
     * [SwiftPlantUML으로 UML 다이어그램 쉽게 그리기](Miscellaneous/swiftplantuml.md)            
 * Python          
-    * [Python vs Swift](Python/python.md)                            
-    * [Shorts](Python/python-shorts.md)                         
+    * [파이썬과 스위프트 문법 비교](Python/python.md)                            
+    * [파이썬과 스위프트 문법 요약](Python/python-shorts.md)                         
 
 
 
@@ -146,7 +143,7 @@
         * [Basic](Architecture-Pattern/coordinator-pattern-basic.md)
         * [Advance](Architecture-Pattern/coordinator-pattern-advance.md)
         * [RxFlow](Architecture-Pattern/coordinator-pattern-rxflow.md) -->
-* iOS                
+<!-- * iOS                
     * [WKWebView Debuging](iOS/webviewinfo-from-safari.md)
     * [Dynamically Change the App Icon](iOS/dynamically-change-the-appIcon.md)       
     * [WKDataDetectorTypes](iOS/wkdatadetectortypes.md) 
@@ -159,7 +156,7 @@
     * [@State, @Binding](SwiftUI/state-binding.md)           
     * [ObservableObject, @ObservedObject, @Published](SwiftUI/observableobject-observedobject-published.md)     
     * [@ObservedObject vs @StateObject](SwiftUI/observed-state-object.md)                               
-    * [@Environmentobject](SwiftUI/environmentobject.md)                              
+    * [@Environmentobject](SwiftUI/environmentobject.md)                               -->
 <!-- * RxSwift 
     * [Just, From, Of](RxSwift/just-from-of.md)       
     * [Empty, Never, Throw](RxSwift/empty-never-throw.md)         
