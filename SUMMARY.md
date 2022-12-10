@@ -3,9 +3,9 @@
 * DataStructure & Algorithm                  
     * [DataStructure](DataStructure/datastructure.md)                                  
     * [Algorithm](Algorithm/algorithm.md)                                     
-* Accessibility
+<!-- * Accessibility
     * [VoiceOver](README.md)          
-    * [Dynamic Type](README.md)      
+    * [Dynamic Type](README.md)       -->
 * Paradigm 
     * Object Oriented Programming
         * [Single Responsibility Principle](Paradigm/srp.md)
@@ -21,14 +21,14 @@
     * ReactorKit           
         * [Pulse(EN)](Architecture-Pattern/reactorkit-pulse-en.md)
         * [Pulse(KR)](Architecture-Pattern/reactorkit-pulse-kr.md)       
-    * Coordinator Pattern          
+<!--     * Coordinator Pattern          
         * [Basic](Architecture-Pattern/coordinator-pattern-basic.md)
         * [Advance](Architecture-Pattern/coordinator-pattern-advance.md)
-        * [RxFlow](Architecture-Pattern/coordinator-pattern-rxflow.md)
+        * [RxFlow](Architecture-Pattern/coordinator-pattern-rxflow.md) -->
 * Design Pattern
-    * [Dependency Injection](README.md)           
+<!--     * [Dependency Injection](README.md)           
     * [KVO](README.md)                                
-    * [Singletons](README.md)  
+    * [Singletons](README.md)   -->
 * iOS                
     * [WKWebView Debuging](iOS/webviewinfo-from-safari.md)
     * [Dynamically Change the App Icon](iOS/dynamically-change-the-appIcon.md)       
@@ -43,7 +43,7 @@
     * [ObservableObject, @ObservedObject, @Published](SwiftUI/observableobject-observedobject-published.md)     
     * [@ObservedObject vs @StateObject](SwiftUI/observed-state-object.md)                               
     * [@Environmentobject](SwiftUI/environmentobject.md)                              
-* RxSwift 
+<!-- * RxSwift 
     * [Just, From, Of](RxSwift/just-from-of.md)       
     * [Empty, Never, Throw](RxSwift/empty-never-throw.md)         
     * [CombineLatest, WithLatestFrom, Zip](RxSwift/combinelatest-withlatestfrom-zip.md)         
@@ -51,7 +51,7 @@
     * [Reactive Wrapper](RxSwift/reactive-wrapper.md)
     * [Reactive Extension](RxSwift/reactive-extension.md)         
     * [Rxswift Handbook](RxSwift/rxswift-handbook.md)       
-    * [Rxswift vs Combine](RxSwift/rxswift-vs-combine.md)      
+    * [Rxswift vs Combine](RxSwift/rxswift-vs-combine.md)       -->
 * Git
     * [Git gitignore](Git/gitignore.md)
     * [Git SSH key](Git/git-sshkey.md)
