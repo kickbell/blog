@@ -3,6 +3,31 @@
 * DataStructure & Algorithm                  
     * [DataStructure](DataStructure/datastructure.md)                                  
     * [Algorithm](Algorithm/algorithm.md)                                     
+* Design Pattern
+    * [Strategy Pattern ( 전략 패턴 )](README.md)
+    * [Observer Pattern ( 옵저버 패턴 )](README.md)
+    * [Decorator Pattern ( 데코레이터 패턴 )](README.md)
+    * [Factory Pattern ( 팩토리 패턴 )](README.md)
+    * [Singleton Pattern ( 싱글턴 패턴 )](README.md)
+    * [Command Pattern ( 커맨드 패턴 )](README.md)
+    * [Adapter, Facade Pattern ( 어댑터, 퍼사드 패턴 )](README.md)
+    * [Template Method Pattern ( 템플릿 메소드 패턴 )](README.md)
+    * [Iterator, Composite Pattern ( 반복자, 컴포지트 패턴 )](README.md)
+    * [State Pattern ( 상태 패턴 )](README.md)
+    * [Proxy Pattern ( 프록시 패턴 )](README.md)
+    * [기타 패턴](README.md)
+* WWDC
+    * [2015, Advanced NSOperations](advanced-nsoperations.md)
+    * [2014, Advanced Scrollviews and Touch Handling Techniques](advanced-scrollviews-and-touch-handling-techniques.md)
+    * [2015, Building Better Apps with Value Types in Swift](building-better-apps-with-value-types-in-swift.md)
+    * [2018, Embracing Algorithms](embracing-algorithms.md)
+    * [2018, High Performance Auto Layout](high-performance-autolayout.md)
+    * [2015, Protocol-Oriented Programming in Swift](protocol-oriented-programming-in-swift.md)
+    * [2014, Prototyping: Fake It Till You Make It](prototyping-fake-it-till-you-make-it.md)
+    * [2018, Testing Tips & Tricks](testing-tips-and-tricks.md) 
+<!--     * [Dependency Injection](README.md)           
+    * [KVO](README.md)                                
+    * [Singletons](README.md)   -->
 <!-- * Accessibility
     * [VoiceOver](README.md)          
     * [Dynamic Type](README.md)       -->
@@ -25,10 +50,6 @@
         * [Basic](Architecture-Pattern/coordinator-pattern-basic.md)
         * [Advance](Architecture-Pattern/coordinator-pattern-advance.md)
         * [RxFlow](Architecture-Pattern/coordinator-pattern-rxflow.md) -->
-* Design Pattern
-<!--     * [Dependency Injection](README.md)           
-    * [KVO](README.md)                                
-    * [Singletons](README.md)   -->
 * iOS                
     * [WKWebView Debuging](iOS/webviewinfo-from-safari.md)
     * [Dynamically Change the App Icon](iOS/dynamically-change-the-appIcon.md)       
@@ -56,7 +77,7 @@
     * [Git gitignore](Git/gitignore.md)
     * [Git SSH key](Git/git-sshkey.md)
     * [Github API Rate limit](Git/github-api-rate-limit.md)                 
-* Miscellaneous         
+* Etc         
     * [Struct을 [String: Any]로 변환할 때, Encodable의 Extension을 사용 해야 하나요?](Miscellaneous/stringany-convert-encodable.md)
     * [Podfile, Dependency Rule(SPM)](Miscellaneous/podfile-dependency-rule.md)               
     * [Static IP Connect for Mac](Miscellaneous/static-ip-connect.md)           
