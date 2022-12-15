@@ -191,7 +191,7 @@ waitress.printMenu()
 </details>
 
 
-## 2. 반복자 패턴(Iterator Pattern) 적용하기
+## 2. 반복자 패턴 적용하기
 - 그래서 Iterator(반복자)를 왜 적용하려고 하는건데 ? 
 - 똑같이 for문을 돌고 싶은데, 누구는 size와 get(i)으로 가져오고 누구는 length와 array[i]로 가져온다. 즉, 컬렉션이 다름에 따라서 지원되는 API가 다르다는 것이다.
 - 그래서, Iterator 인터페이스를 하나 만들고 그것에 맞는 클래스를 생성해서 똑같은 createIterator(), hasNext(), next() 라는 규격으로 맞춰서 하나로 관리할 수 있도록 하겠다는 것이다. 
@@ -319,7 +319,7 @@ waitress.printMenu()
 </details>
 
 
-## 3. 반복자 패턴(Iterator Pattern) 정리하기
+## 3. 반복자 패턴 정리하기
 - Waitress의 printMenu()의 문제점 
     - 인터페이스가 아닌 PancakeHouseMenu, ObjectDinerMenu라는 구상 클래스에 맞춰서 코딩하고 있습니다. 
     - 메뉴 항목의 목록을 Hashtable을 사용하는 방식으로 전환하려면 코드를 많이 수정해야 합니다.
@@ -357,7 +357,7 @@ waitress.printMenu()
   } 
 ```
     
-## 5. 단일 책임 원칙(Single Responsibility Principle)
+## 5. 단일 책임 원칙(SRP)
 > - 어떤 클래스가 바뀌는 이유는 하나뿐이어야 한다.
     
 - 디자인 원칙 중에 단일책임원칙(Single Responsibility Principle)이라는 게 있습니다. 
@@ -479,7 +479,7 @@ class Waitress {
 ![](https://velog.velcdn.com/images/dev_kickbell/post/835a2603-6b7d-44fd-b994-f19657adcb93/image.png)
 
     
-## 8. 컴포지트 패턴(Composite Pattern) 적용하기
+## 8. 컴포지트 패턴 적용하기
 - 일단, 클라이언트 입장에서 개별 객체와 복합 객체가 똑같다고 생각을 하게 해줘야 합니다. 그러기 위한 공통 인터페이스인 MenuComponent를 정의합니다. 
 - 하지만, 일부 객체는 MenuComponent의 인터페이스 중에 안쓰는 메소드가 분명 있을 수 있어요. 그래서 protocol-extension 을 통해 기본 구현을 미리 해둡니다. java라면 추상클래스가 되겠죠. 
 - 다음은 만들어놓은 프로토콜을 준수하게 하는 것인데요. Menu와 MenuItem이 있는데, 아침메뉴/점심메뉴/저녁메뉴 같은 것들이 카테고리 역할을 하는 Menu 클래스이고 그 카테고리에 오늘의 스프/부리토 처럼 세부적으로 들어가는 녀석들이 MenuItem 입니다. 
@@ -775,7 +775,7 @@ waitress.printMenu()
 </details>
     
 
-## 9. 컴포지트 패턴(Composite Pattern) 정리하기
+## 9. 컴포지트 패턴 정리하기
 - 개별 객체와 복합 객체를 모두 담아 둘 수 있는 구조를 제공합니다. 그래서 클라이언트가 개별 객체와 복합 객체를 똑같은 방법으로 다룰 수 있습니다. 
 - 단일 책임 원칙(SRP)을 위배하는 대신에 투명성을 확보합니다. 무슨 말이냐면, 지금 MenuComponent에는 2가지 역할이 들어가 있죠. name, description 같은 잎(leaf)으로써의 기능과 add(), remove() 같은 자식들을 관리하는 기능입니다. 그러나 클라이언트는 투명하게 알 수 있어요. add(), remove()를 사용한다면 아 얘는 MenuItem이 아니라 Menu구나 하고 말이죠.
 - 결론적으로 컴포지트 패턴은 SRP를 위배하지만 트리구조로 복합 객체와 잎을 똑같은 방식으로 처리하고 있죠. 이것은 상황에 따라 디자인 원칙을 적절하게 사용해야 함을 보여주는 대표 사례라고 할 수 있습니다. 
