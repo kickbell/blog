@@ -235,7 +235,7 @@ print(cafeMocha.getDescription(), cafeMocha.cost())
 - 고객이 더블 모카를 주문하면 어떻게 하나요 ? ( 현재는 hasMocha()로만 작업되어있으므로 주문 불가하죠. ) 
 - 결론적으로 우리의 목표는 기존 코드는 건드리지 않고, 확장으로만 새로운 행동을 추가하는 것입니다. 
 
-## 4. 설계하기 1
+## 4. 데코레이터 패턴 설계하기 1
 - Decorator(장식)의 슈퍼클래스는 자신이 장식하고 있는 객체의 슈퍼클래스와 같습니다. 
 - 한 객체를 여러 개의 데코레이터로 감쌀 수 있습니다. 
 - Decorator(장식)는 자신이 감싸고 있는 객체와 같은 슈퍼클래스를 가지고 있기에 원래 객체가 들어갈 자리에 데코레이터 객체를 넣어도 상관없습니다.
@@ -244,7 +244,7 @@ print(cafeMocha.getDescription(), cafeMocha.cost())
 			
 ![](https://velog.velcdn.com/images/dev_kickbell/post/217b4137-28a8-4cf8-ac7a-342f4b48bd03/image.png)
 
-## 5. 설계하기 2
+## 5. 데코레이터 패턴 설계하기 2
 - 이해를 돕기위해 다이어그램을 참고하자. 
 - 중요한 CondimentDecorator에서 Beverage를 상속하고 있다는 점과 구성(Composition)으로 Beverage를 가지고 있다는 점이다. 
 - 위에서 상속 안좋다고 그러고 왜 상속을 쓰냐고 할 수도 있다만 이건 다른 너낌이다. 왜냐면 이따가 코드를 보면 알겠지만, Berverage 객체를 생성하고 그 녀석을 Decorator(장식)로 감싸서 할당해주기 때문이다. 
@@ -256,7 +256,7 @@ print(cafeMocha.getDescription(), cafeMocha.cost())
 ![](https://velog.velcdn.com/images/dev_kickbell/post/a7c7eba5-448e-488c-a9de-ebb125231a90/image.png)
 
 
-## 6. 구현하기 
+## 6. 데코레이터 패턴 구현하기 
 - Beverage 클래스가 있고, 서브 클래스로 HouseBlend, DarkRoast, Decaf, Espresso가 있다. 이 클래스들은 내부에 description, cost() 이 구현되어 있다. 
 - CondimentDecorator 는 Beverage 을 상속하며, Beverage 객체를 Composition(구성) 으로 가지고 있다. 따라서 Beverage 혹은 Beverage 의 서브 클래스들에 접근이 가능하다. 
 - Decorator(장식)들은 모카, 두유, 우유, 휘핑크림이 있는데 CondimentDecorator를 상속하고 있고 생성자를 통해 Beverage 를 받는다. 
@@ -429,7 +429,7 @@ print("\(beverage3.getDescription()) $\(beverage3.cost())")
   </p>
 </details>
 
-## 7. 정리하기 
+## 7. 데코레이터 패턴 정리하기 
 - 아래의 코드는 아래의 그림을 코드로 구현해서 실행하는 부분이다.
 - 그림을 보면 계속 모카, 휘핑 크림 추가 처럼 첨가물을 계속 실행 중에 추가할 수 있게 되어 있다. 
 - 왜? 데코레이터가 Berverage를 상속해서 타입이 같고, 모카/우유 애들은 CondimentDecorator를 상속하고 있으니까 그렇다. 즉, 상속을 행동을 받으려고 한 것이 아니라 타입을 맞추려고 한 것이다. 
@@ -535,6 +535,11 @@ print("\(ventiDarkroast.getDescription()) $\(ventiDarkroast.cost())")
   </p>
 </details>
 
+## 9. 개방 폐쇄 원칙(Open Closed Principle)
+- 클래스는 확장에는 열려있어야 하지만 변경에는 닫혀 있어야 한다는 원칙이다. 
+- 위에서 본 것처럼 유연성 면에서 보면 상속으로 확장하는 일은 별로 좋은 선택이 아니다. 
+- 데코레이터 패턴을 사용하면 구성과 위임으로 실행 중에 새로운 행동을 추가할 수도 있다. 
+- 데코레이터 패턴의 예시처럼 어떤 메뉴나 옵션이 하나 추가됐다고하면 기존 코드를 건드리지 않고, 그 옵션에 해당하는 데코레이터를 새로 만들어서 기존의 음료에 감싸주기만 하면 된다. 
 
 ## Reference 
 [https://www.hanbit.co.kr/store/books/look.php?p_code=B6113501223](https://www.hanbit.co.kr/store/books/look.php?p_code=B6113501223)
