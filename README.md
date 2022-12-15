@@ -37,6 +37,7 @@ _( 책/블로그/강의를 통한 자료는 최대한 언어를 바꾼다던지 
     * [2015, Protocol-Oriented Programming in Swift](protocol-oriented-programming-in-swift.md)
     * [2014, Prototyping: Fake It Till You Make It](prototyping-fake-it-till-you-make-it.md)
     * [2018, Testing Tips & Tricks](testing-tips-and-tricks.md) 
+    * [2016, Understanding Swift Performance](wwdc/understanding-swift-performance.md)
 <!--     * [Dependency Injection](README.md)           
     * [KVO](README.md)                                
     * [Singletons](README.md)   -->
