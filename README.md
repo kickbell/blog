@@ -44,11 +44,12 @@ _( 책/블로그/강의를 통한 자료는 최대한 언어를 바꾼다던지 
     * [VoiceOver](README.md)          
     * [Dynamic Type](README.md)       -->
 * 패러다임 
-    * [SRP, 단일 책임 원칙](Paradigm/srp.md)
-    * [OCP, 개방 폐쇄 원칙](Paradigm/ocp.md)
-    * [LSP, 리스코프 치환 원칙](Paradigm/lsp.md)
-    * [ISP, 인터페이스 분리 원칙](Paradigm/isp.md)
-    * [DIP, 의존성 역전 원칙](Paradigm/dip.md)   
+    * 객체지향 프로그래밍, SOLID 원칙
+        * [SRP, 단일 책임 원칙](Paradigm/srp.md)
+        * [OCP, 개방 폐쇄 원칙](Paradigm/ocp.md)
+        * [LSP, 리스코프 치환 원칙](Paradigm/lsp.md)
+        * [ISP, 인터페이스 분리 원칙](Paradigm/isp.md)
+        * [DIP, 의존성 역전 원칙](Paradigm/dip.md)   
     * [만들면서 느껴보는 POP](Paradigm/protocol-oriented-programming.md)                
     * [Swift로 함수형 프로그래밍 시작하기](Paradigm/functional-programming.md)
 * 아키텍쳐 
