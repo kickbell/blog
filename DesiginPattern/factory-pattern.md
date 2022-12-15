@@ -422,14 +422,13 @@ print("조엘이 주문한 \(pizza.getName())")
 </details>
 
 
-## 4. 의존성 뒤집기 원칙(Dependency Inversion Principle)
-
--  Dependency(의존성)란 ? 
+## 4. 의존성 뒤집기 원칙(DIP)
+- 상위 모듈은 하위 모듈에 의존해서는 안된다. 상위 모듈과 하위 모듈 모두 추상화에 의존해야 한다는 원칙입니다(Dependency Inversion Principle).
+- Dependency(의존성)란 ? 
     - 객체에 의존한다는 건 아래의 그림과 같은 겁니다. DependentPizzaStore는 모든 피자 객체를 클래스 내에서 직접 만들고 있어요.
     - 각 피자 클래스의 클래스명이 변경된다거나, 또는 피자 메뉴가 추가된다면 PizzaStore까지 고쳐야해요. 상황에 따라서는 각 피자 클래스들의 내부 구현이 변경되도 바꿔야 할 수도 있죠.
     - 그렇기 때문에 DependentPizzaStore는 피자 클래스 구현에 의존한다고 말할 수 있습니다. 
     - ![](https://velog.velcdn.com/images/dev_kickbell/post/efb2239d-341d-4297-afcf-86a78eaff369/image.png)![](https://velog.velcdn.com/images/dev_kickbell/post/87e316cf-e11c-4cfe-a202-bff81f374292/image.png)
-    
 - Dependency Inversion Principle(의존성 뒤집기 원칙)
     - "구현보다는 인터페이스에 맞춰서 프로그래밍 한다." 라는 원칙과 유사할 수 있지만, DIP는 추상화를 더 강조합니다. 고수준 구성요소가 저수준 구성요소에 의존하면 안되고 항상 추상화에 의존하게 만들어야 한다는 뜻이 있어요. 
     - 고수준 구성요소와 저수준 구성요소라 함은 그런겁니다. 피자스토어를 예로 들면, 피자 스토어는 다양한 피자 객체를 만들고, 피자를 준비하고, 굽고, 자르고, 포장하죠. 즉, 피자스토어의 행동은 피자에 의해 결정되죠. 그래서 피자스토어는 고수준 구성요소이고, 피자스토어에서 사용하는 피자 객체는 저수준 구성요소 입니다. 
