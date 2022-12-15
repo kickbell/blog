@@ -422,7 +422,7 @@ print("조엘이 주문한 \(pizza.getName())")
 </details>
 
 
-## 4. 의존성 뒤집기 원칙
+## 4. 의존성 뒤집기 원칙(Dependency Inversion Principle)
 
 -  Dependency(의존성)란 ? 
     - 객체에 의존한다는 건 아래의 그림과 같은 겁니다. DependentPizzaStore는 모든 피자 객체를 클래스 내에서 직접 만들고 있어요.
