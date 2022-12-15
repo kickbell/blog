@@ -28,6 +28,7 @@
   * [2015, Protocol-Oriented Programming in Swift](wwdc/2015-protocol-oriented-programming-in-swift.md)
   * [2014, Prototyping: Fake It Till You Make It](wwdc/2014-prototyping-fake-it-till-you-make-it.md)
   * [2018, Testing Tips & Tricks](wwdc/2018-testing-tips-and-tricks.md)
+  * [2016, Understanding Swift Performance](wwdc/understanding-swift-performance.md)
 * [패러다임](undefined-1/README.md)
   * 객체지향 프로그래밍, SOLID 원칙
     * [SRP, 단일 책임 원칙](Paradigm/srp.md)
