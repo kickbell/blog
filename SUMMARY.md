@@ -4,19 +4,21 @@
 * [자료구조 & 알고리즘](and/README.md)
   * [자료구조](DataStructure/datastructure.md)
   * [알고리즘](Algorithm/algorithm.md)
-* [디자인 패턴](undefined/README.md)
-  *
-  *
-  *
-  *
-  *
-  *
-  *
-  *
-  *
-  *
-  *
-  *
+* [디자인 패턴](DesiginPattern/README.md)
+  * [디자인 패턴 원칙, 요약, 분류](DesiginPattern/design-pattern-rule.md) 
+  * [IS-A 와 HAS-A](DesiginPattern/is-a-has-a.md) 
+  * [전략 패턴](DesiginPattern/strategy-pattern.md)
+  * [옵저버 패턴](DesiginPattern/observer-pattern.md)
+  * [데코레이터 패턴](DesiginPattern/decorator-pattern.md)
+  * [팩토리 패턴](DesiginPattern/factory-pattern.md)
+  * [싱글턴 패턴](DesiginPattern/singleton-pattern.md)
+  * [커맨드 패턴](DesiginPattern/command-pattern.md)
+  * [어댑터, 퍼사드 패턴](DesiginPattern/adapter-facade-pattern.md)
+  * [템플릿 메소드 패턴](DesiginPattern/template-method-pattern.md)
+  * [반복자, 컴포지트 패턴](DesiginPattern/iterator-composite-pattern.md)
+  * [상태 패턴](DesiginPattern/state-pattern.md)
+  * [프록시 패턴](DesiginPattern/proxy-pattern.md)
+  * [복합 패턴](DesiginPattern/multi-pattern.md)
 * [WWDC](wwdc/README.md)
   * [2015, Advanced NSOperations](wwdc/2015-advanced-nsoperations.md)
   * [2014, Advanced Scrollviews and Touch Handling Techniques](wwdc/2014-advanced-scrollviews-and-touch-handling-techniques.md)
