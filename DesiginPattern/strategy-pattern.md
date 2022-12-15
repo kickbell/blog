@@ -184,7 +184,7 @@ class RubberDuck: Duck, Quackable {
 
 ![](https://velog.velcdn.com/images/dev_kickbell/post/a8b6e7c0-272c-4d8d-a506-9caa74414edc/image.png)![](https://velog.velcdn.com/images/dev_kickbell/post/78c8588b-db13-4006-bc95-0bbf2f5f0cd6/image.png)
 
-## 6. 코드로 구현하기
+## 6. 전략  구현하기
 - 각 행동은 클래스로 구현되어 FlyBehavior, QuackBehavior 프로토콜을 준수합니다.
 - Duck 클래스에는 변수로 FlyBehavior, QuackBehavior을 가지고 있죠. 이렇게 하면 FlyBehavior, QuackBehavior가 더 상위 타입이기 때문에, 여러 가지의 행동 중에 하나로 초기화 할 수 있지요.
 - 또, 상위 타입으로 구현했기 때문에 func setFlyBehavior()가 있어서 언제든지 런타임에서 행동을 바꿔줄 수도 있습니다. 
@@ -330,7 +330,19 @@ modelDuck.performFly() //저는 모형오리라 로켓파워로 날아갑니다.
   </p>
 </details>
 
-## 7. Swift? Protocol-Extension? 
+
+## 7. 전략 패턴 정리하기 
+- 바뀌는 부분은 캡슐화한다.
+    - 달라지는 부분을 찾아서 나머지 코드에 영향을 주지 않도록 캡슐화하는 것이 핵심입니다. 
+    - 그렇게 하면, 코드를 변경하는 과정에서 의도치 않게 발생하는 일을 줄이면서 코드의 유연성을 향상시킬 수 있어요. 
+- 구현보다는 인터페이스에 맞춰서 프로그래밍한다.
+    - 인터페이스에 맞춰서 프로그래밍한다라는 말은 사실 상위 형식에 맞춰서 프로그래밍한다는 말입니다.
+    - 객체지향의 다형성을 활용해야 한다는 것이죠. 
+- 상속보다는 구성을 활용한다.
+    - 위에서 본 것처럼 구성을 활용해서 시스템을 만들면 유연성을 크게 향상시킬 수 있습니다. 
+    - A는 B이다 보다 A에는 B가 있다가 더 나을 수도 있는 것이죠.
+
+## 8. Swift의 Protocol-Extension
 - Swift의 Protocol-Extension 조합으로 대체할 수 있을까? 
 
 ## Reference 
