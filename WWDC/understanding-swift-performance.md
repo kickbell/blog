@@ -9,19 +9,14 @@
 - 처음에는 스택 할당과 힙 할당에 차이에 대해서 설명합니다. 익히 아는대로 값타입은 스택에 저장되고 스택은 단순한 자료구조이지요. 컴파일 타임에 이미 스택 메모리에 공간이 할당되고, 런타임에 인스턴스를 생성할 때는 이미 할당된 공간에 값을 초기화만 해주면 되지요. 
 - 그리고 point1, point2는 독립적이기 때문에 point2가 변경되어도 point1에는 영향이 없고, 둘 다 사용이 끝나면 메모리에서 해제되죠.              
 
-![](https://velog.velcdn.com/images/dev_kickbell/post/f5b22af7-16ec-46a1-860c-01c1363d67a4/image.png)                   
-![](https://velog.velcdn.com/images/dev_kickbell/post/8bf64e69-d034-4494-b3c3-7f9f619b9b3f/image.png)                       
-![](https://velog.velcdn.com/images/dev_kickbell/post/ee44fd5f-41d0-48a6-a3b4-409afc4e581d/image.png)                       
+![](https://velog.velcdn.com/images/dev_kickbell/post/f5b22af7-16ec-46a1-860c-01c1363d67a4/image.png)![](https://velog.velcdn.com/images/dev_kickbell/post/8bf64e69-d034-4494-b3c3-7f9f619b9b3f/image.png)![](https://velog.velcdn.com/images/dev_kickbell/post/ee44fd5f-41d0-48a6-a3b4-409afc4e581d/image.png)                       
 
 ### heap 할당
 - 힙 할당은 조금 더 복잡합니다. 컴파일 타임에는 point1, point2의 참조를 위해서 스택에 메모리를 할당하죠. 
 - 그리고 런타임이 되면, Swift는 힙을 잠그고 적당한 크기의 사용되지 않은 메모리 블록을 검색합니다. 왜냐면, 여러 스레드가 동시에 힙에 메모리를 할당할 수 있기 때문이죠. 그리고나서 빈 공간을 찾는데 성공하면 메모리에 값을 저장합니다. 
 - point2 = point1를 하게되면 힙에 있는 동일한 인스턴스를 참조하죠. 그래서 point2 = 5 와 같은 작업을 하면 의도치 않은 공유를 일으킬 수 있습니다. 
 
-![](https://velog.velcdn.com/images/dev_kickbell/post/a9ec667e-a140-478e-9512-c90ff54107a4/image.png)           
-![](https://velog.velcdn.com/images/dev_kickbell/post/360a6592-0b27-4e23-8a80-a8fdbc5b2893/image.png)               
-![](https://velog.velcdn.com/images/dev_kickbell/post/f54549ff-78db-4763-b904-5ee4a69ee937/image.png)               
-![](https://velog.velcdn.com/images/dev_kickbell/post/836825ef-d800-4f9c-a66a-97032010feb7/image.png)               
+![](https://velog.velcdn.com/images/dev_kickbell/post/a9ec667e-a140-478e-9512-c90ff54107a4/image.png)![](https://velog.velcdn.com/images/dev_kickbell/post/360a6592-0b27-4e23-8a80-a8fdbc5b2893/image.png)![](https://velog.velcdn.com/images/dev_kickbell/post/f54549ff-78db-4763-b904-5ee4a69ee937/image.png)![](https://velog.velcdn.com/images/dev_kickbell/post/836825ef-d800-4f9c-a66a-97032010feb7/image.png)               
 
 
 ### 결론 
