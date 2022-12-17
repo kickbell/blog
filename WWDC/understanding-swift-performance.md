@@ -9,7 +9,7 @@
 - 처음에는 스택 할당과 힙 할당에 차이에 대해서 설명합니다. 익히 아는대로 값타입은 스택에 저장되고 스택은 단순한 자료구조이지요. 컴파일 타임에 이미 스택 메모리에 공간이 할당되고, 런타임에 인스턴스를 생성할 때는 이미 할당된 공간에 값을 초기화만 해주면 되지요. 
 - 그리고 point1, point2는 독립적이기 때문에 point2가 변경되어도 point1에는 영향이 없고, 둘 다 사용이 끝나면 메모리에서 해제되죠. 
 
-![](https://velog.velcdn.com/images/dev_kickbell/post/f5b22af7-16ec-46a1-860c-01c1363d67a4/image.png)![](https://velog.velcdn.com/images/dev_kickbell/post/8bf64e69-d034-4494-b3c3-7f9f619b9b3f/image.png)![](https://velog.velcdn.com/images/dev_kickbell/post/ee44fd5f-41d0-48a6-a3b4-409afc4e581d/image.png)
+![](https://velog.velcdn.com/images/dev_kickbell/post/f5b22af7-16ec-46a1-860c-01c1363d67a4/image.png){: width="100%" height="100%"}![](https://velog.velcdn.com/images/dev_kickbell/post/8bf64e69-d034-4494-b3c3-7f9f619b9b3f/image.png){: width="100%" height="100%"}![](https://velog.velcdn.com/images/dev_kickbell/post/ee44fd5f-41d0-48a6-a3b4-409afc4e581d/image.png){: width="100%" height="100%"}
 
 
 ### heap 할당
