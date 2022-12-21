@@ -39,7 +39,7 @@
 ![](https://velog.velcdn.com/images/dev_kickbell/post/18318bf3-72b4-42b8-ba2c-dabc537bd472/image.png)
 
 ### key 값으로 Enum, Struct를 사용(힙 할당 사용하지 않음) 
-- 왜 String이 문제일까요 ? Swift에서 String은 구조체니까 값타입이죠? 그러면 힙을 사용하지 않고 스택만 사용하겠네요? 그럴 것 같지만 그렇지도 않다고 합니다. 
+- 왜 String이 문제일까요 ? Swift에서 String은 구조체니까 값타입¹이죠? 그러면 힙을 사용하지 않고 스택만 사용하겠네요? 그럴 것 같지만 그렇지도 않다고 합니다. 
 - 왜냐면, 저 key를 보면 알 수 있지만 key의 값이 가변적이죠. 길이가 1자일지 1000자일지 모르는 겁니다. 컴파일 타입에 길이가 정해져 있지 않죠. 그래서 Swift에서 String은 힙을 간접적으로 이용한다고 합니다. 정확히는 문자열 값을 힙에 저장한다고 해요. 이것은 Swift의 컬렉션 타입인 Array, Dictionary 같은 녀석들도 마찬가지라고 해요. 
 - 그러면 이 코드를 어떻게 개선하면 좋을까요 ? 힙을 사용하지 않게 하면 될 것 같아요. 
 - 해결책은 아래와 같습니다. Attribute라는 구조체를 만듭니다. 그리고 Hashable을 준수합니다. Swift에서 구조체는 일급 객체이므로 key값으로 사용할 수가 있습니다. 이렇게 하면 힙 할당이 필요 없어지므로 더 효율적인 코드가 됩니다. 
@@ -272,9 +272,16 @@ struct HTTPRequest {
 - 내가 내 인스턴스의 메소드를 호출 할때, 그게 static dispatch를 통해 일어나는지, dynamic dispatch를 통해 일어나는지?
 
 
-## 참고 사항 
+## Reference
 
-### swift 종류별 값, 참조타입
+[https://developer.apple.com/videos/play/wwdc2016/416/](https://developer.apple.com/videos/play/wwdc2016/416/)
+
+[https://www.youtube.com/watch?v=z1Gf6EosaUQ](https://www.youtube.com/watch?v=z1Gf6EosaUQ)
+
+
+## Endnotes 
+
+### ¹swift 종류별 값, 참조타입
 - 참조 reference 타입
     - class
     - function
@@ -292,13 +299,6 @@ struct HTTPRequest {
    - public struct Dictionary<Key : Hashable, Value>
    - public struct Array<Element>
    - public struct Set<Element : Hashable>  
-
-
-## Reference
-
-[https://developer.apple.com/videos/play/wwdc2016/416/](https://developer.apple.com/videos/play/wwdc2016/416/)
-
-[https://www.youtube.com/watch?v=z1Gf6EosaUQ](https://www.youtube.com/watch?v=z1Gf6EosaUQ)
 
 
 
