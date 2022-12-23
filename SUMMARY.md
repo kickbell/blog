@@ -52,7 +52,7 @@
   * [패턴 매칭](Swift/swift-pattern-mathching.md)
   * [Array.allSatisfy(\_:)](Swift/allsatisfy.md)
   * [생성자](Swift/initialization.md)
-  * [프로토콜의 동적 디스패치와 정적 ](Swift/static-and-dynamic-dispatch-of-protocol.md)
+  * [프로토콜의 동적 디스패치와 정적 디스패치](Swift/static-and-dynamic-dispatch-of-protocol.md)
 * [SwiftUI](swiftui/README.md)
   * [Markdown Syntax](SwiftUI/markdown-syntax.md)
   * [@State, @Binding](SwiftUI/state-binding.md)
