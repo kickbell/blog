@@ -23,7 +23,7 @@
   * [2016, Understanding Swift Performance](WWDC/2016-understanding-swift-performance.md)
   * [2015, Building Better Apps with Value Types in Swift](WWDC/2015-building-better-apps-with-value-types-in-swift.md) 
   * [2015, Protocol-Oriented Programming in Swift](WWDC/2015-protocol-oriented-programming-in-swift.md)
-  * [2016, Protocol and Value Oriented Programming in UIKit Apps](WWDC/2016-protocol-and-value-oriented-programming-in-uiKit-apps.md)
+  * [2016, Protocol and Value Oriented Programming in UIKit Apps](WWDC/2016-protocol-and-value-oriented-programming-in-uikit-apps.md)
   * [2015, Advanced NSOperations](WWDC/2015-advanced-nsoperations.md)
   * [2014, Advanced Scrollviews and Touch Handling Techniques](WWDC/2014-advanced-scrollviews-and-touch-handling-techniques.md)
   * [2018, Embracing Algorithms](WWDC/2018-embracing-algorithms.md)
