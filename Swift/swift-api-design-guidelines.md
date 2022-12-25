@@ -581,7 +581,9 @@ values.append([2, 3, 4]) // [1, "a", [2, 3, 4]] or [1, "a", 2, 3, 4]?
 // 따라서 이런 상황을 피하기 위해 명시적으로 이런 경우라면 꼭 주의해야 한다. 
 ```
 
+## Reference 
 
+[https://www.swift.org/documentation/api-design-guidelines/](https://www.swift.org/documentation/api-design-guidelines/)
 
 
 
