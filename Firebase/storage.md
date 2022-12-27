@@ -1,8 +1,7 @@
 # Storage를 API처럼 사용해보기
-> **요약 : **
-_**Storage에 JSON 파일을 업로드해서 API를 사용하는 것처럼 활용해봅니다.
-**_
 
+> Storage에 JSON 파일을 업로드해서 API를 사용하는 것처럼 활용해봅니다.     
+        
 _**Firebase Cloud Storage**_ 는 사진, 동영상 등의 사용자 제작 콘텐츠를 저장하고 제공해야 하는 앱 개발자를 위해 만들어졌다고 합니다.
 
 자세한 내용은 [공식 문서 링크](https://firebase.google.com/docs/storage?authuser=1)에 가면 보실 수 있어요. 
@@ -30,32 +29,39 @@ _**Firebase Cloud Storage**_ 는 사진, 동영상 등의 사용자 제작 콘�
 ## 1. Storage의 `Rules`에서 접근권한을 설정해준다. 
 
 일단 프로젝트를 원하는 이름으로 하나 만듭니다. 
-그리고 프로젝트를 열고 Storage 메뉴로 들어가볼게요. 그러면 보통 아래의 화면이 보일 겁니다. 
-![](https://images.velog.io/images/dev_kickbell/post/266dae82-7b61-4b97-8738-175210bda418/image.png)
+그리고 프로젝트를 열고 Storage 메뉴로 들어가볼게요. 그러면 보통 아래의 화면이 보일 겁니다.         
+          
+![](https://images.velog.io/images/dev_kickbell/post/266dae82-7b61-4b97-8738-175210bda418/image.png)      
 
-여기서 `Rules` 메뉴를 탭할게요. 그러면 아래의 화면이 나옵니다. 
-![](https://images.velog.io/images/dev_kickbell/post/9d423f69-9736-49e6-a3dc-18f328c4bff9/image.png)
+여기서 `Rules` 메뉴를 탭할게요. 그러면 아래의 화면이 나옵니다.       
+        
+![](https://images.velog.io/images/dev_kickbell/post/9d423f69-9736-49e6-a3dc-18f328c4bff9/image.png)        
 
 이건 해당 프로젝트 스토리지에 접근할 수 있는 권한을 규칙으로 정의해 놓은 건데요. 현재는 모두 읽기가 허용되고, 수정하기는 허용되지 않은 상황입니다. 자세한 규칙은 [여기](https://firebase.google.com/docs/rules/get-started?authuser=1)를 참고하세요. 
 
 ## 2. 임의의 json 파일을 생성한다. 
 이제 json 파일을 하나 만들어보겠습니다. json 파일이야 다양한 방법으로 만들 수 있겠으나, 저는 Storage 바로 위 메뉴인 Realtime Database를 통해서 만들어 봤어요. 
 
-서버에서 메뉴를 받아오는 데이터같은 느낌을 주기위해 아래처럼 menus라는 키값 고정된 값의 배열을 주었습니다. 그리고 우측 상단에서 JSON 내보내기를 선택해주면 데스크탑에 JSON 파일이 간단히 저장됩니다. 
+서버에서 메뉴를 받아오는 데이터같은 느낌을 주기위해 아래처럼 menus라는 키값 고정된 값의 배열을 주었습니다. 그리고 우측 상단에서 JSON 내보내기를 선택해주면 데스크탑에 JSON 파일이 간단히 저장됩니다.         
+          
 ![](https://images.velog.io/images/dev_kickbell/post/b868f93f-744b-428d-a91e-cfe6ea7bf862/image.png)
 
 ## 3. json 파일을 Storage에 업로드한다. 
 
-자, 이제 json 파일이 생겼으니 업로드를 해볼까요? 다시 Storage로 돌아와서 파일업로드 버튼을 누르고 방금 다운받은 json 파일을 선택해줍니다. 
+자, 이제 json 파일이 생겼으니 업로드를 해볼까요? 다시 Storage로 돌아와서 파일업로드 버튼을 누르고 방금 다운받은 json 파일을 선택해줍니다.      
+          
 ![](https://images.velog.io/images/dev_kickbell/post/3897a9f9-3023-4b65-a3d0-1537ab99e32f/image.png)
 
-그리고 업로드 된 json 파일을 클릭해보면, 우측에 해당 파일의 정보가 뜨는데요. 
-![](https://images.velog.io/images/dev_kickbell/post/94a232cc-b760-48cf-adea-5119e7119b6e/image.png)
+그리고 업로드 된 json 파일을 클릭해보면, 우측에 해당 파일의 정보가 뜨는데요.      
+        
+![](https://images.velog.io/images/dev_kickbell/post/94a232cc-b760-48cf-adea-5119e7119b6e/image.png)      
+          
 파란색으로 칠해진 링크를 클릭해봅시다. 그러면 어떻게 되죠? 저희가 GET으로 데이터를 불러오는 것 처럼 json이 아래와 같이 보여집니다 :) 
 
 ## 4. 공유링크를 받아서 Storage를 API처럼 활용한다. 
-
-![](https://images.velog.io/images/dev_kickbell/post/d392318a-2c01-44aa-a117-85f33d8dc63f/image.png)
+      
+![](https://images.velog.io/images/dev_kickbell/post/d392318a-2c01-44aa-a117-85f33d8dc63f/image.png)        
+        
 이 링크를 한 번 분석해보면, 
 
 `https://firebasestorage.googleapis.com/v0/b/carserver-bb9be.appspot.com/o/carserver-bb9be-default-rtdb-export%20(1).json?alt=media&token=14aa301d-ee00-4345-8565-d76f5b165b29` 
@@ -73,8 +79,8 @@ https부터 .json까지의 부분이 base url이라고 볼 수 있겠고, 나머
 그리고 URLSession을 사용해서 데이터를 리턴해주도록 했습니다. 
 
 최종화면과 전체 코드는 아래와 같습니다. 
-
-![](https://images.velog.io/images/dev_kickbell/post/c94cbe6d-c428-4a27-a8bf-713c537f27b4/image.png)
+        
+![](https://images.velog.io/images/dev_kickbell/post/c94cbe6d-c428-4a27-a8bf-713c537f27b4/image.png)      
 
 ```swift
 
