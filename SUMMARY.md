@@ -67,6 +67,7 @@
   * [Git gitignore](Git/gitignore.md)
   * [Git SSH key](Git/git-sshkey.md)
   * [Github API Rate limit](Git/github-api-rate-limit.md)
+  * [GitKraken(깃크라켄) 활용하기](Git/gitkraken-use.md)
 * [Etc](etc/README.md)
   * [Struct을 \[String: Any\]로 변환할 때, Encodable의 Extension을 사용 해야 하나요?](Miscellaneous/stringany-convert-encodable.md)
   * [Podfile, Dependency Rule(SPM)](Miscellaneous/podfile-dependency-rule.md)
