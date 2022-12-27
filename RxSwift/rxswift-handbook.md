@@ -294,18 +294,19 @@ public struct ControlEvent<PropertyType> : ControlEventType {
 그러면 얘같은 경우는 events.subscribe(on: ConcurrentMainScheduler.instance) 로 구현되어 있다. 여기서 알수있는것 은 두개다. 
  
 
-#### - ControlProperty 공통점
-> ![](https://images.velog.io/images/dev_kickbell/post/72075400-a214-4911-b4cb-5c8d18e73c6d/image.png)
-  
-#### - ControlEvent 특징
-> 1. subscribe를 해줄 필요가 없다. 이미 되어있으니 
-  2. 메인 쓰레드에서 돌아가는게 보장된다는 것이다. 
+#### ControlProperty 공통점                
+            
+![](https://images.velog.io/images/dev_kickbell/post/72075400-a214-4911-b4cb-5c8d18e73c6d/image.png)
+      
+#### ControlEvent 특징                    
+- subscribe를 해줄 필요가 없다. 이미 되어있으니 
+- 메인 쓰레드에서 돌아가는게 보장된다는 것이다. 
 
-#### - ControlProperty / ControlEvent 차이점   
-> UISearchBar, UISegmentedControl 같은 애들은 ControlProperty
-  UIButton 같은애들은 ControlEvent이다. 
-> ControlProperty는 옵저버, 옵저버블 둘 다 가능. 
-> ControlEvent는 옵저버블은 가능하지만 옵저버의 역할을 하지 못한다. 
-  이런거 말하는건가 ? 써치바는 저기 바인드가 되는?.. 
-> ![](https://images.velog.io/images/dev_kickbell/post/3fad8f69-cf49-46a8-87b1-bb297bfef249/image.png)
+#### ControlProperty / ControlEvent 차이점         
+- UISearchBar, UISegmentedControl 같은 애들은 ControlProperty
+- UIButton 같은애들은 ControlEvent이다. 
+- ControlProperty는 옵저버, 옵저버블 둘 다 가능. 
+- ControlEvent는 옵저버블은 가능하지만 옵저버의 역할을 하지 못한다.      
+          
+![](https://images.velog.io/images/dev_kickbell/post/3fad8f69-cf49-46a8-87b1-bb297bfef249/image.png)
   
