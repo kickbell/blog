@@ -119,16 +119,6 @@ public func bind<Observer: ObserverType>(to observers: Observer...) -> Disposabl
 - `UIApplication.shared.setAlternateIconName`에 사용되는`Primary App Icon`을 가져올 수 있는 기본 값은 `nil`이다. 
 - 자세한 설명과 샘플코드가 제공되는 공식문서의 링크는 [여기](https://developer.apple.com/documentation/xcode/asset_management/configuring_your_app_to_use_alternate_app_icons)이다.
 
-    
-## Reference 
-[https://www.flaticon.com/](https://www.flaticon.com/)
-
-### 결론 
-
-다른 애들은 저 배열을 없애면 컴파일에러가 발생하는데 of는 예외이다. 
-of는 Element ...(가변 매개변수, Variadic Parameters)라서 배열값을 넣어도 string값을 연속해서 넣어도 됩니다.
- 
-
 
 
 
