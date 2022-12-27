@@ -5,9 +5,10 @@
 유사한 툴로 [SourceTree](https://www.sourcetreeapp.com/) 가 있다. 차이점은 소스트리는 완전 무료이지만, 깃크라켄은 사용할 수 있는 기능에 따라서 무료/유료 버전이 따로 있다. 
 
 그래도 아래와 같이 왠간한 건 다 된다. 더 정확하게 알고 싶다면 [여기](https://www.gitkraken.com/pricing)를 클릭해서 보도록 하자. 
-![](https://images.velog.io/images/dev_kickbell/post/fe6acb21-61d6-4c6d-9833-f70404fd94b8/image.png)
+          
+![](https://images.velog.io/images/dev_kickbell/post/fe6acb21-61d6-4c6d-9833-f70404fd94b8/image.png)          
 
-
+        
 
 ## 1. commit --amend
 
@@ -21,10 +22,10 @@
 
 ![](https://images.velog.io/images/dev_kickbell/post/061f47f5-6566-4382-9852-9f812d1df6fe/image.png)
 > 1. 내부파일 sample.txt 내용 변경 
-2. 새롭게 수정된 커밋인 WIP(work in progress) 클릭 
-3. `Stage all changes` 클릭 
-4. `Amend` 옵션 체크(커밋메시지를 변경하고 싶다면 변경해도 됨)
-5. `Amend Previous Commit` 클릭 
+> 2. 새롭게 수정된 커밋인 WIP(work in progress) 클릭 
+> 3. `Stage all changes` 클릭 
+> 4. `Amend` 옵션 체크(커밋메시지를 변경하고 싶다면 변경해도 됨)
+> 5. `Amend Previous Commit` 클릭 
 
 ![](https://images.velog.io/images/dev_kickbell/post/8ca5285f-9d73-4dbb-a80a-ef850b39128c/image.png)![](https://images.velog.io/images/dev_kickbell/post/172ef3c4-f356-482f-a16e-60ec21b99225/image.png)
 
@@ -46,7 +47,7 @@
 ![](https://images.velog.io/images/dev_kickbell/post/9c208c37-c851-4d3b-aaf8-79b874589b8a/image.png)
 
 > 1. 지우고 싶은 커밋 우클릭 `Revert commit`클릭 
-2. Yes
+> 2. Yes
 
 ![](https://images.velog.io/images/dev_kickbell/post/a71a1c76-13cc-4807-a6bb-2f5a62657f41/image.png)![](https://images.velog.io/images/dev_kickbell/post/d1df7aab-0364-43a0-be32-a031a858ff27/image.png)
 
@@ -68,8 +69,8 @@
 ![](https://images.velog.io/images/dev_kickbell/post/0a595924-ae22-497a-8ef5-d74d4d924c5b/image.png)
 
 > 1. 2개의 커밋을 지우고 싶다면 3번째의 커밋으로 가서 클릭 
-2. 마우스 우클릭 후 `Reset [브랜치명] to this commit`  
-3. Reset 옵션 선택 후 클릭 
+> 2. 마우스 우클릭 후 `Reset [브랜치명] to this commit`  
+> 3. Reset 옵션 선택 후 클릭 
 
 ![](https://images.velog.io/images/dev_kickbell/post/8c367c5c-a3c1-46f9-b86e-21537225c800/image.png)
 
@@ -84,8 +85,9 @@
 > reset option
 - 커밋만 되돌리고 싶을 때 (soft)
 - 변경한 인덱스의 상태를 원래대로 되돌리고 싶을 때 (mixed)
-- 최근의 커밋을 완전히 버리고 이전의 상태로 되돌리고 싶을 때 (hard)
-![](https://images.velog.io/images/dev_kickbell/post/a7b45992-3ce4-4ac3-937c-f34832178d99/image.png)
+- 최근의 커밋을 완전히 버리고 이전의 상태로 되돌리고 싶을 때 (hard)        
+          
+![](https://images.velog.io/images/dev_kickbell/post/a7b45992-3ce4-4ac3-937c-f34832178d99/image.png)            
 
 
 ## 4. cherry-pick
@@ -99,12 +101,12 @@
 ![](https://images.velog.io/images/dev_kickbell/post/82087dee-495e-4430-9599-dd85fce8e7bb/image.png)
 
 > 1. 커밋을 가져갈 브랜치(issue1)에서 커밋을 가져와서 넣을 브랜치(master)로 `checkout`
-2. 센터 화면의 `GRAPH` 메뉴에서 내가 가져오고 싶은 브랜치의 커밋을 클릭 
-3. 우클릭 후, `Chrry pick commit` 클릭 
-4. Yes
-5. `conflicted 발생`, 충돌이 발생하는 파일을 열어서 충돌하는 부분을 수정하고 저장한다 
-6. 우측 `mark all resolved` 모두 해결된 것으로 표시 버튼 클릭 
-7. `Commit changes to 1 file` 클릭(커밋 메시지 변경도 가능)
+> 2. 센터 화면의 `GRAPH` 메뉴에서 내가 가져오고 싶은 브랜치의 커밋을 클릭 
+> 3. 우클릭 후, `Chrry pick commit` 클릭 
+> 4. Yes
+> 5. `conflicted 발생`, 충돌이 발생하는 파일을 열어서 충돌하는 부분을 수정하고 저장한다 
+> 6. 우측 `mark all resolved` 모두 해결된 것으로 표시 버튼 클릭 
+> 7. `Commit changes to 1 file` 클릭(커밋 메시지 변경도 가능)
 
 ![](https://images.velog.io/images/dev_kickbell/post/50408929-3054-42e6-8df1-86c27b56f448/image.png)![](https://images.velog.io/images/dev_kickbell/post/2d3894ce-ce74-41d1-a3f4-13f4b7681c91/image.png)![](https://images.velog.io/images/dev_kickbell/post/a73a2ccf-eb25-47c7-9594-25c23ace3c7b/image.png)
 
@@ -124,8 +126,8 @@
 ![](https://images.velog.io/images/dev_kickbell/post/d4238965-a8d4-4c23-9902-ed2e06c20b50/image.png)
 
 > 1. `pull 설명을 추가` 커밋과 `commit의 설명추가` 커밋을 합칠 것이므로 그 이전커밋인 `add의 설명추가` 커밋을 클릭한다.
-2. 우클릭 후, `Interative rebase 2 children of-` 를 클릭한다. 
-3. 새로운 창이 생기면 `pull의 설명을 추가` 옵션을 `Squash`로 선택하고 `Start Rebase` 를 클릭한다. 
+> 2. 우클릭 후, `Interative rebase 2 children of-` 를 클릭한다. 
+> 3. 새로운 창이 생기면 `pull의 설명을 추가` 옵션을 `Squash`로 선택하고 `Start Rebase` 를 클릭한다. 
 
 ![](https://images.velog.io/images/dev_kickbell/post/8b804bf3-6aaa-40c9-be31-c5bba779c4ee/image.png)![](https://images.velog.io/images/dev_kickbell/post/2a986323-d10a-4d3c-ab9a-2018bbb32b97/image.png)![](https://images.velog.io/images/dev_kickbell/post/b0e93985-17a0-4a36-a276-c312bcc84521/image.png)![](https://images.velog.io/images/dev_kickbell/post/39918ad9-db6e-46d1-8ddb-fac1026bce37/image.png)
 
@@ -165,7 +167,7 @@
 그런데, 위에서 말씀드린 것처럼 깃크라켄에서는 훠얼씬 더 쉽습니다. 
 
 > 1. 합칠 커밋 선택 후 우클릭 
-2. Squash 버튼 클릭 
+> 2. Squash 버튼 클릭 
 
 ![](https://images.velog.io/images/dev_kickbell/post/16d4b6cb-9842-448b-b4f0-5595984b02b4/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-12-06%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2012.44.18.png)
 
