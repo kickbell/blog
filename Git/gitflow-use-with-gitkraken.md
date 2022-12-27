@@ -1,15 +1,18 @@
 # GitKraken으로 Git-flow 활용하기 
 
-`GitKraken`은 기본적으로 `Git-flow 브랜치 전략`을 제공합니다. 
-![](https://images.velog.io/images/dev_kickbell/post/988a8a49-70c1-47db-85eb-c95ab86cb659/image.png)
+`GitKraken`은 기본적으로 `Git-flow 브랜치 전략`을 제공합니다.      
+        
+![](https://images.velog.io/images/dev_kickbell/post/988a8a49-70c1-47db-85eb-c95ab86cb659/image.png)        
 
-먼저 우측 상단 설정버튼을 클릭합니다.
-![](https://images.velog.io/images/dev_kickbell/post/9de3a60f-f71d-4688-a6d7-62ca134b9f6c/image.png)
+먼저 우측 상단 설정버튼을 클릭합니다.     
+          
+![](https://images.velog.io/images/dev_kickbell/post/9de3a60f-f71d-4688-a6d7-62ca134b9f6c/image.png)        
 
-그러면 설정화면이 나와요. 
-설정에서 하단으로 스크롤해서 사이드 메뉴중에 `GitFlow` 탭 해봅시다.
-![](https://images.velog.io/images/dev_kickbell/post/576abb41-4ca6-4d2e-a7d9-93285732cd42/image.png)
-
+그러면 설정화면이 나와요.      
+설정에서 하단으로 스크롤해서 사이드 메뉴중에 `GitFlow` 탭 해봅시다.        
+          
+![](https://images.velog.io/images/dev_kickbell/post/576abb41-4ca6-4d2e-a7d9-93285732cd42/image.png)          
+          
 그럼 기본적으로 원격에 사용되는 `master`, `develop` 브랜치와 로컬에서 사용되는 `feature`, `release`, `hotfix` 가 입력되어 있습니다. 
 
 특별히 따로 지정할 것이 없으니 아래 `Initialize Gitflow` 버튼을 눌러줍니다. 
