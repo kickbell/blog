@@ -49,6 +49,7 @@
   * [App Icon 동적으로 변경하기](iOS/dynamically-change-the-appIcon.md)     
   * [WKDataDetectorTypes의 데이터 탐지](iOS/wkdatadetectortypes.md)        
   * [Xcode에서 메모리 누수 확인하기](iOS/memory-leak-check-of-xcode.md)    
+  * [개발 인증서 관리하기](iOS/certificate-management.md)
 * [Swift](swift/README.md)
   * [Swift API Design Guidelines](Swift/swift-api-design-guidelines.md)
   * [패턴 매칭](Swift/swift-pattern-mathching.md)
