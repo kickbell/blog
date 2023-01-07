@@ -24,12 +24,11 @@
   * [2015, Building Better Apps with Value Types in Swift](WWDC/2015-building-better-apps-with-value-types-in-swift.md) 
   * [2015, Protocol-Oriented Programming in Swift](WWDC/2015-protocol-oriented-programming-in-swift.md)
   * [2016, Protocol and Value Oriented Programming in UIKit Apps](WWDC/2016-protocol-and-value-oriented-programming-in-uikit-apps.md)
-  * [2015, Advanced NSOperations](WWDC/2015-advanced-nsoperations.md)
-  * [2014, Advanced Scrollviews and Touch Handling Techniques](WWDC/2014-advanced-scrollviews-and-touch-handling-techniques.md)
-  * [2018, Embracing Algorithms](WWDC/2018-embracing-algorithms.md)
-  * [2018, High Performance Auto Layout](WWDC/2018-high-performance-auto-layout.md)
-  * [2014, Prototyping: Fake It Till You Make It](WWDC/2014-prototyping-fake-it-till-you-make-it.md)
+  * [2018, High Performance Auto Layout](WWDC/2018-high-performance-autolayout.md)
   * [2018, Testing Tips & Tricks](WWDC/2018-testing-tips-and-tricks.md)
+  * [2014, Advanced Scrollviews and Touch Handling Techniques](WWDC/2014-advanced-scrollviews-and-touch-handling-techniques.md)
+  * [2019, Modern Swift API Design](WWDC/2019-modern-swift-api-design.md)
+  * [2015, Optimizing Swift Performance](WWDC/2015-optimizing-swift-performance.md)
 
 * [패러다임](undefined-1/README.md)
   * 객체지향 프로그래밍, SOLID 원칙
