@@ -360,8 +360,7 @@ func createGridCellRegistration() -> UICollectionView.CellRegistration<UICollect
     
 ## Reference
 
-[https://developer.apple.com/videos/play/wwdc2020/10097](https://developer.apple.com/videos/play/wwdc2020/10097)
-				  
+[https://developer.apple.com/videos/play/wwdc2020/10097](https://developer.apple.com/videos/play/wwdc2020/10097)				  
 [https://developer.apple.com/documentation/uikit/views_and_controls/collection_views/implementing_modern_collection_views](https://developer.apple.com/documentation/uikit/views_and_controls/collection_views/implementing_modern_collection_views)
 
 ## Endnotes 
