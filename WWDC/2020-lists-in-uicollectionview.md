@@ -1,24 +1,34 @@
 # Lists in UICollectionView
 
-
-> _이 글은 [WWDC 2018 - High Performance Auto Layout](https://developer.apple.com/videos/play/wwdc2018/220)의 내용을 공부하고, 개인적으로 정리해놓은 글입니다._
-
-
-## 1. 
+> _이 글은 [WWDC 2020 - Advances in UICollectionView](https://developer.apple.com/videos/play/wwdc2020/10097)의 내용을 공부하고, 개인적으로 정리해놓은 글입니다._
 
 
+## 1. UICollectionView APIs
+
+<details>
+  <summary><a href=""></a>reorderingHandlers</summary>
+  <p>
+
+```swift
+
+```
+  </p>
+</details>
+
+    
+```swift
+
+```
+    
 ## Reference
 
-[https://developer.apple.com/videos/play/wwdc2018/220/](https://developer.apple.com/videos/play/wwdc2018/220/)
+[https://developer.apple.com/videos/play/wwdc2020/10097](https://developer.apple.com/videos/play/wwdc2020/10097)				  
+[https://developer.apple.com/documentation/uikit/views_and_controls/collection_views/implementing_modern_collection_views](https://developer.apple.com/documentation/uikit/views_and_controls/collection_views/implementing_modern_collection_views)
 
 ## Endnotes 
 
-### ¹leaf
-- 사전 그대로의 뜻은 나뭇잎의 잎이지만, 프로그래밍 적으로는 트리tree 자료구조에서 자식이 없는 노드. 즉, 제일 하단의 노드를 말한다. 
-- 여기서는 뷰 계층이 스택구조로 밑에서부터 차근차근 쌓이므로 제일 마지막인 최상단 뷰를 뜻한다. 
+### ¹스냅샷(Snapshot)
+- 사진을 찍듯이 특정 시점에 데이터를 별도의 파일이나 이미지로 저장, 보관하는 기술을 말합니다. 그래서 스냅샷 기능을 이용하여 데이터를 저장하면 유실된 데이터 복원과 일정 시점의 상태로 데이터를 복원할 수 있습니다.
 
 
-### ²방정식(Equation)
-- 방정식(方程式, 영어: equation)은 미지수가 포함된 식에서 그 미지수에 특정한 값을 주었을 때만 성립하는 등식이다. 이때, 방정식을 참이 되게 하는(성립하게 하는) 특정 문자의 값을 해 또는 근이라 한다.
-- x^2 - 5x + 6 = 0 은 방정식이고, 해는 2와 3이다. 
 
