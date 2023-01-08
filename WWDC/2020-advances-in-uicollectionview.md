@@ -255,7 +255,7 @@ extension Emoji.Category {
 
 ## 3. 리스트 구성(List Configuration)
     
-### Lists
+### 리스트
 - iOS 14에서는 Compositional Layout을 기반으로 Lists라는 새로운 기능이 추가되었습니다. 
 - Lists를 사용하면 컬렉션뷰에 테이블뷰와 같은 느낌의 셀을 넣어줄 수 있습니다. 아래 그림처럼 말이죠. 
 - Lists에는 테이블뷰에서 기대할 수 있는 Swipe 같은 기능도 포함되어 있습니다. 
@@ -307,13 +307,7 @@ func configureDataSource() {
 ```
 
 
-
-    
-
-
-
 ## 4. 리스트 셀/뷰 구성(List Cell/View Configuration)
-
     
 ### 셀 콘텐츠 구성 
 - 셀 콘텐츠 구성은 UITableView 표준 셀 타입에 표시되는 것과 유사한 셀에 대한 표준화된 레이아웃을 제공합니다. 
@@ -339,13 +333,6 @@ cell.contentConfiguration = contentConfiguration
 
 ![](https://velog.velcdn.com/images/dev_kickbell/post/540959f0-e4b7-4055-90a9-e5386fcf107a/image.png)![](https://velog.velcdn.com/images/dev_kickbell/post/087f62f6-5b43-4b54-aa5f-5aba64ed698b/image.png)![](https://velog.velcdn.com/images/dev_kickbell/post/82920df0-1bd9-4224-ac2c-b1b83422d7b7/image.png)
 
-
-
-
-
-
-
-    
 
 ### 배경 구성 
 - 이는 콘텐츠 구성과 매우 유사하지만 색상, 테두리 스타일 등과 같은 속성을 조정하는 기능을 통해 모든 셀의 배경에 적용됩니다.
@@ -373,7 +360,9 @@ func createGridCellRegistration() -> UICollectionView.CellRegistration<UICollect
     
 ## Reference
 
-[https://developer.apple.com/videos/play/wwdc2020/10097](https://developer.apple.com/videos/play/wwdc2020/10097)
+[https://developer.apple.com/videos/play/wwdc2020/10097](https://developer.apple.com/videos/play/wwdc2020/10097)					
+				    
+[https://developer.apple.com/documentation/uikit/views_and_controls/collection_views/implementing_modern_collection_views](https://developer.apple.com/documentation/uikit/views_and_controls/collection_views/implementing_modern_collection_views)
 
 ## Endnotes 
 
