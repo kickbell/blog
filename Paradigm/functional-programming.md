@@ -33,6 +33,7 @@
 - FP의 가장 특징은 side-effect가 없다는 겁니다. 함수를 중심으로 side-effect가 없도록 하는게 FP입니다. 
 - 또 FP <-> OOP는 아닙니다. OOP도 FP도 각자 당면한 문제에 따라 대두된 패러다임이죠. 그냥 지금 내가 맞이한 문제에 맞는 패러다임을 사용하면 됩니다. 둘 다 공존할 수 있는 것이죠. 
 - 마지막으로 함수를 일급객체로 취급하는 언어들에서는 더 쉽겠지만, 다른 언어에서도 FP를 사용할 수 있습니다. FP는 기술이 아니라 패러다임이기 때문이지요. 
+			
 ![](https://velog.velcdn.com/images/dev_kickbell/post/aaef34a2-6b4b-4f83-bc90-dce6d6f33208/image.png)
 
 ## 2. 함수를 다루는 기술들 
@@ -203,8 +204,8 @@ loop(min: 1, max: 100, do: { print(fizzbuzz($0)) })
 - 마지막으로 LOGIC 부분입니다. 여기서는 위에서 배웠던 커링이나 합성같은 것들이 대거 쓰였죠. 사실 이 부분이 가장 중요합니다. 
 - 하나씩 살펴보면, 일단 버튼을 클릭하면 handleProcess가 동작하죠. 얘는 (String) -> Void 타입입니다. 
 - 그리고 같은 타입으로 processHandler가 있죠. money 라는 상태값이 있기 때문에 state를 매개변수로 받고 있는데요. 함수형 프로그래밍에서 가장 중요시됐던게 side-effect였죠? 원래라면 이 상태값은 외부에 전역변수로 나와있었을 겁니다. 
-- 그런데, 지금은 handleProcess("100"), handleProcess("cola") 처럼 입력되면 String 값이 processHandler 내의 command로 넘어오죠. 
-- 이 command를 바탕으로 uiInput에서는 Input enum을 리턴하고 uiOutput에서는 레이블이나 이미지를 보여준다는 식의 이벤트를 처리합니다. - 또, operation 메소드에서 핵심은 processHandler에서 state를 받아서 적절하게 계산을 해준뒤에 그것을 다시 리턴한다는 겁니다. 
+- 그런데, 지금은 handleProcess("100"), handleProcess("cola") 처럼 입력되면 String 값이 processHandler 내의 command로 넘어오죠. 이 command를 바탕으로 uiInput에서는 Input enum을 리턴하고 uiOutput에서는 레이블이나 이미지를 보여준다는 식의 이벤트를 처리합니다. 
+- 또, operation 메소드에서 핵심은 processHandler에서 state를 받아서 적절하게 계산을 해준뒤에 그것을 다시 리턴한다는 겁니다. 
 - 이렇게 하면, state라는 값이 processHandler라는 함수내에 갇혀있게 됩니다. state는 함수내에 갇혀있지만, 함수가 수행됨에 따라서 계속 갱신되고 저장될 수 있죠. 이런 기법을 메모이제이션(Memoization)이라고 합니다. 메모이제이션을 통해서 side-effect를 없앨 수 있게 되었습니다.
 
 ![](https://velog.velcdn.com/images/dev_kickbell/post/bce0dd19-79a1-4cd0-b3b0-dd89601fcf76/image.png)
