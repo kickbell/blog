@@ -73,6 +73,7 @@
   * [Podfile, Dependency Rule(SPM)](Miscellaneous/podfile-dependency-rule.md)
   * [맥으로 고정 IP 연결하는 방법](Miscellaneous/static-ip-connect.md)
   * [SwiftPlantUML으로 UML 다이어그램 쉽게 그리기](Miscellaneous/swiftplantuml.md)
+  * [Playground 가 열리지 않는 오류 해결하기](Miscellaneous/playground-not-open-error.md)
 * [Python](python/README.md)
   * [파이썬과 스위프트 문법 비교](Python/python.md)
   * [파이썬과 스위프트 문법 요약](Python/python-shorts.md)
