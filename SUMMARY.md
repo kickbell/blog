@@ -24,6 +24,8 @@
   * [2015, Protocol-Oriented Programming in Swift](WWDC/2015-protocol-oriented-programming-in-swift.md)
   * [2016, Understanding Swift Performance](WWDC/2016-understanding-swift-performance.md)
   * [2016, Protocol and Value Oriented Programming in UIKit Apps](WWDC/2016-protocol-and-value-oriented-programming-in-uikit-apps.md)
+  * [2017, Engineering for Testability](WWDC/2017-engineering-for-testability.md)
+  * [2018, Swift Generics (Expanded)](WWDC/2018-swift-generics-expanded.md)
   * [2018, High Performance Auto Layout](WWDC/2018-high-performance-autolayout.md)
   * [2018, Testing Tips & Tricks](WWDC/2018-testing-tips-and-tricks.md)
   * [2020, Advances in UICollectionView](WWDC/2020-advances-in-uicollectionview.md)
