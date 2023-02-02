@@ -313,6 +313,8 @@ class AppsViewController: UIViewController {
 ## Reference
 
 [https://developer.apple.com/documentation/uikit/uicollectionview/cellregistration](https://developer.apple.com/documentation/uikit/uicollectionview/cellregistration)
+
+
 [https://developer.apple.com/videos/play/wwdc2019/215/](https://developer.apple.com/videos/play/wwdc2019/215/)
 [https://developer.apple.com/videos/play/wwdc2019/220/](https://developer.apple.com/videos/play/wwdc2019/220/)
 	  
