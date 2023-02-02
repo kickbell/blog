@@ -120,7 +120,7 @@ struct Cat: NameProtocol {
 
 우리가 뷰를 만들 때, `UI` 를 그리는 방법이 2가지가 있죠. 하나는 코드를 통한 방법이고 또 하나는 `storyboard, xib` 와 같은 `interface builder` 를 통한 방법입니다. 그런데, 여기서 스토리보드를 통한 방법은 내부적으로 `xml` 파일 형식으로 저장이 되요. 실제로 `Xcode` 에서 아래의 그림처럼 스토리보드에 소스 코드 메뉴를 선택하면 내부는 `xml` 파일 형식으로 되어있는 것을 직접 확인할 수가 있지요. 즉, 우리가 스토리보드에 레이블을 하나 가져다놓고, 텍스트를 적고, 색상을 변경하고 하는 것들이 즉각적으로 `xml` 파일로 변환이 되고 있는 것이죠.  
 
-![](https://velog.velcdn.com/images/dev_kickbell/post/3f1edb8c-a50f-4c42-a6a1-14081daf1b1b/image.png)![](https://velog.velcdn.com/images/dev_kickbell/post/75d6f7de-a91b-4787-bc2c-a127c261bb97/image.png)
+![](https://velog.velcdn.com/images/dev_kickbell/post/5f844106-8038-45b1-8f47-cdbce463a12b/image.png)![](https://velog.velcdn.com/images/dev_kickbell/post/75d6f7de-a91b-4787-bc2c-a127c261bb97/image.png)
 
 하지만 이렇게 스토리보드에서 `xml` 파일로 되어있는 코드를 실행하려면 일련의 작업이 필요합니다. 여기서 `archiving/unarchiving` 라는 개념이 나오는데요. 간략하게 설명을 하자면 아카이빙은 `iOS` 에서 모델 객체를 저장하는 방법 중의 하나에요. 그리고 언아카이빙은 이렇게 아카이빙된 데이터로부터 우리가 사용할 수 있게 객체를 다시 만드는 것을 말합니다. 
 
@@ -135,8 +135,8 @@ struct Cat: NameProtocol {
 `init(frame: CGRect)`은 코드로 `UIView` 를 상속받은 커스텀 뷰를 초기화할 때 사용해요. 반면에 `init?(coder: NSCoder)` 는 `interface builder` 를 통한 뷰를 초기화할 때 사용하죠. 그리고 코드가 아닌 `interface builder` 의 데이터를 컴파일러가 인식하게 해주기 위해서 `unarchiving` 이라는 일련의 과정이 필요한 것이구요. 
 
 ```swift
-	init(frame: CGRect)
-	init?(coder: NSCoder)
+init(frame: CGRect)
+init?(coder: NSCoder)
 ```
 
 ## 3. 정리하기
