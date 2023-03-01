@@ -5,20 +5,20 @@
 가장 큰 장점은 ViewContoroller에서 Navagation의 기능을 별도의 객체로 분리한다는 것도 있지만, 기존의 A가 B라는 ViewContoroller를 생성하고 B에 대한 것을 알고 있어야만 한다는 단점이 있었습니다. 
 
 ```swift
-	//normal 
+    //normal 
     func userTapped(widget: Int) {
         let vc = NextViewController()
         b.widgetToBuy = widget
-		present(vc, animate: true)
+	present(vc, animate: true)
     }
     
     //use coordinator
     func userTapped(widget: Int) {
-		coordinator?.buy(widget) 
+	coordinator?.buy(widget) 
     }    
 ```
 
-말그대로 하드코딩이기 때문에 재사용할 수가 없고, 강한 결합도(coupling)가 생성됩니다. 스토리보드로 개발을 한다고 했을 때, Segue를 사용하는 경우는 유독 더 그렇죠. 
+말그대로 하드코딩이기 때문에 재사용할 수가 없고, 강한 결합도(coupling)가 생성됩니다. 스토리보드로 개발을 한다고 했을 때, segue를 사용하는 경우는 유독 더 그렇죠. 
 
 이런 문제들을 코디네이터 객체로 대체하면, A는 B를 몰라도 됩니다. 그저 코디네이터에게 위임해버리면 끝인거죠. 또, 더 커다란 앱에서 코디네이터는 프로토콜일 가능성이 높으므로 모든 것을 동적으로 교체하고 다른 프로그램 흐름을 얻을 수 있습니다. 그리고 코디네이터를 하위 코디네이터로 나누어서 한 부분을 처리하도록 쪼갤 수도 있지요. 
 
@@ -192,7 +192,7 @@ class BuyCoordinator: Coordinator {
 }
 
 class MainCoordinator: Coordinator {
-	//...
+    //...
     func buySubscription() {
         let child = BuyCoordinator(navigationController: navigationController)
         childCoordinators.append(child)
@@ -232,7 +232,7 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
     
     func start() {
         navigationController.delegate = self
-		//...
+	//...
     }
     
     func buySubscription() {
@@ -272,9 +272,9 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
 
 ```swift
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-		//...
+	//...
 
-		//before
+	//before
         if let buyViewController = fromViewController as? BuyViewController {
             childDidFinish(buyViewController.coordinator)
         }
@@ -302,9 +302,9 @@ MainCoordinator의 buySubscription(_ productType: Int)로 수정하고, BuyViewC
 
 ```swift
 class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
-	//...
+    //...
     func buySubscription(_ productType: Int) {
-		//...
+	//...
         child.buySubscription(productType)
     }
     //...
@@ -323,14 +323,14 @@ class ViewController: UIViewController, Storyboarded {
 }
     
 class BuyCoordinator: Coordinator {
-	//...    
+    //...    
     func buySubscription(_ productType: Int) {
         let vc = BuyViewController.instantiate()
         vc.selectedProduct = productType
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
-	//...
+    //...
 }
 
 class BuyViewController: UIViewController, Storyboarded {
@@ -451,7 +451,7 @@ class CreateAccountCoordinator: Coordinator {
 
 ## 8. 코디네이터대신 protocol, closure 사용하기
 
-### protocol
+#### protocol
 
 코디네이터 대신 프로토콜을 사용할 수도 있습니다. 이것의 이점은 유연성이 증가하기 때문에 더 큰 앱에서 좋은 아이디어입니다. 
 
@@ -467,7 +467,7 @@ protocol AccountCreating: AnyObject {
     func createAccount()
 }
 class MainCoordinator: Coordinator, Buying, AccountCreating {
-	//...
+    //...
 }
 
 class ViewController: UIViewController, Storyboarded {
@@ -476,17 +476,14 @@ class ViewController: UIViewController, Storyboarded {
     //...
 }
 ```
-```swift
 
-```
-
-### closure
+#### closure
 
 클로저를 대신 사용할 수도 있습니다. ViewContorller에서 기존의 coordinator 변수를 주석처리하고 콜백클로저를 2개 생성합니다. 그리고 @IBAction 내부도 수정해주고, MainCoordinator 에서 콜백클로저를 작성해주기만 하면 됩니다. 
 
 실행해보면 동작은 똑같이 실행됩니다. 여전히 같은 결과를 얻지만 ViewContorller는 코디네이터가 내비게이션을 제어하고 있다는 사실을 전혀 모릅니다. 하지만 이 방법은 콜백클로저가 1~2개만 있을 때 유용합니다. 10개가 있다고 콜백클로저를 10개씩 만드는 것은 바람직하지 않을테니까요. 
 
-개인적으로는 프로토콜, 클로저를 사용하는 방법보다 더 명료하게 그냥 코디네이터를 사용하는 방법이 더 좋은 것 같습니다. 
+개인적으로는 프로토콜, 클로저를 사용하는 방법보다 더 명료하게 그냥 코디네이터를 사용하는 방법이 더 좋은 것 같습니다. 끝으로 글의 주제가 되는 유투브 영상 링크와 khanlou의의 블로그 글을 아래에 첨부해두었습니다. 글에 사용된 코드가 필요하시다면 [여기](https://github.com/kickbell/Coordinator.git)에 있습니다.
 
 ```swift
 import UIKit
@@ -497,7 +494,7 @@ class ViewController: UIViewController, Storyboarded {
     var buyAction: ((Int) -> Void)?
     var createAccountAction: (() -> Void)?
 
-	//...
+    //...
     
     @IBAction func buyTapped(_ sender: Any) {
 //        coordinator?.buySubscription(product.selectedSegmentIndex)
@@ -512,7 +509,7 @@ class ViewController: UIViewController, Storyboarded {
 ```
 ```swift
 class MainCoordinator: Coordinator {
-	//...
+    //...
     
     func start() {
         navigationController.delegate = self
@@ -534,10 +531,11 @@ class MainCoordinator: Coordinator {
     
 ## Reference
 
-[https://youtu.be/7HgbcTqxoN4](https://youtu.be/7HgbcTqxoN4)				  						
-[https://youtu.be/ueByb0MBMQ4](https://youtu.be/ueByb0MBMQ4)
-
-[https://khanlou.com/2015/01/the-coordinator/](https://khanlou.com/2015/01/the-coordinator/)
+[https://youtu.be/7HgbcTqxoN4](https://youtu.be/7HgbcTqxoN4)				  		
+				
+[https://youtu.be/ueByb0MBMQ4](https://youtu.be/ueByb0MBMQ4)					
+				
+[https://khanlou.com/2015/01/the-coordinator/](https://khanlou.com/2015/01/the-coordinator/)				
 
 
 ## Endnotes 
