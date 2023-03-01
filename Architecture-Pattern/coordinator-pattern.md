@@ -297,8 +297,6 @@ ViewController에 segmentControl을 하나 추가합니다. 제품 타입을 컴
 
 MainCoordinator의 buySubscription(_ productType: Int)로 수정하고, BuyViewController에 var selectedProduct: Int = 0 이라는 변수를 추가합니다. 그리고 여기서는 child가 있으니 BuyCoordinator에서 buySubscription()라는 메소드를 새로 작성해주었습니다. start()는 프로토콜에 포함되어있고, 파라미터가 따로 없으니 사용하지 않을게요. 그리고 BuyViewController의 viewDidLoad 에서 selectProduct의 변수값을 출력해보면 선택한 구매 타입에 따라 다르게 출력되는 것을 볼 수 있습니다. 
 
-![](https://velog.velcdn.com/images/dev_kickbell/post/73cd35f0-9d58-47c9-ba17-4b79fb0f806f/image.png)
-
 
 ```swift
 class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
