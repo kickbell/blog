@@ -52,6 +52,7 @@ _( 책/블로그/강의를 통한 자료는 최대한 언어를 바꾼다던지 
   * [ReactorKit](undefined-2/reactorkit/README.md)
     * [Pulse(EN)](Architecture-Pattern/reactorkit-pulse-en.md)
     * [Pulse(KR)](Architecture-Pattern/reactorkit-pulse-kr.md)
+  * [Coordinator Pattern](Architecture-Pattern/coordinator-pattern.md)
 * [iOS](ios/README.md)
   * [Safari로 웹뷰의 세션/쿠키 정보 확인하기](iOS/webviewinfo-from-safari.md)
   * [App Icon 동적으로 변경하기](iOS/dynamically-change-the-appIcon.md)
