@@ -161,7 +161,7 @@ class MainCoordinator: Coordinator {
 
 그리고 지금부터는 코디네이터 패턴을 사용하는 더 세부적인 방법에 대해서 이야기해보도록 하겠습니다.
 
-## 2. child coordinators를 사용하는 방법 
+## 2. Child Coordinators를 사용하는 방법 
 
 ![](https://velog.velcdn.com/images/dev_kickbell/post/a4f18ec9-12d0-4c12-9f1d-51ad144a9ffc/image.png)
 
@@ -203,7 +203,7 @@ class MainCoordinator: Coordinator {
 ```
 
 
-## 3. 이전 view controller로 돌아가기
+## 3. 이전 ViewController로 돌아가기
 
 이전 view controller로 돌아가기는 단순히 돌아가는 것으로만 끝나는 것은 아닌데요. 왜냐하면, child 코디네이터를 추가할 때 MainCoordinator에서 childCoordinators.append(child) 와 같은 식으로 childCoordinators 배열에 child를 추가해줬기 때문에 그것을 적절히 제거되도록 해주어야 합니다. 
 
@@ -289,7 +289,7 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
     }
 ```
 
-## 4. vc to vc로 데이터를 전달하기
+## 4. VC to VC로 데이터를 전달하기
 
 vc to vc 사이의 데이터 전달을 코디네이터로 하는 것은 얼핏 복잡해보일 수도 있습니다. 하지만, 하드코딩이 아니기 때문에 오히려 결합도가 떨어져서 더 좋습니다. 코드도 어렵지 않아요. 예시를 보겠습니다. 
 
@@ -344,7 +344,7 @@ class BuyViewController: UIViewController, Storyboarded {
 
 여기에서의 핵심은 ViewController가 다른 BuyViewController 같은 애들이 존재한다는 것을 모른다는 점입니다. ViewController는 그저 코디네이터에게 요청할 뿐입니다. 그리고 데이터 전달이나 어느 화면으로 이동할지는 모두 코디네이터가 결정합니다. 
 
-## 5. tab bar controller에서의 코디네이터
+## 5. TabBarController에서의 코디네이터
 
 ![](https://velog.velcdn.com/images/dev_kickbell/post/406cfd6b-2430-44d2-9da6-3635277ff9a4/image.png)
 
@@ -431,7 +431,7 @@ class CreateAccountCoordinator: Coordinator {
 ![](https://velog.velcdn.com/images/dev_kickbell/post/9bb51aa6-b2be-4db4-976c-29e27fbd94fc/image.png)![](https://velog.velcdn.com/images/dev_kickbell/post/0d3e4bff-cce9-4c8a-bf89-cdd6a8e25cbe/image.png)![](https://velog.velcdn.com/images/dev_kickbell/post/0ef111c8-01b0-47d1-b4b3-90ccbf02afe2/image.png)
 
 
-## 6. segue 사용하기
+## 6. Segue 사용하기
 
 세그웨이는 뷰 컨트롤러 사이에 링크를 생성하여 스토리보드에 추가되고 iOS에 의해 자동으로 트리거되거나 세그웨이 prepare 함수를 호출하여 트리거됩니다.
 
@@ -447,9 +447,9 @@ class CreateAccountCoordinator: Coordinator {
 
 이름을 델리게이트로 해도 동작은 잘 합니다. 하지만, 조금 혼란스러울 수 있어요. 우리가 일반적으로 생각하는 델리게이트에 대한 지식이 있기 때문입니다. 이것을 코디네이터로 명명하면 "아 얘는 앱의 네비게이션을 처리하는 녀석이구나" 라고 분명하게 인지할 수 있게 됩니다. 그게 전부입니다.
 
-## 8. 코디네이터대신 protocol, closure 사용하기
+## 8. 코디네이터대신 Protocol, Closure 사용하기
 
-#### protocol
+#### Protocol
 
 코디네이터 대신 프로토콜을 사용할 수도 있습니다. 이것의 이점은 유연성이 증가하기 때문에 더 큰 앱에서 좋은 아이디어입니다. 
 
@@ -475,7 +475,7 @@ class ViewController: UIViewController, Storyboarded {
 }
 ```
 
-#### closure
+#### Closure
 
 클로저를 대신 사용할 수도 있습니다. ViewContorller에서 기존의 coordinator 변수를 주석처리하고 콜백클로저를 2개 생성합니다. 그리고 @IBAction 내부도 수정해주고, MainCoordinator 에서 콜백클로저를 작성해주기만 하면 됩니다. 
 
