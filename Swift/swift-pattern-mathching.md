@@ -140,3 +140,39 @@ return URLSession.shared.rx.json(url: url)
   .catchErrorJustReturn(emptyResult)
 
 ```
+
+또, 우리 많이 쓰는 Result<MyModel, Error> 가 있잖아요? 이것도 switch 문으로 나눌 것 없이 둘중 하나의 케이스로만 사용해도 괜찮습니다. 
+
+```swift
+//기존의 스위치문 사용하기
+imageLoaderService.loadImage(from: url) { (result: Result<UIImage?, Never>) in
+    switch result {
+    case let .success(image):
+        XCTAssertEqual(image, UIImage())
+    case let .failure(error):
+        print(error.localizedDescription)
+    }
+}
+
+
+//success만 빼서 사용하기 
+imageLoaderService.loadImage(from: url) { (result: Result<UIImage?, Never>) in
+    guard case let .success(image) = result else {
+        XCTFail()
+        return
+    }
+    XCTAssertEqual(image, UIImage())
+    expectation.fulfill()
+}
+
+//failure만 빼서 사용하기
+imageLoaderService.loadImage(from: url) { (result: Result<UIImage?, Never>) in
+    guard case let .failure(error) = result else {
+        XCTFail()
+        return
+    }
+    XCTAssertEqual(error, NetworkError.noResponse)
+    expectation.fulfill()
+}
+```
+
