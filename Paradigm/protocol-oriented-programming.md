@@ -310,6 +310,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 - 완전히 새로운 패러다임이 아니라 기존의 `객체 지향 프로그래밍(Object Oriented Programming)`에서 프로토콜의 역할을 늘려서 중심적으로 사용하는 것을 말합니다. 즉, `POP는 Protocol을 적극적으로 활용하는 OOP` 라고 볼 수 있습니다. 
 - `프로토콜 지향 프로그래밍(Protocol Oriented Programming)`에서는 구현 과정에서 `구현체보다 Protocol을 우선`으로 생각합니다. 
 - 프로토콜을 사용해서 구현을 강제하고, 추상화하고 느슨하게 결합하면 애플리케이션의 유지보수에 용이하면서 유연하게 확장할 수 있습니다. 
+- 완성된 샘플 코드는 [여기](https://github.com/kickbell/POP)있습니다.
 
 
 ## Reference
