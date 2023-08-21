@@ -17,14 +17,14 @@ _( 책/블로그/강의를 통한 자료는 최대한 언어를 바꾼다던지 
   <p>
           hkhkhk
   </p>
-</details>
+
 
 <script src="https://giscus.app/client.js"
         data-repo="kickbell/blog"
         data-repo-id="R_kgDOHfkInw"
         data-category="Announcements"
         data-category-id="DIC_kwDOHfkIn84CYvYi"
-        data-mapping="pathname"
+        data-mapping="url"
         data-strict="0"
         data-reactions-enabled="1"
         data-emit-metadata="0"
@@ -34,3 +34,5 @@ _( 책/블로그/강의를 통한 자료는 최대한 언어를 바꾼다던지 
         crossorigin="anonymous"
         async>
 </script>
+
+</details>
