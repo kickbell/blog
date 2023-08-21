@@ -19,9 +19,9 @@ _( 책/블로그/강의를 통한 자료는 최대한 언어를 바꾼다던지 
   </p>
 </details>
 
-```
+
 <script src="https://giscus.app/client.js"
-        data-repo="kickbell/blog_comment"
+        data-repo="kickbell/blog"
         data-repo-id="R_kgDOKJeOzA"
         data-category="Announcements"
         data-category-id="DIC_kwDOKJeOzM4CYvXr"
@@ -35,23 +35,3 @@ _( 책/블로그/강의를 통한 자료는 최대한 언어를 바꾼다던지 
         crossorigin="anonymous"
         async>
 </script>
-```
-
-
-`
-<script src="https://giscus.app/client.js"
-        data-repo="kickbell/blog_comment"
-        data-repo-id="R_kgDOKJeOzA"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOKJeOzM4CYvXr"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="light"
-        data-lang="ko"
-        crossorigin="anonymous"
-        async>
-</script>
-`
