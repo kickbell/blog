@@ -9,30 +9,3 @@ _`🔎 Search...`를 통해 찾으시는 `Keyword`를 입력하시면 더 편하
 
 _( 책/블로그/강의를 통한 자료는 최대한 언어를 바꾼다던지 또는 제 의견을 넣어 컨텐츠를 재생산하고 출처도 표기해두었습니다만, 혹시나 저작권에 위배되는 것이 있다면_ [_dev.kickbell@gmail.com_](mailto:dev.kickbell@gmail.com)_로 연락주시면 빠르게 수정하도록 하겠습니다. )_
 
-???
-
-
-<details>
-  <summary><a href="https://github.com/kickbell/pb"></a></summary>
-  <p>
-          hkhkhk
-  </p>
-
-
-<script src="https://giscus.app/client.js"
-        data-repo="kickbell/blog"
-        data-repo-id="R_kgDOHfkInw"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOHfkIn84CYvYi"
-        data-mapping="url"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="light"
-        data-lang="ko"
-        crossorigin="anonymous"
-        async>
-</script>
-
-</details>
