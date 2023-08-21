@@ -1,27 +1,29 @@
-## DataStructure(자료구조)란 ?		
-- 자료구조 == 데이터구조 == data structure 		
-- 대량의 데이터를 효율적으로 관리할 수 있는 데이터의 구조를 의미		
-- 각각의 자료구조는 각자의 특징을 가지고 있다. 그런데 코드상에서 효율적으로 데이터를 처리해야 할 때, 해당 데이터의 특성에 따라 어떤 자료구조를 사용하느냐에 따라서 소프트웨어의 성능에 지대한 영향을 끼친다. 	
-			
-![](https://velog.velcdn.com/images/dev_kickbell/post/2935a790-f17a-4cb3-9008-8c846af0ff62/image.png)				
-			
+# 자료구조
 
-## Array(배열)
-- 어떤 데이터를 연결된 공간에 넣을 때 사용한다. 
-- 장점 
-	- index가 있기 때문에 내가 원하는 데이터로 직접적으로 빠른 접근이 가능하다.
-- 단점 
-	- index가 있기 때문에 중간 데이터를 삭제했을 때, 뒤에 있는 데이터들을 다 한칸씩 앞으로 이동해줘야 한다. index가 비어있으면 그건 배열이 아니기 때문이다. 
- 	- 배열을 생성시에 미리 길이를 지정해야 하기 때문에 데이터 추가, 삭제가 어렵다. 
+### DataStructure(자료구조)란 ?
 
-![](https://velog.velcdn.com/images/dev_kickbell/post/a010b946-ce2d-4e26-a1d4-9653966b5581/image.png)
+* 자료구조 == 데이터구조 == data structure
+* 대량의 데이터를 효율적으로 관리할 수 있는 데이터의 구조를 의미
+* 각각의 자료구조는 각자의 특징을 가지고 있다. 그런데 코드상에서 효율적으로 데이터를 처리해야 할 때, 해당 데이터의 특성에 따라 어떤 자료구조를 사용하느냐에 따라서 소프트웨어의 성능에 지대한 영향을 끼친다.
 
+![](https://velog.velcdn.com/images/dev\_kickbell/post/2935a790-f17a-4cb3-9008-8c846af0ff62/image.png)
 
-## Queue(큐)
+### Array(배열)
+
+* 어떤 데이터를 연결된 공간에 넣을 때 사용한다.
+* 장점
+  * index가 있기 때문에 내가 원하는 데이터로 직접적으로 빠른 접근이 가능하다.
+* 단점
+  * index가 있기 때문에 중간 데이터를 삭제했을 때, 뒤에 있는 데이터들을 다 한칸씩 앞으로 이동해줘야 한다. index가 비어있으면 그건 배열이 아니기 때문이다.
+  * 배열을 생성시에 미리 길이를 지정해야 하기 때문에 데이터 추가, 삭제가 어렵다.
+
+![](https://velog.velcdn.com/images/dev\_kickbell/post/a010b946-ce2d-4e26-a1d4-9653966b5581/image.png)
+
+### Queue(큐)
 
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
-  <p>
+
+<summary></summary>
 
 ```swift
 import Foundation
@@ -54,34 +56,35 @@ print(queue.dequeue() ?? "")
 print(queue.dequeue() ?? "")
 print(queue.dequeue() ?? "")
 ```
-  </p>
+
 </details>
 
-- 가장 먼저 넣은 데이터를 가장 먼저 꺼낼 수 있는 자료구조(FIFO)
-- 은행의 번호표, 버스 줄서서 타기 등을 예로 들 수 있다. 
-- 데이터를 넣을때는 Enqueue, 꺼낼때는 Dequeue라고 한다. 		
-			
-![](https://velog.velcdn.com/images/dev_kickbell/post/db888b71-6569-4038-9971-c57c99991c76/image.png)			
-- 기본 정책은 FIFO이지만, 다른 정책이 적용된 종류의 큐도 있다.  
-	1. Queue(기본 큐) 
-    	- 가장 일반적인 큐, FIFO 
-	2. LifoQueue 
-    	- 나중에 입력한 데이터가 가장 먼저 꺼내지는 구조(Stack처럼) 
-        - LIFO(Last In Fast Out)
-	3. PriorityQueue(우선순위 큐) 
-    	- FIFO, LIFO 가 아니라 데이터를 넣을 때 우선순위를 같이 넣어서 그 순위를 기준으로 인큐/디큐하는 구조 
-        - 튜플(priority: Int, data: Int) 형태로 사용되며 5등이 10등보다 좋은 것처럼 숫자가 낮은 것이 우선순위가 높은 것이다. 
-- Use 
-	- 멀티 태스킹을 위한 프로세스 스케쥴링 방식을 구현하기 위해 많이 사용된다.(운영체제) 아마도 운영체제에서 자체적으로 PriorityQueue 같은걸 통해 프로세스의 우선순위를 배정하고 최대한의 스케쥴링 효율을 높이기 위해 사용하는 것 같다.
+* 가장 먼저 넣은 데이터를 가장 먼저 꺼낼 수 있는 자료구조(FIFO)
+* 은행의 번호표, 버스 줄서서 타기 등을 예로 들 수 있다.
+* 데이터를 넣을때는 Enqueue, 꺼낼때는 Dequeue라고 한다.
 
+![](https://velog.velcdn.com/images/dev\_kickbell/post/db888b71-6569-4038-9971-c57c99991c76/image.png)
 
-## LifoQueue(리포큐)
-- 나중에 입력한 데이터가 가장 먼저 꺼내지는 정책을 가지고 있는 큐 
-- LIFO(Last In Fast Out)
-		
+* 기본 정책은 FIFO이지만, 다른 정책이 적용된 종류의 큐도 있다.
+  1. Queue(기본 큐)
+     * 가장 일반적인 큐, FIFO
+  2. LifoQueue
+     * 나중에 입력한 데이터가 가장 먼저 꺼내지는 구조(Stack처럼)
+     * LIFO(Last In Fast Out)
+  3. PriorityQueue(우선순위 큐)
+     * FIFO, LIFO 가 아니라 데이터를 넣을 때 우선순위를 같이 넣어서 그 순위를 기준으로 인큐/디큐하는 구조
+     * 튜플(priority: Int, data: Int) 형태로 사용되며 5등이 10등보다 좋은 것처럼 숫자가 낮은 것이 우선순위가 높은 것이다.
+* Use
+  * 멀티 태스킹을 위한 프로세스 스케쥴링 방식을 구현하기 위해 많이 사용된다.(운영체제) 아마도 운영체제에서 자체적으로 PriorityQueue 같은걸 통해 프로세스의 우선순위를 배정하고 최대한의 스케쥴링 효율을 높이기 위해 사용하는 것 같다.
+
+### LifoQueue(리포큐)
+
+* 나중에 입력한 데이터가 가장 먼저 꺼내지는 정책을 가지고 있는 큐
+* LIFO(Last In Fast Out)
+
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
-  <p>
+
+<summary></summary>
 
 ```swift
 
@@ -116,17 +119,17 @@ print(queue.dequeue() ?? "")
 print(queue.dequeue() ?? "")
 
 ```
-  </p>
+
 </details>
 
-    
-## PriorityQueue(우선순위 큐) 				    
-- FIFO, LIFO 가 아니라 데이터를 넣을 때 우선순위를 같이 넣어서 그 순위를 기준으로 인큐/디큐하는 구조 
-- 튜플(priority: Int, data: Int) 형태로 사용되며 5등이 10등보다 좋은 것처럼 숫자가 낮은 것이 우선순위가 높은 것이다.
-    
+### PriorityQueue(우선순위 큐)
+
+* FIFO, LIFO 가 아니라 데이터를 넣을 때 우선순위를 같이 넣어서 그 순위를 기준으로 인큐/디큐하는 구조
+* 튜플(priority: Int, data: Int) 형태로 사용되며 5등이 10등보다 좋은 것처럼 숫자가 낮은 것이 우선순위가 높은 것이다.
+
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
-  <p>
+
+<summary></summary>
 
 ```swift
 import Foundation
@@ -158,17 +161,18 @@ print(priorityQueue.dequeue() ?? (0, ""))
 print(priorityQueue.dequeue() ?? (0, ""))
 
 ```
-  </p>
+
 </details>
-	  
-## Deque(덱, 양방향 순환큐) 				    
-- 큐인데 양쪽으로 입출력을 할 수 있는 자료구조 
-- 스택 + 큐의 느낌이라고 볼 수 있다. 
-- https://github.com/kodecocodes/swift-algorithm-club/tree/master/Deque
-    
+
+### Deque(덱, 양방향 순환큐)
+
+* 큐인데 양쪽으로 입출력을 할 수 있는 자료구조
+* 스택 + 큐의 느낌이라고 볼 수 있다.
+* https://github.com/kodecocodes/swift-algorithm-club/tree/master/Deque
+
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
-  <p>
+
+<summary></summary>
 
 ```swift
 public struct Deque<T> {
@@ -216,15 +220,14 @@ public struct Deque<T> {
 }
 
 ```
-  </p>
+
 </details>
 
+### Stack(스택)
 
-
-## Stack(스택) 
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
-  <p>
+
+<summary></summary>
 
 ```swift
 import Foundation
@@ -256,34 +259,33 @@ print(stack.pop() ?? 0)
 print(stack.pop() ?? 0)
 
 ```
-  </p>
+
 </details>
 
-- 데이터를 제한적으로 접근할 수 있는 구조
-- 한쪽 끝에서만 자료를 넣거나 뺄 수 있는 구조
-- 넣을때는 push, 뺄때는 pop
-- 큐: FIFO <-> 스택: LIFO 
-- 주로 사용 용도
-    - 스택 구조는 우리가 사용하는 운영체제의 프로세스 실행 구조의 가장 기본이다.
-    - 함수 호출시 프로세스 실행 구조를 스택과 비교해서 이해 필요
-			
-![](https://velog.velcdn.com/images/dev_kickbell/post/c95de4c6-dac0-48a0-9d6c-52b3320dcdcc/image.png)				
-					
-- 장점
-    - 구조가 단순해서, 구현이 쉽다.
-    - 데이터 저장/읽기 속도가 빠르다.
-- 단점 (일반적인 스택 구현시)
-    - 데이터 최대 갯수를 미리 정해야 한다.
-    - 파이썬의 경우 재귀 함수는 1000번까지만 호출이 가능함
-    - 저장 공간의 낭비가 발생할 수 있음
-    - 미리 최대 갯수만큼 저장 공간을 확보해야 함(스택은 단순하고 빠른 성능을 위해 사용되므로, 보통 배열 구조를 활용해서 구현하는 것이 일반적임. 이 경우, 위에서 열거한 단점이 있을 수 있음)
+* 데이터를 제한적으로 접근할 수 있는 구조
+* 한쪽 끝에서만 자료를 넣거나 뺄 수 있는 구조
+* 넣을때는 push, 뺄때는 pop
+* 큐: FIFO <-> 스택: LIFO
+* 주로 사용 용도
+  * 스택 구조는 우리가 사용하는 운영체제의 프로세스 실행 구조의 가장 기본이다.
+  * 함수 호출시 프로세스 실행 구조를 스택과 비교해서 이해 필요
 
+![](https://velog.velcdn.com/images/dev\_kickbell/post/c95de4c6-dac0-48a0-9d6c-52b3320dcdcc/image.png)
 
-## Linked List(링크드 리스트, 연결 리스트) 
+* 장점
+  * 구조가 단순해서, 구현이 쉽다.
+  * 데이터 저장/읽기 속도가 빠르다.
+* 단점 (일반적인 스택 구현시)
+  * 데이터 최대 갯수를 미리 정해야 한다.
+  * 파이썬의 경우 재귀 함수는 1000번까지만 호출이 가능함
+  * 저장 공간의 낭비가 발생할 수 있음
+  * 미리 최대 갯수만큼 저장 공간을 확보해야 함(스택은 단순하고 빠른 성능을 위해 사용되므로, 보통 배열 구조를 활용해서 구현하는 것이 일반적임. 이 경우, 위에서 열거한 단점이 있을 수 있음)
+
+### Linked List(링크드 리스트, 연결 리스트)
 
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
-  <p>
+
+<summary></summary>
 
 ```swift
 import Foundation
@@ -376,12 +378,12 @@ while node!.next != nil {
 print(node?.data ?? 0)
 
 ```
-  </p>
+
 </details>
-    
+
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
-  <p>
+
+<summary></summary>
 
 ```swift
 import Foundation
@@ -491,30 +493,29 @@ print(searchNode!.data)
 //}
 
 ```
-  </p>
+
 </details>
 
-- 배열의 최대 단점이 미리 길이를 지정해야 된다는 것이다. 새로운 공간을 만들어서 데이터를 추가한다고 해도 index는 4,5,6...이 아니라 0,1,2...부터 다시 시작하기 때문이다. 링크드 리스트는 그런 배열의 단점을 해결할 수 있다. 
-- 구성 
-    - 노드(Node): 데이터값 + 포인터(다음데이터가 어딨는지 가리키는 주소) 
-    - 포인터(pointer): 각 노드 안에서, 다음이나 이전의 노드와의 주소값을 가지고 있는 공간
-- 제일 첫번째 노드를 head이라고 한다. 더블 링크드 리스트가 아니므로 tail은 없다.
-			
-![](https://velog.velcdn.com/images/dev_kickbell/post/988be38e-fba5-4d63-8cf4-8faa93626b44/image.png)				
-				
-- 장점
-    - 미리 데이터 공간을 미리 할당하지 않아도 됨
-- 단점
-    - 데이터와는 별개로 포인터를 저장하기 위한 별도의 공간이 필요하므로 저장공간 효율이 좋진 않음.
-	- 앞에서 하나하나 찾아서 가야하므로 접근 속도가 느림.(이것 때문에 생긴 것이 더블 링크드 리스트) 
-	- 상대적으로 복잡함. 중간 데이터 삭제시, 앞뒤 데이터의 포인터를 재연결해줘야 하는 부가적인 작업이 필요하기 때문.
+* 배열의 최대 단점이 미리 길이를 지정해야 된다는 것이다. 새로운 공간을 만들어서 데이터를 추가한다고 해도 index는 4,5,6...이 아니라 0,1,2...부터 다시 시작하기 때문이다. 링크드 리스트는 그런 배열의 단점을 해결할 수 있다.
+* 구성
+  * 노드(Node): 데이터값 + 포인터(다음데이터가 어딨는지 가리키는 주소)
+  * 포인터(pointer): 각 노드 안에서, 다음이나 이전의 노드와의 주소값을 가지고 있는 공간
+* 제일 첫번째 노드를 head이라고 한다. 더블 링크드 리스트가 아니므로 tail은 없다.
 
+![](https://velog.velcdn.com/images/dev\_kickbell/post/988be38e-fba5-4d63-8cf4-8faa93626b44/image.png)
 
-## Double Linked List(더블 링크드 리스트)
-		    
+* 장점
+  * 미리 데이터 공간을 미리 할당하지 않아도 됨
+* 단점
+  * 데이터와는 별개로 포인터를 저장하기 위한 별도의 공간이 필요하므로 저장공간 효율이 좋진 않음.
+  * 앞에서 하나하나 찾아서 가야하므로 접근 속도가 느림.(이것 때문에 생긴 것이 더블 링크드 리스트)
+  * 상대적으로 복잡함. 중간 데이터 삭제시, 앞뒤 데이터의 포인터를 재연결해줘야 하는 부가적인 작업이 필요하기 때문.
+
+### Double Linked List(더블 링크드 리스트)
+
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
-  <p>
+
+<summary></summary>
 
 ```swift
 import Foundation
@@ -612,12 +613,12 @@ print("\n==삭제==")
 linkedList.delete(3)
 linkedList.desc()
 ```
-  </p>
+
 </details>
-    
+
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
-  <p>
+
+<summary></summary>
 
 ```swift
 import Foundation
@@ -755,25 +756,25 @@ print("\n==중간에 데이터 추가==")
 linkedList.insert(5.5, beforeData: 6)
 linkedList.desc()
 ```
-  </p>
+
 </details>
 
-- 변형된 형태의 링크드 리스트
-- 링크드리스트의 구성이 노드와 포인터로 되어있다면, 더블 링크드 리스트는 포인터가 앞뒤로 2개다. 네이밍은 보통 prev, next 라는 식으로 한다. 포인터가 2개인 것만 생각하면 된다.
-- 제일 첫번째 노드를 head, 제일 마지막 노드를 tail 이라고 한다.
-- 기존의 링크드리스트의 단점이 head에서부터 쭉 찾아가야했음. 만약 정렬된 1만개의 데이터가 있는데 내가 찾는 데이터는 9999 라면, 기존의 링크드리스트는 1부터 찾아가야함. 그래서 이 문제를 해결하기 위해 더블 링크드 리스트가 나옴. tail이 있어 뒤에서부터 찾아갈 수가 있음.
-- 장점
-    - 포인터가 양방향으로 연결되어 있어서 노드 탐색이 양쪽으로 모두 가능.
-- 단점
-    - tail이 추가되었고, 중간에 데이터를 삭제/수정할 때 prev/next 포인터를 재연결해줘야 하는 작업이 링크드리스트보다 2배이므로 코드가 상대적으로 복잡함. 
-  			
-![](https://velog.velcdn.com/images/dev_kickbell/post/ce743fee-47c9-4536-ae39-80f02f97faa4/image.png)				
-				    
-## Hash Table(해쉬 테이블) 
+* 변형된 형태의 링크드 리스트
+* 링크드리스트의 구성이 노드와 포인터로 되어있다면, 더블 링크드 리스트는 포인터가 앞뒤로 2개다. 네이밍은 보통 prev, next 라는 식으로 한다. 포인터가 2개인 것만 생각하면 된다.
+* 제일 첫번째 노드를 head, 제일 마지막 노드를 tail 이라고 한다.
+* 기존의 링크드리스트의 단점이 head에서부터 쭉 찾아가야했음. 만약 정렬된 1만개의 데이터가 있는데 내가 찾는 데이터는 9999 라면, 기존의 링크드리스트는 1부터 찾아가야함. 그래서 이 문제를 해결하기 위해 더블 링크드 리스트가 나옴. tail이 있어 뒤에서부터 찾아갈 수가 있음.
+* 장점
+  * 포인터가 양방향으로 연결되어 있어서 노드 탐색이 양쪽으로 모두 가능.
+* 단점
+  * tail이 추가되었고, 중간에 데이터를 삭제/수정할 때 prev/next 포인터를 재연결해줘야 하는 작업이 링크드리스트보다 2배이므로 코드가 상대적으로 복잡함.
+
+![](https://velog.velcdn.com/images/dev\_kickbell/post/ce743fee-47c9-4536-ae39-80f02f97faa4/image.png)
+
+### Hash Table(해쉬 테이블)
 
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
-  <p>
+
+<summary></summary>
 
 ```swift
 import Foundation
@@ -836,12 +837,12 @@ print(hashTable)
 
 typealias HashAddress = Int
 ```
-  </p>
+
 </details>
 
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
-  <p>
+
+<summary></summary>
 
 ```swift
 import Foundation
@@ -939,12 +940,12 @@ hashTable.forEach { print($0) }
 
 
 ```
-  </p>
+
 </details>
 
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
-  <p>
+
+<summary></summary>
 
 ```swift
 
@@ -1055,96 +1056,96 @@ print("\n====totalData====")
 hashTable.forEach { print($0) }
 
 ```
-  </p>
+
 </details>
 
-  - 키(Key)에 데이터(Value)를 저장하는 데이터 구조, Swift에서는 딕셔너리로 바로 사용가능 	
-  - 보통 배열로 미리 Hash Table 사이즈만큼 생성 후에 사용 (공간과 탐색 시간을 맞바꾸는 기법 -> 해시테이블의 공간을 늘림으로써 키값이 중복되는 것에 대한 충돌(Collision)을 줄여서 추가적인 키값중복에 대한 자료구조나 로직을 사용하지 않게 한다는 말이다. 그래서 공간을 + 해서 시간을 - 한다는 뜻.)
-  - 구조 
-      * 해쉬(Hash): 임의 값을 고정 길이로 변환하는 것을 말함. 
-    	- SHA(Secure Hash Algorithm, 안전한 해시 알고리즘)
-    	- SHA256: 256비트로 항상 64자길이 값으로 리턴해준다.
-      * 해쉬 값(Hash Value): 해쉬(Hash) 과정으로 얻는 값. 
-      * 해쉬 함수(Hash Function): 해쉬 값(Hash Value)을 원하는 대로 구현해 놓은 해시 함수에 넣으면 해시 테이블의 몇번째 index에 넣을지를 결정하는 해쉬 주소(Hash Address)를 반환한다. 
-      * 해쉬 주소(Hash Address): 해쉬 테이블에 데이터를 넣을 index번호 
-      * 해쉬 테이블(Hash Table): 키 값의 연산에 의해 직접 접근이 가능한 데이터 구조 (예를 들면 딕셔너리) 
-      * 슬롯(Slot): 한 개의 데이터를 저장할 수 있는 공간
-		
-![](https://velog.velcdn.com/images/dev_kickbell/post/96df6055-9f71-4f9e-b964-2ffd3a3dbc77/image.png)				
+* 키(Key)에 데이터(Value)를 저장하는 데이터 구조, Swift에서는 딕셔너리로 바로 사용가능
+* 보통 배열로 미리 Hash Table 사이즈만큼 생성 후에 사용 (공간과 탐색 시간을 맞바꾸는 기법 -> 해시테이블의 공간을 늘림으로써 키값이 중복되는 것에 대한 충돌(Collision)을 줄여서 추가적인 키값중복에 대한 자료구조나 로직을 사용하지 않게 한다는 말이다. 그래서 공간을 + 해서 시간을 - 한다는 뜻.)
+* 구조
+  * 해쉬(Hash): 임의 값을 고정 길이로 변환하는 것을 말함.
+    * SHA(Secure Hash Algorithm, 안전한 해시 알고리즘)
+    * SHA256: 256비트로 항상 64자길이 값으로 리턴해준다.
+  * 해쉬 값(Hash Value): 해쉬(Hash) 과정으로 얻는 값.
+  * 해쉬 함수(Hash Function): 해쉬 값(Hash Value)을 원하는 대로 구현해 놓은 해시 함수에 넣으면 해시 테이블의 몇번째 index에 넣을지를 결정하는 해쉬 주소(Hash Address)를 반환한다.
+  * 해쉬 주소(Hash Address): 해쉬 테이블에 데이터를 넣을 index번호
+  * 해쉬 테이블(Hash Table): 키 값의 연산에 의해 직접 접근이 가능한 데이터 구조 (예를 들면 딕셔너리)
+  * 슬롯(Slot): 한 개의 데이터를 저장할 수 있는 공간
 
- ```swift 
-      import Foundation 
-	  
-      typealias HashKey = Int
-      typealias HashAddress = Int
-      typealias Value = String
+![](https://velog.velcdn.com/images/dev\_kickbell/post/96df6055-9f71-4f9e-b964-2ffd3a3dbc77/image.png)
 
-      //1. 배열로 미리 지정된 크기의 공간을 생성 
-      var hashTable: [Value] = (0..<8).map { String($0) } 
-      
-	  //2. 데이터를 지정된 해싱함수(데이터를 넣으면 고정된 길이를 반환하는 함수)로 넣어 해시키를 반환
-      func hashKey(data: String) -> HashKey {
-          return data.hashValue
-      }
-	  //3. 해시 키를 넣으면 배열의 어느 index에 있는지 HashAddress를 반환함 . 
-      func hashFunction(key: HashKey) -> HashAddress {
-          return key % 8
-      }
-	  //4. data -> key, value -> 저장할 값이 된다. data로 key를 생성하고 그 key로 저장할 배열의 index를 반환하며, 해당 index에 미리 생성한 해시테이블에 value값을 넣는다. 
-      func save(data: String, value: Value) {
-          let key = hashKey(data)
-          let hashAddress = hashFunction(key)
-          hashTable[hashAddress] = value
-      }      
-    
+```swift
+     import Foundation 
+     
+     typealias HashKey = Int
+     typealias HashAddress = Int
+     typealias Value = String
+
+     //1. 배열로 미리 지정된 크기의 공간을 생성 
+     var hashTable: [Value] = (0..<8).map { String($0) } 
+     
+     //2. 데이터를 지정된 해싱함수(데이터를 넣으면 고정된 길이를 반환하는 함수)로 넣어 해시키를 반환
+     func hashKey(data: String) -> HashKey {
+         return data.hashValue
+     }
+     //3. 해시 키를 넣으면 배열의 어느 index에 있는지 HashAddress를 반환함 . 
+     func hashFunction(key: HashKey) -> HashAddress {
+         return key % 8
+     }
+     //4. data -> key, value -> 저장할 값이 된다. data로 key를 생성하고 그 key로 저장할 배열의 index를 반환하며, 해당 index에 미리 생성한 해시테이블에 value값을 넣는다. 
+     func save(data: String, value: Value) {
+         let key = hashKey(data)
+         let hashAddress = hashFunction(key)
+         hashTable[hashAddress] = value
+     }      
+   
 ```
-해시 함수는 임이의 길이를 갖는 메시지를 입력받아 고정된 길이의 해시값을 출력하는 함수입니다. 암호 알고리즘에는 키가 사용되지만, 해시 함수는 키를 사용하지 않으므로 같은 입력에 대해서는 항상 같은 출력이 나오게 됩니다.     
-	
-- 충돌(Collision) 
-    - 같은 해쉬 주소(Hash Address)에 2개 이상의 데이터가 들어가는 경우를 말한다. 여기서 해쉬 주소는 해시 테이블의 index값이라고 할 수 있겠다. 자세한 코드는 위에를 보면 알 수 있다.
-    - 데이터를 덮어쓴다면 충돌하지 않겠지만, 그렇지 않은 경우를 말한다. 예를 들면, data1 = 'Andy'와 data2 = 'Andrew'라는 데이터가 있을 때 파이썬의 ord() 함수를 이용해서 ord(data1[0
-]), ord(data2[0])를 실행하면 같은 A에 해당하는 65라는 아스키코드 값이 리턴된다. 이렇게 되면 다른 데이터에 같은 Hash Address값이 리턴되고 하나의 Hash Address값에 2개의 데이터가 들어가는 것이다. 이걸 충돌이라고 한다. 
-    - 이런 문제를 해결하기 위해서 별도 자료구조가 필요하다. 
-    
 
-- 충돌(Collision) 해결하기 
-    - 1. Chaining 기법 
-        - 충돌이 일어나면, 링크드 리스트라는 자료 구조를 사용해서, 링크드 리스트로 데이터를 추가로 뒤에 연결시켜서 저장하는 기법이다. 공간이 추가로 들어간다. 
-    - 2. Linear Probing 기법
-        - 충돌이 일어나면, 해당 hash address의 다음 address부터 맨 처음 나오는 빈공간에 저장하는 기법
-        - 저장공간 활용도를 높이기 위한 기법
-        
-- 빈번한 충돌을 개선하는 기법 
-    - 해쉬 함수을 재정의 및 해쉬 테이블 저장공간을 확대
-    - 예: 4개의 데이터를 저장한다고 했을때 보통 key % 8, rage(8)로 하면 충돌이 일어날 확률이 높으니 그 2배인 16으로 공간을 더 많이 잡는다. 
-    - 공간으로 시간을 사는 셈이지만, 해쉬 테이블을 쓰는 이유가 충돌을 최대한 지양하고 O(1)로 쓰려고 하는것이므로 이게 제일 가장 간단하면서도 효율적인 방법이다. 
+해시 함수는 임이의 길이를 갖는 메시지를 입력받아 고정된 길이의 해시값을 출력하는 함수입니다. 암호 알고리즘에는 키가 사용되지만, 해시 함수는 키를 사용하지 않으므로 같은 입력에 대해서는 항상 같은 출력이 나오게 됩니다.
+
+* 충돌(Collision)
+  * 같은 해쉬 주소(Hash Address)에 2개 이상의 데이터가 들어가는 경우를 말한다. 여기서 해쉬 주소는 해시 테이블의 index값이라고 할 수 있겠다. 자세한 코드는 위에를 보면 알 수 있다.
+  * 데이터를 덮어쓴다면 충돌하지 않겠지만, 그렇지 않은 경우를 말한다. 예를 들면, data1 = 'Andy'와 data2 = 'Andrew'라는 데이터가 있을 때 파이썬의 ord() 함수를 이용해서 ord(data1\[0 ]), ord(data2\[0])를 실행하면 같은 A에 해당하는 65라는 아스키코드 값이 리턴된다. 이렇게 되면 다른 데이터에 같은 Hash Address값이 리턴되고 하나의 Hash Address값에 2개의 데이터가 들어가는 것이다. 이걸 충돌이라고 한다.
+  * 이런 문제를 해결하기 위해서 별도 자료구조가 필요하다.
+* 충돌(Collision) 해결하기
+  *
+    1. Chaining 기법
+    2. 충돌이 일어나면, 링크드 리스트라는 자료 구조를 사용해서, 링크드 리스트로 데이터를 추가로 뒤에 연결시켜서 저장하는 기법이다. 공간이 추가로 들어간다.
+  *
+    1. Linear Probing 기법
+    2. 충돌이 일어나면, 해당 hash address의 다음 address부터 맨 처음 나오는 빈공간에 저장하는 기법
+    3. 저장공간 활용도를 높이기 위한 기법
+*   빈번한 충돌을 개선하는 기법
+
+    * 해쉬 함수을 재정의 및 해쉬 테이블 저장공간을 확대
+    * 예: 4개의 데이터를 저장한다고 했을때 보통 key % 8, rage(8)로 하면 충돌이 일어날 확률이 높으니 그 2배인 16으로 공간을 더 많이 잡는다.
+    * 공간으로 시간을 사는 셈이지만, 해쉬 테이블을 쓰는 이유가 충돌을 최대한 지양하고 O(1)로 쓰려고 하는것이므로 이게 제일 가장 간단하면서도 효율적인 방법이다.
+
     ```python
     hash_table = list([None for i in range(16)])
 
     def hash_function(key):
         return key % 16
     ```
+* 장점
+  * 어떤 키값에 대한 데이터가 있는지 여부만 판단하면 되기 때문에 데이터를 저장, 읽기 속도가 빠르다.
+  * 웹 사용시 사용하는 캐시메모리같은 것도 해시테이블을 사용하는 것이다. 해당 키값에 대응하는 데이터가 있는지 여부(중복확인)이 빠르기 때문에 어떤 이미지를 이미 다운받았으면 새로요청하지않고 변경된 데이터만 요청해서 웹브라우저의 사용성을 높이는 그런것들 말이다. 이걸 배열로 해야된다고 하면 0번 index부터 차례차례 데이터가 중복인지 순회해야 한다.
+* 단점
+  * 충돌(Collision)이 발생할 수 있어 일반적으로 저장공간이 더 필요하다.
+  * **여러 키에 해당하는 주소가 동일할 경우 충돌을 해결하기 위한 별도 자료구조가 필요함**
+* 주요 용도
+  * 검색이 많이 필요한 경우
+  * 저장, 삭제, 읽기가 빈번한 경우
+  * 캐쉬 구현시 (중복 확인이 쉽기 때문)
+* 시간 복잡도
+  * 일반적인 경우(Collision이 없는 경우)는 O(1)
+  * 최악의 경우(Collision이 모두 발생하는 경우)는 O(n)
+  * 해쉬 테이블의 경우, 일반적인 경우를 기대하고 만들기 때문에, 시간 복잡도는 O(1) 이라고 말할 수 있음
 
-- 장점
-    - 어떤 키값에 대한 데이터가 있는지 여부만 판단하면 되기 때문에 데이터를 저장, 읽기 속도가 빠르다.
-    - 웹 사용시 사용하는 캐시메모리같은 것도 해시테이블을 사용하는 것이다. 해당 키값에 대응하는 데이터가 있는지 여부(중복확인)이 빠르기 때문에 어떤 이미지를 이미 다운받았으면 새로요청하지않고 변경된 데이터만 요청해서 웹브라우저의 사용성을 높이는 그런것들 말이다. 이걸 배열로 해야된다고 하면 0번 index부터 차례차례 데이터가 중복인지 순회해야 한다.
-- 단점 
-    - 충돌(Collision)이 발생할 수 있어 일반적으로 저장공간이 더 필요하다.
-    - **여러 키에 해당하는 주소가 동일할 경우 충돌을 해결하기 위한 별도 자료구조가 필요함** 
-- 주요 용도
-    - 검색이 많이 필요한 경우
-    - 저장, 삭제, 읽기가 빈번한 경우
-    - 캐쉬 구현시 (중복 확인이 쉽기 때문) 
+### Tree(트리)
 
-- 시간 복잡도
-    - 일반적인 경우(Collision이 없는 경우)는 O(1)
-    - 최악의 경우(Collision이 모두 발생하는 경우)는 O(n)
-    - 해쉬 테이블의 경우, 일반적인 경우를 기대하고 만들기 때문에, 시간 복잡도는 O(1) 이라고 말할 수 있음
-
-## Tree(트리)
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
-  <p>
+
+<summary></summary>
 
 ```swift
 import Foundation
@@ -1432,53 +1433,51 @@ for num in deleteNums {
 
 
 ```
-  </p>
+
 </details>
 
-- Node와 Branch를 이용해서, 사이클(순환)을 이루지 않도록 구성한 데이터 구조
-- 주요 용도  
-  - 트리 중 이진 트리 (Binary Tree) 형태의 구조로, 탐색(검색) 알고리즘 구현을 위해 많이 사용됨
-- 구조 
-  - Node: 트리에서 데이터를 저장하는 기본 요소 (데이터와 다른 연결된 노드에 대한 Branch 정보 포함)
-  - Branch: 노드와 노드 사이를 가리키는 선 
-  - Root Node: 트리 맨 위에 있는 노드
-  - Level: 최상위 노드를 Level 0으로 하였을 때, 하위 Branch로 연결된 노드의 깊이를 나타냄
-  - Parent Node: 어떤 노드의 다음 레벨에 연결된 노드
-  - Child Node: 어떤 노드의 상위 레벨에 연결된 노드
-  - Leaf Node (Terminal Node): Child Node가 하나도 없는 노드
-  - Sibling (Brother Node): 동일한 Parent Node를 가진 노드
-  - Depth: 트리에서 Node가 가질 수 있는 최대 Level
-					
-![](http://www.fun-coding.org/00_Images/tree.png)				
-			
-- 이진 트리(Binary Tree) vs 이진 탐색 트리 (Binary Search Tree)
-  - 이진 트리
-      - 자식 노드가 최대 2개인 트리 
-  - 이진 탐색 트리 (Binary Search Tree, BST)
-      - 이진 트리 + 추가정책
-      - 항상 부모 노드의 자식인 왼쪽 차일드 노드는 부모 노드보다 작은 값을 가진다. 또 오른쪽 차일드 노드는 부모 노드보다 큰 값을 갖는다.
-      - 주로 검색용도로 제일 많이 쓰인다. 배열을 기준으로 했을때 배열은 10번째 데이터가 O(10)이 걸린다면, 이진 탐색 트리는 한번 검색할때마다 반토막씩 나니까 훠얼씬 빠르다. 
-    				
-![](https://www.mathwarehouse.com/programming/images/binary-search-tree/binary-search-tree-sorted-array-animation.gif)							
-				
-- 이진 탐색 트리의 시간 복잡도와 단점
-	-  시간 복잡도 (탐색시)
-    	- depth (트리의 높이) 를 h라고 표기한다면, O(h)
-    	- n개의 노드를 가진다면, $h=log_2{n}$ 에 가까우므로, 시간 복잡도는 $O(log{n})$ (빅오 표기법에서 $log{n}$ 에서의 log의 밑은 10이 아니라, 2입니다.)
-    	- 한번 실행시마다, 50%의 실행할 수도 있는 명령을 제거한다는 의미. 즉 50%의 실행시간을 단축시킬 수 있다는 것을 의미함
-	- 이진 탐색 트리 단점
-    	- 평균 시간 복잡도는 $O(log{n})$ 이지만, 
-    	- 이는 트리가 균형잡혀 있을 때의 평균 시간복잡도이며, 다음 예와 같이 구성되어 있을 경우, 최악의 경우는 링크드 리스트등과 동일한 성능을 보여줌 $O(n)$
-    				
-![](http://www.fun-coding.org/00_Images/worstcase_bst.png)			
-					
+* Node와 Branch를 이용해서, 사이클(순환)을 이루지 않도록 구성한 데이터 구조
+* 주요 용도
+  * 트리 중 이진 트리 (Binary Tree) 형태의 구조로, 탐색(검색) 알고리즘 구현을 위해 많이 사용됨
+* 구조
+  * Node: 트리에서 데이터를 저장하는 기본 요소 (데이터와 다른 연결된 노드에 대한 Branch 정보 포함)
+  * Branch: 노드와 노드 사이를 가리키는 선
+  * Root Node: 트리 맨 위에 있는 노드
+  * Level: 최상위 노드를 Level 0으로 하였을 때, 하위 Branch로 연결된 노드의 깊이를 나타냄
+  * Parent Node: 어떤 노드의 다음 레벨에 연결된 노드
+  * Child Node: 어떤 노드의 상위 레벨에 연결된 노드
+  * Leaf Node (Terminal Node): Child Node가 하나도 없는 노드
+  * Sibling (Brother Node): 동일한 Parent Node를 가진 노드
+  * Depth: 트리에서 Node가 가질 수 있는 최대 Level
 
+![](http://www.fun-coding.org/00\_Images/tree.png)
 
-## Heap(힙) 
+* 이진 트리(Binary Tree) vs 이진 탐색 트리 (Binary Search Tree)
+  * 이진 트리
+    * 자식 노드가 최대 2개인 트리
+  * 이진 탐색 트리 (Binary Search Tree, BST)
+    * 이진 트리 + 추가정책
+    * 항상 부모 노드의 자식인 왼쪽 차일드 노드는 부모 노드보다 작은 값을 가진다. 또 오른쪽 차일드 노드는 부모 노드보다 큰 값을 갖는다.
+    * 주로 검색용도로 제일 많이 쓰인다. 배열을 기준으로 했을때 배열은 10번째 데이터가 O(10)이 걸린다면, 이진 탐색 트리는 한번 검색할때마다 반토막씩 나니까 훠얼씬 빠르다.
+
+![](https://www.mathwarehouse.com/programming/images/binary-search-tree/binary-search-tree-sorted-array-animation.gif)
+
+* 이진 탐색 트리의 시간 복잡도와 단점
+  * 시간 복잡도 (탐색시)
+    * depth (트리의 높이) 를 h라고 표기한다면, O(h)
+    * n개의 노드를 가진다면, $h=log\_2{n}$ 에 가까우므로, 시간 복잡도는 $O(log{n})$ (빅오 표기법에서 $log{n}$ 에서의 log의 밑은 10이 아니라, 2입니다.)
+    * 한번 실행시마다, 50%의 실행할 수도 있는 명령을 제거한다는 의미. 즉 50%의 실행시간을 단축시킬 수 있다는 것을 의미함
+  * 이진 탐색 트리 단점
+    * 평균 시간 복잡도는 $O(log{n})$ 이지만,
+    * 이는 트리가 균형잡혀 있을 때의 평균 시간복잡도이며, 다음 예와 같이 구성되어 있을 경우, 최악의 경우는 링크드 리스트등과 동일한 성능을 보여줌 $O(n)$
+
+![](http://www.fun-coding.org/00\_Images/worstcase\_bst.png)
+
+### Heap(힙)
 
 <details>
-  <summary><a href="https://github.com/kickbell/DataStructure_and_Algorithm"></a></summary>
-  <p>
+
+<summary></summary>
 
 ```swift
 
@@ -1633,170 +1632,139 @@ print("\n===pop===")
 heap.pop()
 print(heap.heapArray)
 ```
-  </p>
+
 </details>
-    
-- 데이터에서 최대값과 최소값을 빠르게 찾기 위해 고안된 자료구조
-- 위의 BST나 Tree와 뭐가 다르냐? 이건 오로지 최대값/최소값을 빠르게 검색하기 위한 자료구조이다.
-- 트리의 한 종류로 완전 이진 트리이다. 
-- 힙을 사용하는 이유
-  - 배열에 데이터를 넣고, 최대값과 최소값을 찾으려면 O(n) 이 걸리지만, 힙에 데이터를 넣고, 최대값과 최소값을 찾으면, $O(log n)$ 이 걸림
-  - 우선순위 큐와 같이 최대값 또는 최소값을 빠르게 찾아야 하는 자료구조 및 알고리즘 구현 등에 활용됨
-- 구조 
-    - 힙은 최대값을 구하기 위한 최대 힙(Max Heap) 와 최소값을 구하기 위한 최소 힙(Min Heap) 로 분류됨.
-    - 힙은 다음과 같이 두 가지 정책을 가지고 있는 자료구조임
-        1. 부모 노드의 값은 자식 노드의 값보다 크거나 같다. (최대 힙의 경우) 만약 최소 힙이라면 반대이다. 작거나 같다. 
-        2. 완전 이진 트리 형태를 가진다. (왼쪽아래부터 데이터를 넣는다.) 
-    
-- 완전 이진 트리(Complete Binary Tree)
-    - 왼쪽 아래 부터 데이터를 채워지는 트리 
-    - 이진 트리 이므로 자식노드가 최대 2개를 갖는다.
 
-- 힙(Heap)과 이진 탐색 트리(Binary Search Tree)의 공통점과 차이점		
-    * 공통점			
-    	- 힙과 이진 탐색 트리는 모두 이진 트리임 ( 자식이 최대 2개라는 말이다. ) 
-    * 차이점						
-        - 힙은 각 부모 노드의 값이 자식 노드보다 크거나 같음(Max Heap의 경우, Min Heap은 반대) 
-        - BST는 는 왼쪽 자식 노드의 값이 가장 작고, 그 다음 부모 노드, 그 다음 오른쪽 자식 노드 값이 가장 큼
-        - 힙은 위와 같은 조건은 없음. 힙의 왼쪽 및 오른쪽 자식 노드의 값은 오른쪽이 클 수도 있고, 왼쪽이 클 수도 있음
-        - BST는 검색을 위한 구조이고 힙은 최대/최소값을 빠르게 찾기위한 구조 중 하나로 이해하면 됨 
-    		
-![](https://www.fun-coding.org/00_Images/completebinarytree_bst.png)			
-- 힙 구현(배열로 구현, 왜?)
-    - 일반적으로 힙 구현시 배열 자료구조를 활용함, 왜? 
-    - 완전 이진 트리 형태로 구현되어 있어서 중간에 빈값도 없고 하기 때문에 index로 특정 부모, 자식 노드를 특정할 수 있음. 대박임.
-    - 배열은 인덱스가 0번부터 시작하지만, 힙 구현의 편의를 위해, root 노드 인덱스 번호를 1로 지정하면, 구현이 좀더 수월함, 왜? ( 아래에서 부모, 왼쪽자식, 오른쪽 자식 인덱스번호를 계산하는 공식이 있는데 0부터 시작해 버리면 0 / 2, 0 * 2 가 다 0 이 되버리기 때문에 더 복잡해짐 )
-    - index를 강제로 바꾼다거나 그런건 아니고 그냥 배열의 0번째에는 아무것도 안넣어버리고 index 1번째 부터 데이터를 넣겠다는 말임. 
+* 데이터에서 최대값과 최소값을 빠르게 찾기 위해 고안된 자료구조
+* 위의 BST나 Tree와 뭐가 다르냐? 이건 오로지 최대값/최소값을 빠르게 검색하기 위한 자료구조이다.
+* 트리의 한 종류로 완전 이진 트리이다.
+* 힙을 사용하는 이유
+  * 배열에 데이터를 넣고, 최대값과 최소값을 찾으려면 O(n) 이 걸리지만, 힙에 데이터를 넣고, 최대값과 최소값을 찾으면, $O(log n)$ 이 걸림
+  * 우선순위 큐와 같이 최대값 또는 최소값을 빠르게 찾아야 하는 자료구조 및 알고리즘 구현 등에 활용됨
+* 구조
+  * 힙은 최대값을 구하기 위한 최대 힙(Max Heap) 와 최소값을 구하기 위한 최소 힙(Min Heap) 로 분류됨.
+  * 힙은 다음과 같이 두 가지 정책을 가지고 있는 자료구조임
+    1. 부모 노드의 값은 자식 노드의 값보다 크거나 같다. (최대 힙의 경우) 만약 최소 힙이라면 반대이다. 작거나 같다.
+    2. 완전 이진 트리 형태를 가진다. (왼쪽아래부터 데이터를 넣는다.)
+* 완전 이진 트리(Complete Binary Tree)
+  * 왼쪽 아래 부터 데이터를 채워지는 트리
+  * 이진 트리 이므로 자식노드가 최대 2개를 갖는다.
+* 힙(Heap)과 이진 탐색 트리(Binary Search Tree)의 공통점과 차이점
+  * 공통점
+    * 힙과 이진 탐색 트리는 모두 이진 트리임 ( 자식이 최대 2개라는 말이다. )
+  * 차이점
+    * 힙은 각 부모 노드의 값이 자식 노드보다 크거나 같음(Max Heap의 경우, Min Heap은 반대)
+    * BST는 는 왼쪽 자식 노드의 값이 가장 작고, 그 다음 부모 노드, 그 다음 오른쪽 자식 노드 값이 가장 큼
+    * 힙은 위와 같은 조건은 없음. 힙의 왼쪽 및 오른쪽 자식 노드의 값은 오른쪽이 클 수도 있고, 왼쪽이 클 수도 있음
+    * BST는 검색을 위한 구조이고 힙은 최대/최소값을 빠르게 찾기위한 구조 중 하나로 이해하면 됨
+
+![](https://www.fun-coding.org/00\_Images/completebinarytree\_bst.png)
+
+*   힙 구현(배열로 구현, 왜?)
+
+    * 일반적으로 힙 구현시 배열 자료구조를 활용함, 왜?
+    * 완전 이진 트리 형태로 구현되어 있어서 중간에 빈값도 없고 하기 때문에 index로 특정 부모, 자식 노드를 특정할 수 있음. 대박임.
+    * 배열은 인덱스가 0번부터 시작하지만, 힙 구현의 편의를 위해, root 노드 인덱스 번호를 1로 지정하면, 구현이 좀더 수월함, 왜? ( 아래에서 부모, 왼쪽자식, 오른쪽 자식 인덱스번호를 계산하는 공식이 있는데 0부터 시작해 버리면 0 / 2, 0 \* 2 가 다 0 이 되버리기 때문에 더 복잡해짐 )
+    * index를 강제로 바꾼다거나 그런건 아니고 그냥 배열의 0번째에는 아무것도 안넣어버리고 index 1번째 부터 데이터를 넣겠다는 말임.
+
     > 공식
-    > - 부모 노드 인덱스 번호 = 자식 노드 인덱스 번호 / 2
-    > - 왼쪽 자식 노드 인덱스 번호 = 부모 노드 인덱스 번호 * 2
-    > - 오른쪽 자식 노드 인덱스 번호 = 부모 노드 인덱스 번호 * 2 + 1 
-    
-![](https://www.fun-coding.org/00_Images/heap_array.png)				
-				
-- 시간 복잡도
-    - depth (트리의 높이) 를 h라고 표기한다면,
-    - 최소값 또는 최대값을 빼는 연산은 O(1)이지만, 힙의 성질에 맞게 재구조화(heapify)하는 과정이 필요하다. 
-    - 근데, 이진트리이므로 반땡이긴 하지만 삽입 또는 삭제시 삽입은 맨끝에서 루트까지 올라올 수 있고 삭제는 맨위에서 맨아래까지 내려올 수 있다. 
-    - 따라서 시간 복잡도는 $h = log_2{n} $ 에 가까우므로, 시간 복잡도는 $ O(log{n}) $ 이다.
-    - 참고: 빅오 표기법에서 $log{n}$ 에서의 log의 밑은 10이 아니라, 2입니다.
-    - 한번 실행시마다, 50%의 실행할 수도 있는 명령을 제거한다는 의미. 즉 50%의 실행시간을 단축시킬 수 있다는 것을 의미함
-	  
-	  
+    >
+    > * 부모 노드 인덱스 번호 = 자식 노드 인덱스 번호 / 2
+    > * 왼쪽 자식 노드 인덱스 번호 = 부모 노드 인덱스 번호 \* 2
+    > * 오른쪽 자식 노드 인덱스 번호 = 부모 노드 인덱스 번호 \* 2 + 1
 
-    
-## Graph(그래프)
-- 실제 세계의 현상이나 사물을 정점(Vertex) 또는 노드(Node)와 간선(Edge)로 표현하기 위해 사용하는 자료구조
-- 트리(Tree) 또한 그래프의 하나이다. 
-- 가장 어려운 부분이다. 대학원에서도 그래프 관련한 논문이 많다고 한다. 
-				
-![](https://www.fun-coding.org/00_Images/graph.png)					
+![](https://www.fun-coding.org/00\_Images/heap\_array.png)
 
-- 그래프 관련 용어 			
-    - 노드 (Node): 위치를 말함, 정점(Vertex)라고도 부른다.
-    - 간선 (Edge): 노드를 연결한 선이(link 또는 branch 라고도 함)
-    - 인접 정점 (Adjacent Vertex): 
-    	- 간선으로 직접 연결된 노드
-    	- (집)-(지하철)이면 집과 지하철 2개가 인접한 노드라고 부른다.
-    - 참고 용어
-    	- 무방향 그래프 (Undirected Graph): 간선에 화살표가 없는 그래프
-    	- 방향 그래프 (Directed Graph): 간선에 화살표가 있는 그래프 
-    	- 정점의 차수 (Degree): 
-    		- 무방향 그래프에서 하나의 정점에 인접한 정점의 수
-    		- 위에 사진을 기준으로 무방향그래프라고 가정하면 (지하철)의 차수는 2
-    	- 진입 차수 (In-Degree):
-    		- 방향 그래프에서 외부에서 들어오는 간선의 수
-    		- 위에 사진을 기준으로 (지하철)의 진입 차수는 1
-    	- 진출 차수 (Out-Degree): 
-    		- 방향 그래프에서 외부로 향하는 간선의 수
-			- 위에 사진을 기준으로 (지하철)의 진출 차수는 1
-    	- 경로 길이 (Path Length): 
-    		- 경로를 구성하기 위해 사용된 간선의 수
-    		- (집)->(지하철)->(회사) 라는 경로가 있을 때, 경로가 완성되기 까지 필요한 간선의 수는 2
-    	- 단순 경로 (Simple Path): 
-    		- 처음 정점과 끝 정점을 제외하고 중복된 정점이 없는 경로
-    		- (집)->(지하철)->(회사)->(버스)->(회사) 라는 경로가 있다면 끝 정점은 회사인데 경로가 중복되어 있다. 이런 중복된 경로를 제외한 경로를 단순 경로라고 한다. 
-    		- 다만, (처음 정점과 끝 정점을 제외하고) 라는 말이 있듯이 집에서 시작해 집에서 끝났다면 그건 단순경로가 맞다. 예를 들어, (집)->(지하철)->(회사)->(버스)->(집) 이라는 경로는 집이 2회 나오지만 예외적으로 단순 경로이다. 
-    	- 사이클 (Cycle): 
-    		- 단순 경로의 시작 정점과 종료 정점이 동일한 경우(밑에 그림으로 설명) 
-    		- 위에서의 (집)->(지하철)->(회사)->(버스)->(집) 을 사이클 이라고 부른다. 
-- 그래프의 종류 
-	- 무방향 그래프 (Undirected Graph)
-		- 방향이 없는 그래프
-		- 간선을 통해, 노드는 양방향으로 갈 수 있음
-		- 보통 노드 A, B가 연결되어 있을 경우, (A, B) 또는 (B, A) 로 표기							
-		- 무방향 그래프 ![](https://www.fun-coding.org/00_Images/undirectedgraph.png)						
-    - 방향 그래프 (Directed Graph)			
-		- 간선에 방향이 있는 그래프			
-		- 보통 노드 A, B가 A -> B 로 가는 간선으로 연결되어 있을 경우, <A, B> 로 표기 (<B, A> 는 B -> A 로 가는 간선이 있는 경우이므로 <A, B> 와 다름)
-		- 방향 그래프 ![](https://www.fun-coding.org/00_Images/directedgraph.png)							
-	- 가중치 그래프 (Weighted Graph) 또는 네트워크 (Network)
-		- 간선에 비용 또는 가중치가 할당된 그래프
-		- 위에 그림처럼 집->지하철->회사, 집->버스->회사라고 하면 이해하기 쉽게는 거리느낌이다.
-    		- 집에서 지하철역까지 200미터, 버스정류장까지 400미터 같은 느낌이므로 가중치가 합쳐서 300미터인 밑에 경로가 더 좋은 경로이다. 
-		- 가중치 그래프 ![](https://www.fun-coding.org/00_Images/weightedgraph.png)				
-	- 연결 그래프 (Connected Graph) 와 비연결 그래프 (Disconnected Graph)
-		- 연결 그래프 (Connected Graph)
-	  		- 무방향 그래프에 있는 모든 노드에 대해 항상 경로가 존재하는 경우
-			- 모든 노드가 항상 간선으로 연결되어 있다는 뜻 
-		- 비연결 그래프 (Disconnected Graph)
-		  	- 무방향 그래프에서 특정 노드에 대해 경로가 존재하지 않는 경우
-			- 비연결 그래프![](https://www.fun-coding.org/00_Images/disconnectedgraph.png)						
-	- 사이클 (Cycle) 과 비순환 그래프 (Acyclic Graph)
-		- 사이클 (Cycle)
-			- 단순 경로의 시작 노드와 종료 노드가 동일한 경우
-		- 비순환 그래프 (Acyclic Graph)
-  			- 사이클이 없는 그래프	
-			- 비순환 그래프 ![](https://www.fun-coding.org/00_Images/acyclicgraph.png)							
-	- 완전 그래프 (Complete Graph)
-		- 그래프의 모든 노드가 서로 연결되어 있는 그래프								
-		- 완전 그래프 ![](https://www.fun-coding.org/00_Images/completegraph.png)											
-						
+* 시간 복잡도
+  * depth (트리의 높이) 를 h라고 표기한다면,
+  * 최소값 또는 최대값을 빼는 연산은 O(1)이지만, 힙의 성질에 맞게 재구조화(heapify)하는 과정이 필요하다.
+  * 근데, 이진트리이므로 반땡이긴 하지만 삽입 또는 삭제시 삽입은 맨끝에서 루트까지 올라올 수 있고 삭제는 맨위에서 맨아래까지 내려올 수 있다.
+  * 따라서 시간 복잡도는 $h = log\_2{n} $ 에 가까우므로, 시간 복잡도는 $ O(log{n}) $ 이다.
+  * 참고: 빅오 표기법에서 $log{n}$ 에서의 log의 밑은 10이 아니라, 2입니다.
+  * 한번 실행시마다, 50%의 실행할 수도 있는 명령을 제거한다는 의미. 즉 50%의 실행시간을 단축시킬 수 있다는 것을 의미함
 
-- 그래프(Grape)와 트리(Tree)의 차이 
-	- 트리는 그래프 중에 속한 특별한 종류라고 볼 수 있음
-	  
+### Graph(그래프)
 
-<div style="text-align:left">
-<table>
-  <tr>
-    <th></th>
-    <th style="text-align:center">그래프</th>
-    <th style="text-align:center">트리</th>
-  </tr>
-  <tr>
-    <td style="text-align:center">정의</td>
-    <td style="text-align:left">노드와 노드를 연결하는 간선(무방향+방향)으로 표현되는 자료 구조</td>
-    <td style="text-align:left">그래프의 한 종류, 방향성(화살표->)이 있는 비순환 그래프</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">방향성</td>
-    <td style="text-align:left">방향 그래프, 무방향 그래프 둘다 존재함</td>
-    <td style="text-align:left">방향 그래프만 존재함</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">사이클</td>
-    <td style="text-align:left">사이클 가능함, 순환 및 비순환 그래프 모두 존재함</td>
-    <td style="text-align:left">비순환 그래프로 사이클이 존재하지 않음</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">루트 노드</td>
-    <td style="text-align:left">루트 노드 존재하지 않음(뭐가 루트 노드다 라고 딱 정의하지 않음)</td>
-    <td style="text-align:left">루트 노드 존재함</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">부모/자식 관계</td>
-    <td style="text-align:left">부모 자식 개념이 존재하지 않음</td>
-    <td style="text-align:left">부모 자식 관계가 존재함</td>
-  </tr>
-</table>
-</div>
+* 실제 세계의 현상이나 사물을 정점(Vertex) 또는 노드(Node)와 간선(Edge)로 표현하기 위해 사용하는 자료구조
+* 트리(Tree) 또한 그래프의 하나이다.
+* 가장 어려운 부분이다. 대학원에서도 그래프 관련한 논문이 많다고 한다.
 
-	  
+![](https://www.fun-coding.org/00\_Images/graph.png)
 
-## Reference
-[https://fastcampus.co.kr/dev_online_devjob/?gclid=Cj0KCQjwqc6aBhC4ARIsAN06NmOdZUJGwc8x-w8ht0jS3idCSNhUZ49m--cQdDsVqIZWSnVmrBz5zxMaAtTBEALw_wcB](https://fastcampus.co.kr/dev_online_devjob/?gclid=Cj0KCQjwqc6aBhC4ARIsAN06NmOdZUJGwc8x-w8ht0jS3idCSNhUZ49m--cQdDsVqIZWSnVmrBz5zxMaAtTBEALw_wcB)
+* 그래프 관련 용어
+  * 노드 (Node): 위치를 말함, 정점(Vertex)라고도 부른다.
+  * 간선 (Edge): 노드를 연결한 선이(link 또는 branch 라고도 함)
+  * 인접 정점 (Adjacent Vertex):
+    * 간선으로 직접 연결된 노드
+    * (집)-(지하철)이면 집과 지하철 2개가 인접한 노드라고 부른다.
+  * 참고 용어
+    * 무방향 그래프 (Undirected Graph): 간선에 화살표가 없는 그래프
+    * 방향 그래프 (Directed Graph): 간선에 화살표가 있는 그래프
+    * 정점의 차수 (Degree):
+      * 무방향 그래프에서 하나의 정점에 인접한 정점의 수
+      * 위에 사진을 기준으로 무방향그래프라고 가정하면 (지하철)의 차수는 2
+    * 진입 차수 (In-Degree):
+      * 방향 그래프에서 외부에서 들어오는 간선의 수
+      * 위에 사진을 기준으로 (지하철)의 진입 차수는 1
+    * 진출 차수 (Out-Degree):
+      * 방향 그래프에서 외부로 향하는 간선의 수
+      * 위에 사진을 기준으로 (지하철)의 진출 차수는 1
+    * 경로 길이 (Path Length):
+      * 경로를 구성하기 위해 사용된 간선의 수
+      * (집)->(지하철)->(회사) 라는 경로가 있을 때, 경로가 완성되기 까지 필요한 간선의 수는 2
+    * 단순 경로 (Simple Path):
+      * 처음 정점과 끝 정점을 제외하고 중복된 정점이 없는 경로
+      * (집)->(지하철)->(회사)->(버스)->(회사) 라는 경로가 있다면 끝 정점은 회사인데 경로가 중복되어 있다. 이런 중복된 경로를 제외한 경로를 단순 경로라고 한다.
+      * 다만, (처음 정점과 끝 정점을 제외하고) 라는 말이 있듯이 집에서 시작해 집에서 끝났다면 그건 단순경로가 맞다. 예를 들어, (집)->(지하철)->(회사)->(버스)->(집) 이라는 경로는 집이 2회 나오지만 예외적으로 단순 경로이다.
+    * 사이클 (Cycle):
+      * 단순 경로의 시작 정점과 종료 정점이 동일한 경우(밑에 그림으로 설명)
+      * 위에서의 (집)->(지하철)->(회사)->(버스)->(집) 을 사이클 이라고 부른다.
+* 그래프의 종류
+  * 무방향 그래프 (Undirected Graph)
+    * 방향이 없는 그래프
+    * 간선을 통해, 노드는 양방향으로 갈 수 있음
+    * 보통 노드 A, B가 연결되어 있을 경우, (A, B) 또는 (B, A) 로 표기
+    * 무방향 그래프 ![](https://www.fun-coding.org/00\_Images/undirectedgraph.png)
+  * 방향 그래프 (Directed Graph)
+    * 간선에 방향이 있는 그래프
+    * 보통 노드 A, B가 A -> B 로 가는 간선으로 연결되어 있을 경우, \<A, B> 로 표기 (\<B, A> 는 B -> A 로 가는 간선이 있는 경우이므로 \<A, B> 와 다름)
+    * 방향 그래프 ![](https://www.fun-coding.org/00\_Images/directedgraph.png)
+  * 가중치 그래프 (Weighted Graph) 또는 네트워크 (Network)
+    * 간선에 비용 또는 가중치가 할당된 그래프
+    * 위에 그림처럼 집->지하철->회사, 집->버스->회사라고 하면 이해하기 쉽게는 거리느낌이다.
+      * 집에서 지하철역까지 200미터, 버스정류장까지 400미터 같은 느낌이므로 가중치가 합쳐서 300미터인 밑에 경로가 더 좋은 경로이다.
+    * 가중치 그래프 ![](https://www.fun-coding.org/00\_Images/weightedgraph.png)
+  * 연결 그래프 (Connected Graph) 와 비연결 그래프 (Disconnected Graph)
+    * 연결 그래프 (Connected Graph)
+      * 무방향 그래프에 있는 모든 노드에 대해 항상 경로가 존재하는 경우
+      * 모든 노드가 항상 간선으로 연결되어 있다는 뜻
+    * 비연결 그래프 (Disconnected Graph)
+      * 무방향 그래프에서 특정 노드에 대해 경로가 존재하지 않는 경우
+      * 비연결 그래프![](https://www.fun-coding.org/00\_Images/disconnectedgraph.png)
+  * 사이클 (Cycle) 과 비순환 그래프 (Acyclic Graph)
+    * 사이클 (Cycle)
+      * 단순 경로의 시작 노드와 종료 노드가 동일한 경우
+    * 비순환 그래프 (Acyclic Graph)
+      * 사이클이 없는 그래프
+      * 비순환 그래프 ![](https://www.fun-coding.org/00\_Images/acyclicgraph.png)
+  * 완전 그래프 (Complete Graph)
+    * 그래프의 모든 노드가 서로 연결되어 있는 그래프
+    * 완전 그래프 ![](https://www.fun-coding.org/00\_Images/completegraph.png)
+* 그래프(Grape)와 트리(Tree)의 차이
+  * 트리는 그래프 중에 속한 특별한 종류라고 볼 수 있음
 
-[https://www.fun-coding.org/python-question1-answer.html](https://www.fun-coding.org/python-question1-answer.html)				
-			    
-[https://github.com/kickbell/DataStructure_and_Algorithm](https://github.com/kickbell/DataStructure_and_Algorithm)				
+|          | 그래프                                   | 트리                                |
+| -------- | ------------------------------------- | --------------------------------- |
+| 정의       | 노드와 노드를 연결하는 간선(무방향+방향)으로 표현되는 자료 구조  | 그래프의 한 종류, 방향성(화살표->)이 있는 비순환 그래프 |
+| 방향성      | 방향 그래프, 무방향 그래프 둘다 존재함                | 방향 그래프만 존재함                       |
+| 사이클      | 사이클 가능함, 순환 및 비순환 그래프 모두 존재함          | 비순환 그래프로 사이클이 존재하지 않음             |
+| 루트 노드    | 루트 노드 존재하지 않음(뭐가 루트 노드다 라고 딱 정의하지 않음) | 루트 노드 존재함                         |
+| 부모/자식 관계 | 부모 자식 개념이 존재하지 않음                     | 부모 자식 관계가 존재함                     |
+
+### Reference
+
+[https://fastcampus.co.kr/dev\_online\_devjob/?gclid=Cj0KCQjwqc6aBhC4ARIsAN06NmOdZUJGwc8x-w8ht0jS3idCSNhUZ49m--cQdDsVqIZWSnVmrBz5zxMaAtTBEALw\_wcB](https://fastcampus.co.kr/dev\_online\_devjob/?gclid=Cj0KCQjwqc6aBhC4ARIsAN06NmOdZUJGwc8x-w8ht0jS3idCSNhUZ49m--cQdDsVqIZWSnVmrBz5zxMaAtTBEALw\_wcB)
+
+[https://www.fun-coding.org/python-question1-answer.html](https://www.fun-coding.org/python-question1-answer.html)
+
+[https://github.com/kickbell/DataStructure\_and\_Algorithm](https://github.com/kickbell/DataStructure\_and\_Algorithm)

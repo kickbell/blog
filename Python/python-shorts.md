@@ -1,5 +1,7 @@
-## for 문 
-> ### python
+# 파이썬과 스위프트 문법 요약
+
+> #### python
+
 ```python
 list = [4,5,6,7,8]
 length = len(list)
@@ -11,7 +13,9 @@ for i in range (0, length):
 3
 4
 ```
-> ### swift
+
+> #### swift
+
 ```swift
 let list = [4,5,6,7,8]
 let length = list.count
