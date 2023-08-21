@@ -155,21 +155,4 @@ class APIService {
 
 
 
-<script src="https://giscus.app/client.js"
-        data-repo="kickbell/blog"
-        data-repo-id="R_kgDOHfkInw"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOHfkIn84CYvYi"
-        data-mapping="url"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="light"
-        data-lang="ko"
-        crossorigin="anonymous"
-        async>
-</script>
-
-
 
